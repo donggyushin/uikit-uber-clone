@@ -1,0 +1,533 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7017358E2777A02E004C589B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7017358D2777A02E004C589B /* AppDelegate.swift */; };
+		701735902777A02E004C589B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7017358F2777A02E004C589B /* SceneDelegate.swift */; };
+		701735952777A02E004C589B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 701735932777A02E004C589B /* Main.storyboard */; };
+		701735972777A02E004C589B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 701735962777A02E004C589B /* Assets.xcassets */; };
+		7017359A2777A02E004C589B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 701735982777A02E004C589B /* LaunchScreen.storyboard */; };
+		701735A62777A073004C589B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701735A52777A073004C589B /* LoginViewController.swift */; };
+		701735A92777A0E5004C589B /* LogoLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701735A82777A0E5004C589B /* LogoLabel.swift */; };
+		701735AC2777A170004C589B /* fonts_colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701735AB2777A170004C589B /* fonts_colors.swift */; };
+		701735AE2777A1F0004C589B /* background_colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701735AD2777A1F0004C589B /* background_colors.swift */; };
+		701735B12777A27C004C589B /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 701735B02777A27C004C589B /* SnapKit */; };
+		701735B32777A3EB004C589B /* UserInputTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701735B22777A3EB004C589B /* UserInputTextFieldView.swift */; };
+		701735B62777A71C004C589B /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701735B52777A71C004C589B /* UIImageView+Extension.swift */; };
+		701735B82777A925004C589B /* BlueButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701735B72777A925004C589B /* BlueButton.swift */; };
+		701735BA2777AA49004C589B /* button_colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701735B92777AA49004C589B /* button_colors.swift */; };
+		701735BC2777AF77004C589B /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701735BB2777AF77004C589B /* BaseViewController.swift */; };
+		701735BE2777B05B004C589B /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701735BD2777B05B004C589B /* SignUpViewController.swift */; };
+		701735C12777B0AC004C589B /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 701735C02777B0AC004C589B /* RxCocoa */; };
+		701735C32777B0AC004C589B /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 701735C22777B0AC004C589B /* RxRelay */; };
+		701735C52777B0AC004C589B /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 701735C42777B0AC004C589B /* RxSwift */; };
+		701735C82777B1D2004C589B /* DIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701735C72777B1D2004C589B /* DIViewController.swift */; };
+		701735CA2777B4EB004C589B /* UserInputSegmentedControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701735C92777B4EB004C589B /* UserInputSegmentedControlView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		7017358A2777A02E004C589B /* uikit-uber-clone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "uikit-uber-clone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7017358D2777A02E004C589B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		7017358F2777A02E004C589B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		701735942777A02E004C589B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		701735962777A02E004C589B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		701735992777A02E004C589B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		7017359B2777A02E004C589B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		701735A52777A073004C589B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		701735A82777A0E5004C589B /* LogoLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoLabel.swift; sourceTree = "<group>"; };
+		701735AB2777A170004C589B /* fonts_colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fonts_colors.swift; sourceTree = "<group>"; };
+		701735AD2777A1F0004C589B /* background_colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = background_colors.swift; sourceTree = "<group>"; };
+		701735B22777A3EB004C589B /* UserInputTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInputTextFieldView.swift; sourceTree = "<group>"; };
+		701735B52777A71C004C589B /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
+		701735B72777A925004C589B /* BlueButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueButton.swift; sourceTree = "<group>"; };
+		701735B92777AA49004C589B /* button_colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = button_colors.swift; sourceTree = "<group>"; };
+		701735BB2777AF77004C589B /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		701735BD2777B05B004C589B /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		701735C72777B1D2004C589B /* DIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIViewController.swift; sourceTree = "<group>"; };
+		701735C92777B4EB004C589B /* UserInputSegmentedControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInputSegmentedControlView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		701735872777A02E004C589B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				701735C32777B0AC004C589B /* RxRelay in Frameworks */,
+				701735C12777B0AC004C589B /* RxCocoa in Frameworks */,
+				701735C52777B0AC004C589B /* RxSwift in Frameworks */,
+				701735B12777A27C004C589B /* SnapKit in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		701735812777A02E004C589B = {
+			isa = PBXGroup;
+			children = (
+				7017358C2777A02E004C589B /* uikit-uber-clone */,
+				7017358B2777A02E004C589B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7017358B2777A02E004C589B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7017358A2777A02E004C589B /* uikit-uber-clone.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7017358C2777A02E004C589B /* uikit-uber-clone */ = {
+			isa = PBXGroup;
+			children = (
+				701735C62777B1B7004C589B /* di */,
+				701735B42777A710004C589B /* extensions */,
+				701735AA2777A15F004C589B /* colors */,
+				701735A72777A098004C589B /* views */,
+				701735A32777A056004C589B /* storyboards */,
+				701735A22777A04A004C589B /* controllers */,
+				701735A12777A033004C589B /* delegates */,
+				701735962777A02E004C589B /* Assets.xcassets */,
+				7017359B2777A02E004C589B /* Info.plist */,
+			);
+			path = "uikit-uber-clone";
+			sourceTree = "<group>";
+		};
+		701735A12777A033004C589B /* delegates */ = {
+			isa = PBXGroup;
+			children = (
+				7017358D2777A02E004C589B /* AppDelegate.swift */,
+				7017358F2777A02E004C589B /* SceneDelegate.swift */,
+			);
+			path = delegates;
+			sourceTree = "<group>";
+		};
+		701735A22777A04A004C589B /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				701735A42777A06B004C589B /* auth */,
+				701735BB2777AF77004C589B /* BaseViewController.swift */,
+			);
+			path = controllers;
+			sourceTree = "<group>";
+		};
+		701735A32777A056004C589B /* storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				701735932777A02E004C589B /* Main.storyboard */,
+				701735982777A02E004C589B /* LaunchScreen.storyboard */,
+			);
+			path = storyboards;
+			sourceTree = "<group>";
+		};
+		701735A42777A06B004C589B /* auth */ = {
+			isa = PBXGroup;
+			children = (
+				701735A52777A073004C589B /* LoginViewController.swift */,
+				701735BD2777B05B004C589B /* SignUpViewController.swift */,
+			);
+			path = auth;
+			sourceTree = "<group>";
+		};
+		701735A72777A098004C589B /* views */ = {
+			isa = PBXGroup;
+			children = (
+				701735A82777A0E5004C589B /* LogoLabel.swift */,
+				701735B22777A3EB004C589B /* UserInputTextFieldView.swift */,
+				701735B72777A925004C589B /* BlueButton.swift */,
+				701735C92777B4EB004C589B /* UserInputSegmentedControlView.swift */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		701735AA2777A15F004C589B /* colors */ = {
+			isa = PBXGroup;
+			children = (
+				701735AB2777A170004C589B /* fonts_colors.swift */,
+				701735AD2777A1F0004C589B /* background_colors.swift */,
+				701735B92777AA49004C589B /* button_colors.swift */,
+			);
+			path = colors;
+			sourceTree = "<group>";
+		};
+		701735B42777A710004C589B /* extensions */ = {
+			isa = PBXGroup;
+			children = (
+				701735B52777A71C004C589B /* UIImageView+Extension.swift */,
+			);
+			path = extensions;
+			sourceTree = "<group>";
+		};
+		701735C62777B1B7004C589B /* di */ = {
+			isa = PBXGroup;
+			children = (
+				701735C72777B1D2004C589B /* DIViewController.swift */,
+			);
+			path = di;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		701735892777A02E004C589B /* uikit-uber-clone */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7017359E2777A02E004C589B /* Build configuration list for PBXNativeTarget "uikit-uber-clone" */;
+			buildPhases = (
+				701735862777A02E004C589B /* Sources */,
+				701735872777A02E004C589B /* Frameworks */,
+				701735882777A02E004C589B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "uikit-uber-clone";
+			packageProductDependencies = (
+				701735B02777A27C004C589B /* SnapKit */,
+				701735C02777B0AC004C589B /* RxCocoa */,
+				701735C22777B0AC004C589B /* RxRelay */,
+				701735C42777B0AC004C589B /* RxSwift */,
+			);
+			productName = "uikit-uber-clone";
+			productReference = 7017358A2777A02E004C589B /* uikit-uber-clone.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		701735822777A02E004C589B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1320;
+				LastUpgradeCheck = 1320;
+				TargetAttributes = {
+					701735892777A02E004C589B = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+				};
+			};
+			buildConfigurationList = 701735852777A02E004C589B /* Build configuration list for PBXProject "uikit-uber-clone" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 701735812777A02E004C589B;
+			packageReferences = (
+				701735AF2777A27C004C589B /* XCRemoteSwiftPackageReference "SnapKit" */,
+				701735BF2777B0AC004C589B /* XCRemoteSwiftPackageReference "RxSwift" */,
+			);
+			productRefGroup = 7017358B2777A02E004C589B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				701735892777A02E004C589B /* uikit-uber-clone */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		701735882777A02E004C589B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7017359A2777A02E004C589B /* LaunchScreen.storyboard in Resources */,
+				701735972777A02E004C589B /* Assets.xcassets in Resources */,
+				701735952777A02E004C589B /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		701735862777A02E004C589B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				701735B32777A3EB004C589B /* UserInputTextFieldView.swift in Sources */,
+				701735A62777A073004C589B /* LoginViewController.swift in Sources */,
+				701735C82777B1D2004C589B /* DIViewController.swift in Sources */,
+				701735BC2777AF77004C589B /* BaseViewController.swift in Sources */,
+				701735B62777A71C004C589B /* UIImageView+Extension.swift in Sources */,
+				701735AE2777A1F0004C589B /* background_colors.swift in Sources */,
+				7017358E2777A02E004C589B /* AppDelegate.swift in Sources */,
+				701735BE2777B05B004C589B /* SignUpViewController.swift in Sources */,
+				701735AC2777A170004C589B /* fonts_colors.swift in Sources */,
+				701735902777A02E004C589B /* SceneDelegate.swift in Sources */,
+				701735A92777A0E5004C589B /* LogoLabel.swift in Sources */,
+				701735B82777A925004C589B /* BlueButton.swift in Sources */,
+				701735CA2777B4EB004C589B /* UserInputSegmentedControlView.swift in Sources */,
+				701735BA2777AA49004C589B /* button_colors.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		701735932777A02E004C589B /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				701735942777A02E004C589B /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		701735982777A02E004C589B /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				701735992777A02E004C589B /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		7017359C2777A02E004C589B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		7017359D2777A02E004C589B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7017359F2777A02E004C589B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RTMQTS6F7G;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "uikit-uber-clone/Info.plist";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.donggyu.uikit-uber-clone";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		701735A02777A02E004C589B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RTMQTS6F7G;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "uikit-uber-clone/Info.plist";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.donggyu.uikit-uber-clone";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		701735852777A02E004C589B /* Build configuration list for PBXProject "uikit-uber-clone" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7017359C2777A02E004C589B /* Debug */,
+				7017359D2777A02E004C589B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7017359E2777A02E004C589B /* Build configuration list for PBXNativeTarget "uikit-uber-clone" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7017359F2777A02E004C589B /* Debug */,
+				701735A02777A02E004C589B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		701735AF2777A27C004C589B /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		701735BF2777B0AC004C589B /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		701735B02777A27C004C589B /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 701735AF2777A27C004C589B /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		701735C02777B0AC004C589B /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 701735BF2777B0AC004C589B /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		701735C22777B0AC004C589B /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 701735BF2777B0AC004C589B /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		701735C42777B0AC004C589B /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 701735BF2777B0AC004C589B /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 701735822777A02E004C589B /* Project object */;
+}
