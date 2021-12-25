@@ -28,6 +28,15 @@
 		701735C52777B0AC004C589B /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 701735C42777B0AC004C589B /* RxSwift */; };
 		701735C82777B1D2004C589B /* DIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701735C72777B1D2004C589B /* DIViewController.swift */; };
 		701735CA2777B4EB004C589B /* UserInputSegmentedControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701735C92777B4EB004C589B /* UserInputSegmentedControlView.swift */; };
+		7055CEAA2777BD5D00399AC6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7055CEA92777BD5D00399AC6 /* GoogleService-Info.plist */; };
+		7055CEAD2777BDDB00399AC6 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 7055CEAC2777BDDB00399AC6 /* FirebaseAuth */; };
+		7055CEAF2777BDDB00399AC6 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 7055CEAE2777BDDB00399AC6 /* FirebaseDatabase */; };
+		7055CEB12777BDDB00399AC6 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 7055CEB02777BDDB00399AC6 /* FirebaseFirestore */; };
+		7055CEB32777BDDB00399AC6 /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = 7055CEB22777BDDB00399AC6 /* FirebaseFunctions */; };
+		7055CEB52777BDDB00399AC6 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 7055CEB42777BDDB00399AC6 /* FirebaseMessaging */; };
+		7055CEB72777BDDB00399AC6 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 7055CEB62777BDDB00399AC6 /* FirebaseStorage */; };
+		7055CEBA2777BE8100399AC6 /* GeoFire in Frameworks */ = {isa = PBXBuildFile; productRef = 7055CEB92777BE8100399AC6 /* GeoFire */; };
+		7055CEBC2777BE8100399AC6 /* GeoFireUtils in Frameworks */ = {isa = PBXBuildFile; productRef = 7055CEBB2777BE8100399AC6 /* GeoFireUtils */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +59,7 @@
 		701735BD2777B05B004C589B /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		701735C72777B1D2004C589B /* DIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIViewController.swift; sourceTree = "<group>"; };
 		701735C92777B4EB004C589B /* UserInputSegmentedControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInputSegmentedControlView.swift; sourceTree = "<group>"; };
+		7055CEA92777BD5D00399AC6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,10 +67,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7055CEB52777BDDB00399AC6 /* FirebaseMessaging in Frameworks */,
+				7055CEAF2777BDDB00399AC6 /* FirebaseDatabase in Frameworks */,
 				701735C32777B0AC004C589B /* RxRelay in Frameworks */,
+				7055CEB72777BDDB00399AC6 /* FirebaseStorage in Frameworks */,
+				7055CEAD2777BDDB00399AC6 /* FirebaseAuth in Frameworks */,
+				7055CEBA2777BE8100399AC6 /* GeoFire in Frameworks */,
+				7055CEB32777BDDB00399AC6 /* FirebaseFunctions in Frameworks */,
 				701735C12777B0AC004C589B /* RxCocoa in Frameworks */,
 				701735C52777B0AC004C589B /* RxSwift in Frameworks */,
 				701735B12777A27C004C589B /* SnapKit in Frameworks */,
+				7055CEBC2777BE8100399AC6 /* GeoFireUtils in Frameworks */,
+				7055CEB12777BDDB00399AC6 /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,6 +113,7 @@
 				701735A12777A033004C589B /* delegates */,
 				701735962777A02E004C589B /* Assets.xcassets */,
 				7017359B2777A02E004C589B /* Info.plist */,
+				7055CEA92777BD5D00399AC6 /* GoogleService-Info.plist */,
 			);
 			path = "uikit-uber-clone";
 			sourceTree = "<group>";
@@ -193,6 +212,14 @@
 				701735C02777B0AC004C589B /* RxCocoa */,
 				701735C22777B0AC004C589B /* RxRelay */,
 				701735C42777B0AC004C589B /* RxSwift */,
+				7055CEAC2777BDDB00399AC6 /* FirebaseAuth */,
+				7055CEAE2777BDDB00399AC6 /* FirebaseDatabase */,
+				7055CEB02777BDDB00399AC6 /* FirebaseFirestore */,
+				7055CEB22777BDDB00399AC6 /* FirebaseFunctions */,
+				7055CEB42777BDDB00399AC6 /* FirebaseMessaging */,
+				7055CEB62777BDDB00399AC6 /* FirebaseStorage */,
+				7055CEB92777BE8100399AC6 /* GeoFire */,
+				7055CEBB2777BE8100399AC6 /* GeoFireUtils */,
 			);
 			productName = "uikit-uber-clone";
 			productReference = 7017358A2777A02E004C589B /* uikit-uber-clone.app */;
@@ -225,6 +252,8 @@
 			packageReferences = (
 				701735AF2777A27C004C589B /* XCRemoteSwiftPackageReference "SnapKit" */,
 				701735BF2777B0AC004C589B /* XCRemoteSwiftPackageReference "RxSwift" */,
+				7055CEAB2777BDDB00399AC6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				7055CEB82777BE8100399AC6 /* XCRemoteSwiftPackageReference "geofire-objc" */,
 			);
 			productRefGroup = 7017358B2777A02E004C589B /* Products */;
 			projectDirPath = "";
@@ -241,6 +270,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7017359A2777A02E004C589B /* LaunchScreen.storyboard in Resources */,
+				7055CEAA2777BD5D00399AC6 /* GoogleService-Info.plist in Resources */,
 				701735972777A02E004C589B /* Assets.xcassets in Resources */,
 				701735952777A02E004C589B /* Main.storyboard in Resources */,
 			);
@@ -504,6 +534,22 @@
 				kind = branch;
 			};
 		};
+		7055CEAB2777BDDB00399AC6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		7055CEB82777BE8100399AC6 /* XCRemoteSwiftPackageReference "geofire-objc" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/geofire-objc";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -526,6 +572,46 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 701735BF2777B0AC004C589B /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxSwift;
+		};
+		7055CEAC2777BDDB00399AC6 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7055CEAB2777BDDB00399AC6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		7055CEAE2777BDDB00399AC6 /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7055CEAB2777BDDB00399AC6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		7055CEB02777BDDB00399AC6 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7055CEAB2777BDDB00399AC6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		7055CEB22777BDDB00399AC6 /* FirebaseFunctions */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7055CEAB2777BDDB00399AC6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFunctions;
+		};
+		7055CEB42777BDDB00399AC6 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7055CEAB2777BDDB00399AC6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
+		7055CEB62777BDDB00399AC6 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7055CEAB2777BDDB00399AC6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+		7055CEB92777BE8100399AC6 /* GeoFire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7055CEB82777BE8100399AC6 /* XCRemoteSwiftPackageReference "geofire-objc" */;
+			productName = GeoFire;
+		};
+		7055CEBB2777BE8100399AC6 /* GeoFireUtils */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7055CEB82777BE8100399AC6 /* XCRemoteSwiftPackageReference "geofire-objc" */;
+			productName = GeoFireUtils;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
