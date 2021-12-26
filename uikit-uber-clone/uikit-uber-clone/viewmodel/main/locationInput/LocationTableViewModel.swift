@@ -21,7 +21,6 @@ class LocationTableViewModel: BaseViewModel {
     
     func searchPlaces(query: String) {
         placeRepository.searchPlaces(query: query, region: region) { places in
-            print("[test] places: \(places)")
             self.places = places
         }
     }
