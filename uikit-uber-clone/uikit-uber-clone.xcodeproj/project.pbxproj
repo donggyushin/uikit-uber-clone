@@ -10,6 +10,8 @@
 		701487D827784B1B007AF0DC /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701487D727784B1B007AF0DC /* SplashViewModel.swift */; };
 		701487DB27784C33007AF0DC /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701487DA27784C33007AF0DC /* SplashViewController.swift */; };
 		701487DE27784D28007AF0DC /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701487DD27784D28007AF0DC /* MainViewController.swift */; };
+		701487E1277852DC007AF0DC /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701487E0277852DC007AF0DC /* MainViewModel.swift */; };
+		701487E4277854CC007AF0DC /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701487E3277854CC007AF0DC /* Util.swift */; };
 		7017358E2777A02E004C589B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7017358D2777A02E004C589B /* AppDelegate.swift */; };
 		701735902777A02E004C589B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7017358F2777A02E004C589B /* SceneDelegate.swift */; };
 		701735952777A02E004C589B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 701735932777A02E004C589B /* Main.storyboard */; };
@@ -59,6 +61,8 @@
 		701487D727784B1B007AF0DC /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
 		701487DA27784C33007AF0DC /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		701487DD27784D28007AF0DC /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		701487E0277852DC007AF0DC /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		701487E3277854CC007AF0DC /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		7017358A2777A02E004C589B /* uikit-uber-clone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "uikit-uber-clone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7017358D2777A02E004C589B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7017358F2777A02E004C589B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -141,6 +145,22 @@
 			path = main;
 			sourceTree = "<group>";
 		};
+		701487DF277852D4007AF0DC /* main */ = {
+			isa = PBXGroup;
+			children = (
+				701487E0277852DC007AF0DC /* MainViewModel.swift */,
+			);
+			path = main;
+			sourceTree = "<group>";
+		};
+		701487E2277854C6007AF0DC /* util */ = {
+			isa = PBXGroup;
+			children = (
+				701487E3277854CC007AF0DC /* Util.swift */,
+			);
+			path = util;
+			sourceTree = "<group>";
+		};
 		701735812777A02E004C589B = {
 			isa = PBXGroup;
 			children = (
@@ -160,6 +180,7 @@
 		7017358C2777A02E004C589B /* uikit-uber-clone */ = {
 			isa = PBXGroup;
 			children = (
+				701487E2277854C6007AF0DC /* util */,
 				70DCF8DF27783F6500A9E633 /* model */,
 				70DCF8D727783A8600A9E633 /* enum */,
 				70DCF8CF2778397400A9E633 /* viewmodel */,
@@ -286,6 +307,7 @@
 		70DCF8CF2778397400A9E633 /* viewmodel */ = {
 			isa = PBXGroup;
 			children = (
+				701487DF277852D4007AF0DC /* main */,
 				701487D627784B12007AF0DC /* splash */,
 				70DCF8D02778399A00A9E633 /* auth */,
 				70DCF8D3277839B800A9E633 /* BaseViewModel.swift */,
@@ -417,6 +439,7 @@
 				701735A62777A073004C589B /* LoginViewController.swift in Sources */,
 				70DCF8D2277839A500A9E633 /* SignUpViewModel.swift in Sources */,
 				702DF2192777CB220032441D /* UserRepository.swift in Sources */,
+				701487E1277852DC007AF0DC /* MainViewModel.swift in Sources */,
 				701735C82777B1D2004C589B /* DIViewController.swift in Sources */,
 				701735BC2777AF77004C589B /* BaseViewController.swift in Sources */,
 				701735B62777A71C004C589B /* UIImageView+Extension.swift in Sources */,
@@ -439,6 +462,7 @@
 				70DCF8D4277839B800A9E633 /* BaseViewModel.swift in Sources */,
 				701735B82777A925004C589B /* BlueButton.swift in Sources */,
 				70DCF8E32778409400A9E633 /* UserError.swift in Sources */,
+				701487E4277854CC007AF0DC /* Util.swift in Sources */,
 				701735CA2777B4EB004C589B /* UserInputSegmentedControlView.swift in Sources */,
 				701735BA2777AA49004C589B /* button_colors.swift in Sources */,
 			);

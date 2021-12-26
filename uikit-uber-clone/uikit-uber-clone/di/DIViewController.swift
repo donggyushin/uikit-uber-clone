@@ -27,7 +27,7 @@ extension DIViewController {
             return .init(signUpViewModel: diViewModel.signUpViewModelFactory())
         }
         
-        let mainViewControllerFactory: () -> MainViewController = { .init(nibName: nil, bundle: nil) }
+        let mainViewControllerFactory: () -> MainViewController = { .init(mainViewModel: DIViewModel.resolve().mainViewModelFactory()) }
         let splashViewControllerFactory: () -> SplashViewController = { .init(splashViewModel: diViewModel.splashViewModelFactory()) }
         
         return .init(loginViewControllerFactory: loginViewControllerFactory, signUpViewControllerFactory: signUpViewControllerFactory, mainViewControllerFactory: mainViewControllerFactory, splashViewControllerFactory: splashViewControllerFactory)
