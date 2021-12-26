@@ -21,6 +21,8 @@ class CustomPointAnnotation: NSObject, MKAnnotation, Identifiable {
     }
     
     func updateCoordinator(coordinate: CLLocationCoordinate2D) {
-        self.coordinate = coordinate
+        UIView.animate(withDuration: 0.5) {
+            self.coordinate = coordinate
+        }
     }
 }
