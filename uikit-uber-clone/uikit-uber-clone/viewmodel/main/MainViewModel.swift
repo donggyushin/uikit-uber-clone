@@ -30,8 +30,7 @@ class MainViewModel: BaseViewModel {
         bind()
         
         if let location = locationManager.location {
-            self.observeNearbyUsers(location: location)
-            self.locationRepository.updateLocation(location: location)
+            self.locationUpdated(location: location)
         }
     }
     
@@ -65,9 +64,7 @@ class MainViewModel: BaseViewModel {
         $location.sink { [weak self] location in
             guard let location = location else { return }
             if self?.updateCount == 0 {
-                print("[test] 여기 계속 오지 않낭?")
-                self?.observeNearbyUsers(location: location)
-                self?.locationRepository.updateLocation(location: location)
+                self?.locationUpdated(location: location)
             }
             self?.updateCount += 1
             if self?.updateCount ?? 0 > 10 {
@@ -92,6 +89,11 @@ class MainViewModel: BaseViewModel {
             print("DEBUG: 권한 없음")
             self.needLocationPermission = true
         }
+    }
+    
+    private func locationUpdated(location: CLLocation) {
+        self.observeNearbyUsers(location: location)
+        self.locationRepository.updateLocation(location: location)
     }
     
 }
