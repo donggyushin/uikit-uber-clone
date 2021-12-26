@@ -8,9 +8,12 @@
 import UIKit
 
 class LocationTableView: UITableView {
-    override init(frame: CGRect, style: UITableView.Style) {
+    
+    private let viewModel: LocationTableViewModel
+    
+    init(frame: CGRect, style: UITableView.Style, viewModel: LocationTableViewModel) {
+        self.viewModel = viewModel
         super.init(frame: frame, style: style)
-        
         configureUI()
     }
     
@@ -35,5 +38,11 @@ class LocationTableView: UITableView {
             self.frame.origin.y = UIScreen.main.bounds.height
             self.alpha = 0
         }
+    }
+}
+
+extension LocationTableView: LocationInputHeaderViewDelegate {
+    func LocationInputHeaderViewSearchText(text: String) {
+        viewModel.searchPlaces(query: text)
     }
 }

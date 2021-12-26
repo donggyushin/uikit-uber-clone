@@ -22,7 +22,7 @@ class MainViewController: BaseViewController {
     private let activityView = LocationInputActivationView()
     private lazy var locationInputHeaderView: LocationInputHeaderView = .init(locationInputActivationView: activityView, locationTableView: locationTableView)
     private lazy var locationTableView: LocationTableView = {
-        let view = LocationTableView(frame: .init(x: 0, y: view.frame.height, width: view.frame.width, height: view.frame.height - LocationInputHeaderView.height))
+        let view = LocationTableView(frame: .init(x: 0, y: view.frame.height, width: view.frame.width, height: view.frame.height - LocationInputHeaderView.height), style: .grouped, viewModel: DIViewModel.resolve().locationTableViewModelFactory(self.mapView.region))
         return view
     }()
     
@@ -91,6 +91,9 @@ class MainViewController: BaseViewController {
     }
     
     private func configureUI() {
+        
+        locationInputHeaderView.delegate = locationTableView
+        
         view.backgroundColor = BackgroundColors.shared.primaryColor
         view.addSubview(mapView)
         

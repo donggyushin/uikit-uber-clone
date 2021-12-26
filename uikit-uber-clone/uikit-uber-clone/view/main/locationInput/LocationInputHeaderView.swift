@@ -9,6 +9,10 @@ import UIKit
 import RxSwift
 import Combine
 
+protocol LocationInputHeaderViewDelegate: AnyObject {
+    func LocationInputHeaderViewSearchText(text: String)
+}
+
 class LocationInputHeaderView: UIView {
     
     static let height: CGFloat = 200
@@ -18,6 +22,8 @@ class LocationInputHeaderView: UIView {
     private let backButton = BackButton()
     private let disposeBag = DisposeBag()
     private var subscriber = Set<AnyCancellable>()
+    
+    weak var delegate: LocationInputHeaderViewDelegate?
     
     private let titleLabel: UILabel = {
         let view = UILabel()
@@ -39,8 +45,9 @@ class LocationInputHeaderView: UIView {
         return view
     }()
     
-    private let destinationTextFieldView: UITextField = {
+    private lazy var destinationTextFieldView: UITextField = {
         let view = LocationInputTextField(placeHolderText: "Enter destination")
+        view.delegate = self
         return view
     }()
     
@@ -138,4 +145,11 @@ class LocationInputHeaderView: UIView {
         alpha = 0 
     }
     
+}
+
+extension LocationInputHeaderView: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.delegate?.LocationInputHeaderViewSearchText(text: textField.text ?? "")
+        return true
+    }
 }

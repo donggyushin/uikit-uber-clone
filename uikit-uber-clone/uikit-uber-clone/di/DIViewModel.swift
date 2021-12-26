@@ -5,12 +5,15 @@
 //  Created by 신동규 on 2021/12/26.
 //
 
+import MapKit
+
 
 struct DIViewModel {
     let signUpViewModelFactory: () -> SignUpViewModel
     let loginViewModelFactory: () -> LoginViewModel
     let splashViewModelFactory: () -> SplashViewModel
     let mainViewModelFactory: () -> MainViewModel
+    let locationTableViewModelFactory: (MKCoordinateRegion) -> LocationTableViewModel
 }
 
 extension DIViewModel {
@@ -26,6 +29,10 @@ extension DIViewModel {
         
         let mainViewModelFactory: () -> MainViewModel = { .init(locationRepository: diRepository.locationRepository, userRepository: diRepository.userRepository) }
         
-        return .init(signUpViewModelFactory: signUpViewModelFactory, loginViewModelFactory: loginViewModelFactory, splashViewModelFactory: splashViewModelFactory, mainViewModelFactory: mainViewModelFactory)
+        let locationTableViewModelFactory: (MKCoordinateRegion) -> LocationTableViewModel = { region in
+            return .init(placeRepository: diRepository.placeRepository, region: region)
+        }
+        
+        return .init(signUpViewModelFactory: signUpViewModelFactory, loginViewModelFactory: loginViewModelFactory, splashViewModelFactory: splashViewModelFactory, mainViewModelFactory: mainViewModelFactory, locationTableViewModelFactory: locationTableViewModelFactory)
     }
 }

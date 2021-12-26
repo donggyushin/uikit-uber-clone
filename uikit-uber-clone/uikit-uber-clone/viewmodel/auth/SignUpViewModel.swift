@@ -44,6 +44,7 @@ class SignUpViewModel: BaseViewModel {
             switch result {
             case .success(let user):
                 self?.user = user
+                UserViewModel.shared.user = user
             case .failure(let error):
                 self?.error = error
             }

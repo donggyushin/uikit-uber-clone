@@ -28,6 +28,11 @@ class MainViewModel: BaseViewModel {
         enableLocation()
         requestGPSPermission()
         bind()
+        
+        if let location = locationManager.location {
+            self.observeNearbyUsers(location: location)
+            self.locationRepository.updateLocation(location: location)
+        }
     }
     
     private func observeNearbyUsers(location: CLLocation) {
@@ -60,6 +65,7 @@ class MainViewModel: BaseViewModel {
         $location.sink { [weak self] location in
             guard let location = location else { return }
             if self?.updateCount == 0 {
+                print("[test] 여기 계속 오지 않낭?")
                 self?.observeNearbyUsers(location: location)
                 self?.locationRepository.updateLocation(location: location)
             }
@@ -79,6 +85,7 @@ class MainViewModel: BaseViewModel {
         switch locationManager.authorizationStatus {
         case .authorizedAlways, .authorizedWhenInUse:
             self.locationManager.startUpdatingLocation()
+            
         case .restricted, .notDetermined:
             print("GPS: 아직 선택하지 않음")
         default:

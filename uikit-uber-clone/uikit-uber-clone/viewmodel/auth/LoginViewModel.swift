@@ -37,6 +37,7 @@ class LoginViewModel: BaseViewModel {
             case .failure(let error):
                 self?.error = error
             case .success(let user):
+                UserViewModel.shared.user = user 
                 self?.user = user
             }
         }).disposed(by: disposeBag)
