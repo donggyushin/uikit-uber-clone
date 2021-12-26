@@ -79,7 +79,6 @@ class MainViewModel: BaseViewModel {
         switch locationManager.authorizationStatus {
         case .authorizedAlways, .authorizedWhenInUse:
             self.locationManager.startUpdatingLocation()
-//            self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
         case .restricted, .notDetermined:
             print("GPS: 아직 선택하지 않음")
         default:
