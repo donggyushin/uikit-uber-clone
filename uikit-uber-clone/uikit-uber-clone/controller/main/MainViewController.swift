@@ -18,7 +18,11 @@ class MainViewController: BaseViewController {
     }()
     
     private let activityView = LocationInputActivationView()
-    private lazy var locationInputHeaderView: LocationInputHeaderView = .init(locationInputActivationView: activityView)
+    private lazy var locationInputHeaderView: LocationInputHeaderView = .init(locationInputActivationView: activityView, locationTableView: locationTableView)
+    private lazy var locationTableView: LocationTableView = {
+        let view = LocationTableView(frame: .init(x: 0, y: view.frame.height, width: view.frame.width, height: view.frame.height - LocationInputHeaderView.height))
+        return view
+    }()
     
     private let mainViewModel: MainViewModel
     
@@ -42,6 +46,7 @@ class MainViewController: BaseViewController {
         activityView.tap.rx.event.asDriver().drive(onNext: { [weak self] _ in
             self?.activityView.hide()
             self?.locationInputHeaderView.show()
+            self?.locationTableView.present()
         }).disposed(by: disposeBag)
         
         mainViewModel.needLocationPermission.asDriver(onErrorJustReturn: false).filter({ $0 }).drive(onNext: { [weak self] _ in
@@ -65,6 +70,8 @@ class MainViewController: BaseViewController {
             make.left.equalTo(view)
             make.right.equalTo(view)
         }
+        
+        view.addSubview(locationTableView)
     }
     
     private func openAppSetting() {

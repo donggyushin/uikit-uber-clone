@@ -10,7 +10,10 @@ import RxSwift
 
 class LocationInputHeaderView: UIView {
     
+    static let height: CGFloat = 200
+    
     private let locationInputActivationView: LocationInputActivationView
+    private let locationTableView: LocationTableView
     private let backButton = BackButton()
     private let disposeBag = DisposeBag()
     
@@ -61,8 +64,9 @@ class LocationInputHeaderView: UIView {
         return view
     }()
     
-    init(locationInputActivationView: LocationInputActivationView) {
+    init(locationInputActivationView: LocationInputActivationView, locationTableView: LocationTableView) {
         self.locationInputActivationView = locationInputActivationView
+        self.locationTableView = locationTableView
         super.init(frame: CGRect.zero)
         
         configureUI()
@@ -81,13 +85,16 @@ class LocationInputHeaderView: UIView {
         
         backButton.rx.tap.asDriver().drive(onNext: { [weak self] in
             self?.hide()
+            self?.locationTableView.dismiss()
             self?.locationInputActivationView.show()
         }).disposed(by: disposeBag)
     }
     
     private func configureUI() {
         backgroundColor = BackgroundColors.shared.primaryColor
-        
+        snp.makeConstraints { make in
+            make.height.equalTo(LocationInputHeaderView.height)
+        }
         addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in
             make.centerX.equalTo(self)
@@ -105,7 +112,6 @@ class LocationInputHeaderView: UIView {
             make.top.equalTo(titleLabel.snp.bottom).offset(30)
             make.left.equalTo(backButton.snp.right).offset(10)
             make.right.equalTo(self).offset(-20)
-            make.bottom.equalTo(self).offset(-30)
         }
         
         addSubview(startingDotView)

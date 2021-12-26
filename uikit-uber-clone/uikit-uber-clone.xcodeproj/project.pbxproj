@@ -19,6 +19,7 @@
 		701487F12778670A007AF0DC /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701487F02778670A007AF0DC /* UserViewModel.swift */; };
 		701487F427786A8F007AF0DC /* LocationInputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701487F327786A8F007AF0DC /* LocationInputTextField.swift */; };
 		701487F627786CAD007AF0DC /* DotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701487F527786CAD007AF0DC /* DotView.swift */; };
+		701487F827786F72007AF0DC /* LocationTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701487F727786F72007AF0DC /* LocationTableView.swift */; };
 		7017358E2777A02E004C589B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7017358D2777A02E004C589B /* AppDelegate.swift */; };
 		701735902777A02E004C589B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7017358F2777A02E004C589B /* SceneDelegate.swift */; };
 		701735952777A02E004C589B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 701735932777A02E004C589B /* Main.storyboard */; };
@@ -77,6 +78,7 @@
 		701487F02778670A007AF0DC /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		701487F327786A8F007AF0DC /* LocationInputTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInputTextField.swift; sourceTree = "<group>"; };
 		701487F527786CAD007AF0DC /* DotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotView.swift; sourceTree = "<group>"; };
+		701487F727786F72007AF0DC /* LocationTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTableView.swift; sourceTree = "<group>"; };
 		7017358A2777A02E004C589B /* uikit-uber-clone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "uikit-uber-clone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7017358D2777A02E004C589B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7017358F2777A02E004C589B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 				701487E527785AB1007AF0DC /* LocationInputActivationView.swift */,
 				701487EA2778623D007AF0DC /* LocationInputHeaderView.swift */,
 				701487F327786A8F007AF0DC /* LocationInputTextField.swift */,
+				701487F727786F72007AF0DC /* LocationTableView.swift */,
 			);
 			path = locationInput;
 			sourceTree = "<group>";
@@ -496,6 +499,7 @@
 				701487ED27786296007AF0DC /* BackButton.swift in Sources */,
 				701487E1277852DC007AF0DC /* MainViewModel.swift in Sources */,
 				701487EF27786596007AF0DC /* UIView+Extension.swift in Sources */,
+				701487F827786F72007AF0DC /* LocationTableView.swift in Sources */,
 				701735C82777B1D2004C589B /* DIViewController.swift in Sources */,
 				701735BC2777AF77004C589B /* BaseViewController.swift in Sources */,
 				701735B62777A71C004C589B /* UIImageView+Extension.swift in Sources */,

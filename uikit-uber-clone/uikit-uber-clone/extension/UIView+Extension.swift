@@ -9,13 +9,13 @@ import UIKit
 
 extension UIView {
     func hide() {
-        UIView.animate(withDuration: 1) {
+        UIView.animate(withDuration: 0.4, delay: 0, options: .curveEaseInOut) {
             self.alpha = 0
         }
     }
     
     func show() {
-        UIView.animate(withDuration: 1) {
+        UIView.animate(withDuration: 0.4, delay: 0, options: .curveEaseInOut) {
             self.alpha = 1
         }
     }
