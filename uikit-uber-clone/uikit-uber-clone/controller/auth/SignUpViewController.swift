@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Toast
 
 class SignUpViewController: BaseViewController {
     
@@ -62,7 +63,18 @@ class SignUpViewController: BaseViewController {
         view.setAttributedTitle(attributedTitleText, for: .normal)
         return view
     }()
-
+    
+    private let signUpViewModel: SignUpViewModel
+    
+    init(signUpViewModel: SignUpViewModel) {
+        self.signUpViewModel = signUpViewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
@@ -72,6 +84,24 @@ class SignUpViewController: BaseViewController {
     private func bind() {
         alreadyHaveAccountButton.rx.tap.asDriver().drive(onNext: { [weak self] _ in
             self?.navigationController?.popViewController(animated: true)
+        }).disposed(by: disposeBag)
+        
+        signUpButton.rx.tap.asDriver().drive(onNext: { [weak self] _ in
+            self?.signUpViewModel.signUp(email: self?.emailTextFieldView.tf.text ?? "", password: self?.passwordTextFieldView.tf.text ?? "", fullName: self?.fullNameTextFieldView.tf.text ?? "", userType: self?.accountTypeSelectView.segmentedControl.selectedSegmentIndex == 0 ? .RIDER : .DRIVER)
+        }).disposed(by: disposeBag)
+        
+        signUpViewModel.isLoading.asDriver(onErrorJustReturn: false).drive(onNext: {[weak self] loading in
+            loading ? self?.activityIndicator.startAnimating() : self?.activityIndicator.stopAnimating()
+            self?.signUpButton.isEnabled = !loading
+        }).disposed(by: disposeBag)
+        
+        signUpViewModel.error.asDriver(onErrorJustReturn: nil).filter({ $0 != nil }).drive(onNext: { [weak self] error in
+            self?.view.makeToast(error?.localizedDescription)
+        }).disposed(by: disposeBag)
+        
+        signUpViewModel.user.asDriver(onErrorJustReturn: nil).filter({ $0 != nil }).drive(onNext: { [weak self] user in
+            guard let user = user else { return }
+            print("DEBUG: user: \(user.fullname) created!")
         }).disposed(by: disposeBag)
     }
     

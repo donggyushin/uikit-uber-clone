@@ -12,7 +12,35 @@ class UserRepositoryImpl: UserRepository {
     
     static let shared = UserRepositoryImpl()
     
-    func createUser(email: String, password: String, fullname: String, accountType: Int) -> Observable<Result<User, Error>> {
+    func fetchUser() -> Observable<Result<UberUser, Error>> {
+        return .create { observer in
+            
+            guard let uid = Auth.auth().currentUser?.uid else {
+                let error: UserError = .no_uid
+                observer.onNext(.failure(error))
+                observer.onCompleted()
+                return Disposables.create() }
+            
+            COLLECTION_USER.document(uid).getDocument { snapsnot, error in
+                if let error = error {
+                    observer.onNext(.failure(error))
+                    observer.onCompleted()
+                } else if let data = snapsnot?.data() {
+                    let user: UberUser = .init(data: data)
+                    observer.onNext(.success(user))
+                    observer.onCompleted()
+                } else {
+                    let error: MyError = .unknown
+                    observer.onNext(.failure(error))
+                    observer.onCompleted()
+                }
+            }
+            
+            return Disposables.create()
+        }
+    }
+    
+    func createUser(email: String, password: String, fullname: String, accountType: UserType) -> Observable<Result<User, Error>> {
         return .create { observer in
             
             Auth.auth().createUser(withEmail: email, password: password) { result, error in
@@ -24,9 +52,10 @@ class UserRepositoryImpl: UserRepository {
                         "uid": user.uid,
                         "email": email,
                         "fullname": fullname,
-                        "accountType": accountType == 0 ? "RIDER" : "DRIVER"
+                        "accountType": accountType.rawValue
                     ]
-                    COLLECTION_USER.addDocument(data: data) { error in
+                    
+                    COLLECTION_USER.document(user.uid).setData(data) { error  in
                         if let error = error {
                             observer.onNext(.failure(error))
                         } else {

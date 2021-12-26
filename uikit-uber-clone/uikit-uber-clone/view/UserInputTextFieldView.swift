@@ -31,6 +31,7 @@ class UserInputTextFieldView: UIView {
         view.textColor = .white
         view.keyboardAppearance = .dark
         view.attributedPlaceholder = NSAttributedString(string: self.placeholderString, attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
+        view.autocapitalizationType = .none
         return view
     }()
     

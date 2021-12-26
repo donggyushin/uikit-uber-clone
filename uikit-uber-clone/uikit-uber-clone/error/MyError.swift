@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 public enum MyError: Error {
     case unknown
 }

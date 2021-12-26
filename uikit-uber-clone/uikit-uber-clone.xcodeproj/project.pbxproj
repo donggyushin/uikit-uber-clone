@@ -42,6 +42,13 @@
 		7055CEBA2777BE8100399AC6 /* GeoFire in Frameworks */ = {isa = PBXBuildFile; productRef = 7055CEB92777BE8100399AC6 /* GeoFire */; };
 		7055CEBC2777BE8100399AC6 /* GeoFireUtils in Frameworks */ = {isa = PBXBuildFile; productRef = 7055CEBB2777BE8100399AC6 /* GeoFireUtils */; };
 		707D4F032777C7FB00E4B31D /* UserRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707D4F022777C7FB00E4B31D /* UserRepositoryImpl.swift */; };
+		70DCF8D2277839A500A9E633 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DCF8D1277839A500A9E633 /* SignUpViewModel.swift */; };
+		70DCF8D4277839B800A9E633 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DCF8D3277839B800A9E633 /* BaseViewModel.swift */; };
+		70DCF8D6277839FF00A9E633 /* DIViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DCF8D5277839FF00A9E633 /* DIViewModel.swift */; };
+		70DCF8D927783A9100A9E633 /* UserType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DCF8D827783A9100A9E633 /* UserType.swift */; };
+		70DCF8DE27783E3800A9E633 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 70DCF8DD27783E3800A9E633 /* Toast */; };
+		70DCF8E127783F6C00A9E633 /* UberUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DCF8E027783F6C00A9E633 /* UberUser.swift */; };
+		70DCF8E32778409400A9E633 /* UserError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DCF8E22778409400A9E633 /* UserError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +77,12 @@
 		702DF21A2777CB450032441D /* DIRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIRepository.swift; sourceTree = "<group>"; };
 		7055CEA92777BD5D00399AC6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		707D4F022777C7FB00E4B31D /* UserRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepositoryImpl.swift; sourceTree = "<group>"; };
+		70DCF8D1277839A500A9E633 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		70DCF8D3277839B800A9E633 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
+		70DCF8D5277839FF00A9E633 /* DIViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIViewModel.swift; sourceTree = "<group>"; };
+		70DCF8D827783A9100A9E633 /* UserType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserType.swift; sourceTree = "<group>"; };
+		70DCF8E027783F6C00A9E633 /* UberUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UberUser.swift; sourceTree = "<group>"; };
+		70DCF8E22778409400A9E633 /* UserError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +92,7 @@
 			files = (
 				7055CEB52777BDDB00399AC6 /* FirebaseMessaging in Frameworks */,
 				7055CEAF2777BDDB00399AC6 /* FirebaseDatabase in Frameworks */,
+				70DCF8DE27783E3800A9E633 /* Toast in Frameworks */,
 				701735C32777B0AC004C589B /* RxRelay in Frameworks */,
 				7055CEB72777BDDB00399AC6 /* FirebaseStorage in Frameworks */,
 				7055CEAD2777BDDB00399AC6 /* FirebaseAuth in Frameworks */,
@@ -114,15 +128,18 @@
 		7017358C2777A02E004C589B /* uikit-uber-clone */ = {
 			isa = PBXGroup;
 			children = (
-				702DF2152777CAC00032441D /* errors */,
-				702DF2122777C9870032441D /* constants */,
+				70DCF8DF27783F6500A9E633 /* model */,
+				70DCF8D727783A8600A9E633 /* enum */,
+				70DCF8CF2778397400A9E633 /* viewmodel */,
+				702DF2152777CAC00032441D /* error */,
+				702DF2122777C9870032441D /* constant */,
 				707D4F012777C7E500E4B31D /* repository */,
 				701735C62777B1B7004C589B /* di */,
-				701735B42777A710004C589B /* extensions */,
-				701735AA2777A15F004C589B /* colors */,
-				701735A72777A098004C589B /* views */,
+				701735B42777A710004C589B /* extension */,
+				701735AA2777A15F004C589B /* color */,
+				701735A72777A098004C589B /* view */,
 				701735A32777A056004C589B /* storyboards */,
-				701735A22777A04A004C589B /* controllers */,
+				701735A22777A04A004C589B /* controller */,
 				701735A12777A033004C589B /* delegates */,
 				701735962777A02E004C589B /* Assets.xcassets */,
 				7017359B2777A02E004C589B /* Info.plist */,
@@ -140,13 +157,13 @@
 			path = delegates;
 			sourceTree = "<group>";
 		};
-		701735A22777A04A004C589B /* controllers */ = {
+		701735A22777A04A004C589B /* controller */ = {
 			isa = PBXGroup;
 			children = (
 				701735A42777A06B004C589B /* auth */,
 				701735BB2777AF77004C589B /* BaseViewController.swift */,
 			);
-			path = controllers;
+			path = controller;
 			sourceTree = "<group>";
 		};
 		701735A32777A056004C589B /* storyboards */ = {
@@ -167,7 +184,7 @@
 			path = auth;
 			sourceTree = "<group>";
 		};
-		701735A72777A098004C589B /* views */ = {
+		701735A72777A098004C589B /* view */ = {
 			isa = PBXGroup;
 			children = (
 				701735A82777A0E5004C589B /* LogoLabel.swift */,
@@ -175,25 +192,25 @@
 				701735B72777A925004C589B /* BlueButton.swift */,
 				701735C92777B4EB004C589B /* UserInputSegmentedControlView.swift */,
 			);
-			path = views;
+			path = view;
 			sourceTree = "<group>";
 		};
-		701735AA2777A15F004C589B /* colors */ = {
+		701735AA2777A15F004C589B /* color */ = {
 			isa = PBXGroup;
 			children = (
 				701735AB2777A170004C589B /* fonts_colors.swift */,
 				701735AD2777A1F0004C589B /* background_colors.swift */,
 				701735B92777AA49004C589B /* button_colors.swift */,
 			);
-			path = colors;
+			path = color;
 			sourceTree = "<group>";
 		};
-		701735B42777A710004C589B /* extensions */ = {
+		701735B42777A710004C589B /* extension */ = {
 			isa = PBXGroup;
 			children = (
 				701735B52777A71C004C589B /* UIImageView+Extension.swift */,
 			);
-			path = extensions;
+			path = extension;
 			sourceTree = "<group>";
 		};
 		701735C62777B1B7004C589B /* di */ = {
@@ -201,24 +218,26 @@
 			children = (
 				701735C72777B1D2004C589B /* DIViewController.swift */,
 				702DF21A2777CB450032441D /* DIRepository.swift */,
+				70DCF8D5277839FF00A9E633 /* DIViewModel.swift */,
 			);
 			path = di;
 			sourceTree = "<group>";
 		};
-		702DF2122777C9870032441D /* constants */ = {
+		702DF2122777C9870032441D /* constant */ = {
 			isa = PBXGroup;
 			children = (
 				702DF2132777C9930032441D /* collections.swift */,
 			);
-			path = constants;
+			path = constant;
 			sourceTree = "<group>";
 		};
-		702DF2152777CAC00032441D /* errors */ = {
+		702DF2152777CAC00032441D /* error */ = {
 			isa = PBXGroup;
 			children = (
 				702DF2162777CAC80032441D /* MyError.swift */,
+				70DCF8E22778409400A9E633 /* UserError.swift */,
 			);
-			path = errors;
+			path = error;
 			sourceTree = "<group>";
 		};
 		707D4F012777C7E500E4B31D /* repository */ = {
@@ -228,6 +247,39 @@
 				702DF2182777CB220032441D /* UserRepository.swift */,
 			);
 			path = repository;
+			sourceTree = "<group>";
+		};
+		70DCF8CF2778397400A9E633 /* viewmodel */ = {
+			isa = PBXGroup;
+			children = (
+				70DCF8D02778399A00A9E633 /* auth */,
+				70DCF8D3277839B800A9E633 /* BaseViewModel.swift */,
+			);
+			path = viewmodel;
+			sourceTree = "<group>";
+		};
+		70DCF8D02778399A00A9E633 /* auth */ = {
+			isa = PBXGroup;
+			children = (
+				70DCF8D1277839A500A9E633 /* SignUpViewModel.swift */,
+			);
+			path = auth;
+			sourceTree = "<group>";
+		};
+		70DCF8D727783A8600A9E633 /* enum */ = {
+			isa = PBXGroup;
+			children = (
+				70DCF8D827783A9100A9E633 /* UserType.swift */,
+			);
+			path = enum;
+			sourceTree = "<group>";
+		};
+		70DCF8DF27783F6500A9E633 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				70DCF8E027783F6C00A9E633 /* UberUser.swift */,
+			);
+			path = model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,6 +311,7 @@
 				7055CEB62777BDDB00399AC6 /* FirebaseStorage */,
 				7055CEB92777BE8100399AC6 /* GeoFire */,
 				7055CEBB2777BE8100399AC6 /* GeoFireUtils */,
+				70DCF8DD27783E3800A9E633 /* Toast */,
 			);
 			productName = "uikit-uber-clone";
 			productReference = 7017358A2777A02E004C589B /* uikit-uber-clone.app */;
@@ -293,6 +346,7 @@
 				701735BF2777B0AC004C589B /* XCRemoteSwiftPackageReference "RxSwift" */,
 				7055CEAB2777BDDB00399AC6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				7055CEB82777BE8100399AC6 /* XCRemoteSwiftPackageReference "geofire-objc" */,
+				70DCF8DC27783E3800A9E633 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 			);
 			productRefGroup = 7017358B2777A02E004C589B /* Products */;
 			projectDirPath = "";
@@ -323,7 +377,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				701735B32777A3EB004C589B /* UserInputTextFieldView.swift in Sources */,
+				70DCF8D6277839FF00A9E633 /* DIViewModel.swift in Sources */,
 				701735A62777A073004C589B /* LoginViewController.swift in Sources */,
+				70DCF8D2277839A500A9E633 /* SignUpViewModel.swift in Sources */,
 				702DF2192777CB220032441D /* UserRepository.swift in Sources */,
 				701735C82777B1D2004C589B /* DIViewController.swift in Sources */,
 				701735BC2777AF77004C589B /* BaseViewController.swift in Sources */,
@@ -331,14 +387,18 @@
 				701735AE2777A1F0004C589B /* background_colors.swift in Sources */,
 				707D4F032777C7FB00E4B31D /* UserRepositoryImpl.swift in Sources */,
 				7017358E2777A02E004C589B /* AppDelegate.swift in Sources */,
+				70DCF8E127783F6C00A9E633 /* UberUser.swift in Sources */,
 				701735BE2777B05B004C589B /* SignUpViewController.swift in Sources */,
 				702DF21B2777CB450032441D /* DIRepository.swift in Sources */,
 				701735AC2777A170004C589B /* fonts_colors.swift in Sources */,
+				70DCF8D927783A9100A9E633 /* UserType.swift in Sources */,
 				701735902777A02E004C589B /* SceneDelegate.swift in Sources */,
 				702DF2172777CAC80032441D /* MyError.swift in Sources */,
 				702DF2142777C9930032441D /* collections.swift in Sources */,
 				701735A92777A0E5004C589B /* LogoLabel.swift in Sources */,
+				70DCF8D4277839B800A9E633 /* BaseViewModel.swift in Sources */,
 				701735B82777A925004C589B /* BlueButton.swift in Sources */,
+				70DCF8E32778409400A9E633 /* UserError.swift in Sources */,
 				701735CA2777B4EB004C589B /* UserInputSegmentedControlView.swift in Sources */,
 				701735BA2777AA49004C589B /* button_colors.swift in Sources */,
 			);
@@ -594,6 +654,14 @@
 				kind = branch;
 			};
 		};
+		70DCF8DC27783E3800A9E633 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scalessec/Toast-Swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -656,6 +724,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7055CEB82777BE8100399AC6 /* XCRemoteSwiftPackageReference "geofire-objc" */;
 			productName = GeoFireUtils;
+		};
+		70DCF8DD27783E3800A9E633 /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 70DCF8DC27783E3800A9E633 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
+			productName = Toast;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

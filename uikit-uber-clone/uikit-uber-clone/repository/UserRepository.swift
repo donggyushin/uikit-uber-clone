@@ -9,5 +9,7 @@ import Firebase
 import RxSwift
 
 protocol UserRepository {
-    func createUser(email: String, password: String, fullname: String, accountType: Int) -> Observable<Result<User, Error>>
+    func createUser(email: String, password: String, fullname: String, accountType: UserType) -> Observable<Result<User, Error>>
+    
+    func fetchUser() -> Observable<Result<UberUser, Error>>
 }

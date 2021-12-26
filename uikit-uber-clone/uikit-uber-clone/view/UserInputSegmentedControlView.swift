@@ -28,6 +28,7 @@ class UserInputSegmentedControlView: UIView {
         let view = UISegmentedControl(items: [option1Text, option2Text])
         view.backgroundColor = BackgroundColors.shared.primaryColor
         view.tintColor = FontsColor.shared.primaryColor
+        view.selectedSegmentIndex = 0 
         return view
     }()
     

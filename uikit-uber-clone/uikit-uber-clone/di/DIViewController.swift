@@ -20,7 +20,7 @@ extension DIViewController {
         }
         
         let signUpViewControllerFactory: () -> SignUpViewController = {
-            return .init()
+            return .init(signUpViewModel: DIViewModel.resolve().signUpViewModelFactory())
         }
         
         return .init(loginViewControllerFactory: loginViewControllerFactory, signUpViewControllerFactory: signUpViewControllerFactory)
