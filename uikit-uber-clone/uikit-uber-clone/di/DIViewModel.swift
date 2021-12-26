@@ -8,6 +8,7 @@
 
 struct DIViewModel {
     let signUpViewModelFactory: () -> SignUpViewModel
+    let loginViewModelFactory: () -> LoginViewModel
 }
 
 extension DIViewModel {
@@ -15,6 +16,8 @@ extension DIViewModel {
         
         let signUpViewModelFactory: () -> SignUpViewModel = { .init(userRepository: DIRepository.resolve().userRepository) }
         
-        return .init(signUpViewModelFactory: signUpViewModelFactory)
+        let loginViewModelFactory: () -> LoginViewModel = { .init(userRepository: DIRepository.resolve().userRepository) }
+        
+        return .init(signUpViewModelFactory: signUpViewModelFactory, loginViewModelFactory: loginViewModelFactory)
     }
 }

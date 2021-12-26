@@ -12,6 +12,24 @@ class UserRepositoryImpl: UserRepository {
     
     static let shared = UserRepositoryImpl()
     
+    func login(email: String, password: String) -> Observable<Result<User, Error>> {
+        return .create { observer in
+            Auth.auth().signIn(withEmail: email, password: password) { result, error in
+                if let error = error {
+                    observer.onNext(.failure(error))
+                } else if let user = result?.user {
+                    observer.onNext(.success(user))
+                } else {
+                    let error: MyError = .unknown
+                    observer.onNext(.failure(error))
+                }
+                observer.onCompleted()
+            }
+            
+            return Disposables.create()
+        }
+    }
+    
     func fetchUser() -> Observable<Result<UberUser, Error>> {
         return .create { observer in
             

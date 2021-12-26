@@ -12,4 +12,6 @@ protocol UserRepository {
     func createUser(email: String, password: String, fullname: String, accountType: UserType) -> Observable<Result<User, Error>>
     
     func fetchUser() -> Observable<Result<UberUser, Error>>
+    
+    func login(email: String, password: String) -> Observable<Result<User, Error>>
 }

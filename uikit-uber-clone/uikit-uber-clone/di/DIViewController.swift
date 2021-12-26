@@ -16,7 +16,7 @@ extension DIViewController {
     static func resolve() -> DIViewController {
         
         let loginViewControllerFactory: () -> LoginViewController = {
-            return .init()
+            return .init(loginViewModel: DIViewModel.resolve().loginViewModelFactory())
         }
         
         let signUpViewControllerFactory: () -> SignUpViewController = {

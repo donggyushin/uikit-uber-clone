@@ -55,6 +55,17 @@ class LoginViewController: BaseViewController {
         return view
     }()
     
+    private let loginViewModel: LoginViewModel
+    
+    init(loginViewModel: LoginViewModel) {
+        self.loginViewModel = loginViewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
@@ -65,6 +76,24 @@ class LoginViewController: BaseViewController {
         
         dontHaveAccountButton.rx.tap.asDriver().drive(onNext: { [weak self] _ in
             self?.navigationController?.pushViewController(DIViewController.resolve().signUpViewControllerFactory(), animated: true)
+        }).disposed(by: disposeBag)
+        
+        loginButton.rx.tap.asDriver().drive(onNext: { [weak self] _ in
+            self?.loginViewModel.login(email: self?.emailTextFieldView.tf.text ?? "", password: self?.passwordTextFieldView.tf.text ?? "")
+        }).disposed(by: disposeBag)
+        
+        loginViewModel.isLoading.asDriver(onErrorJustReturn: false).drive(onNext: { [weak self] loading in
+            loading ? self?.activityIndicator.startAnimating() : self?.activityIndicator.stopAnimating()
+            self?.loginButton.isEnabled = !loading
+        }).disposed(by: disposeBag)
+        
+        loginViewModel.error.asDriver(onErrorJustReturn: nil).filter({ $0 != nil }).drive(onNext: { [weak self] error in
+            self?.view.makeToast(error?.localizedDescription)
+        }).disposed(by: disposeBag)
+        
+        loginViewModel.user.asDriver(onErrorJustReturn: nil).drive(onNext: { [weak self] user in
+            guard let user = user else { return }
+            print("DEBUG: login success: \(user.fullname)")
         }).disposed(by: disposeBag)
     }
     
