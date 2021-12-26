@@ -720,9 +720,13 @@
 				DEVELOPMENT_TEAM = RTMQTS6F7G;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "uikit-uber-clone/Info.plist";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Please allow us to access your location so we can find you rides nearby";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Please allow us to access your location so we can find you rides nearby";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Please allow us to access your location so we can find you rides nearby";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -748,9 +752,13 @@
 				DEVELOPMENT_TEAM = RTMQTS6F7G;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "uikit-uber-clone/Info.plist";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Please allow us to access your location so we can find you rides nearby";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Please allow us to access your location so we can find you rides nearby";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Please allow us to access your location so we can find you rides nearby";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
