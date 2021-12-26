@@ -7,6 +7,7 @@
 
 import UIKit
 import MapKit
+import Firebase
 
 class MainViewController: BaseViewController {
     
@@ -14,6 +15,7 @@ class MainViewController: BaseViewController {
         let view = MKMapView(frame: view.frame)
         view.showsUserLocation = true
         view.userTrackingMode = .follow
+        view.delegate = self
         return view
     }()
     
@@ -21,6 +23,11 @@ class MainViewController: BaseViewController {
     private lazy var locationInputHeaderView: LocationInputHeaderView = .init(locationInputActivationView: activityView, locationTableView: locationTableView)
     private lazy var locationTableView: LocationTableView = {
         let view = LocationTableView(frame: .init(x: 0, y: view.frame.height, width: view.frame.width, height: view.frame.height - LocationInputHeaderView.height))
+        return view
+    }()
+    
+    private let tempSignOutButton: BlueButton = {
+        let view = BlueButton(buttonTitleText: "test sign out")
         return view
     }()
     
@@ -43,6 +50,11 @@ class MainViewController: BaseViewController {
     
     private func bind() {
         
+        tempSignOutButton.rx.tap.asDriver().drive(onNext: { [weak self] _ in
+            try? Auth.auth().signOut()
+            self?.navigationController?.setViewControllers([DIViewController.resolve().loginViewControllerFactory()], animated: true)
+        }).disposed(by: disposeBag)
+        
         activityView.tap.rx.event.asDriver().drive(onNext: { [weak self] _ in
             self?.activityView.hide()
             self?.locationInputHeaderView.show()
@@ -51,6 +63,29 @@ class MainViewController: BaseViewController {
         
         mainViewModel.$needLocationPermission.filter({ $0 }).sink { [weak self] _ in
             self?.openAppSetting()
+        }.store(in: &subscriber)
+        
+        mainViewModel.$nearbyUsers.sink { [weak self] users in
+            let users = users.filter({ $0.userType == .DRIVER })
+            let new_annotations = users.compactMap({ $0.getMKPointAnnotation() })
+            let existing_annotations = self?.mapView.annotations.compactMap({ $0 as? CustomPointAnnotation }) ?? []
+            
+            new_annotations.forEach({ new in
+                if existing_annotations.contains(where: { existing in
+                    return existing.id == new.id
+                }) == true {
+                    // 해당 기존꺼를 업데이트 해준다.
+                    if let existing = existing_annotations.first(where: { existing in
+                        existing.id == new.id
+                    }) {
+                        existing.updateCoordinator(coordinate: new.coordinate)
+                    }
+                } else {
+                    // 기존꺼에 포함되어져 있지 않다면,
+                    self?.mapView.addAnnotation(new)
+                }
+            })
+            
         }.store(in: &subscriber)
         
     }
@@ -63,6 +98,12 @@ class MainViewController: BaseViewController {
         activityView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide).offset(32)
             make.centerX.equalTo(view)
+        }
+        
+        view.addSubview(tempSignOutButton)
+        tempSignOutButton.snp.makeConstraints { make in
+            make.centerX.equalTo(view)
+            make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-20)
         }
         
         view.addSubview(locationInputHeaderView)
@@ -90,5 +131,25 @@ class MainViewController: BaseViewController {
 extension MainViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         mainViewModel.locationsUpdated(locations: locations)
+    }
+}
+
+extension MainViewController: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        let identifier = "Annotation"
+        if let annotation = annotation as? CustomPointAnnotation {
+            var view = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+            
+            if view == nil {
+                view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            } else {
+                view?.annotation = annotation
+            }
+            view?.image = .init(systemName: "car.fill")
+            return view
+            
+        } else {
+            return nil
+        }
     }
 }

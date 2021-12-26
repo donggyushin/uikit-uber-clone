@@ -23,6 +23,7 @@
 		701487FA2778762F007AF0DC /* LocationRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701487F92778762F007AF0DC /* LocationRepositoryImpl.swift */; };
 		701487FC277876C1007AF0DC /* references.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701487FB277876C1007AF0DC /* references.swift */; };
 		701487FE27787722007AF0DC /* LocationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701487FD27787722007AF0DC /* LocationRepository.swift */; };
+		70148800277893F6007AF0DC /* CustomPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701487FF277893F6007AF0DC /* CustomPointAnnotation.swift */; };
 		7017358E2777A02E004C589B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7017358D2777A02E004C589B /* AppDelegate.swift */; };
 		701735902777A02E004C589B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7017358F2777A02E004C589B /* SceneDelegate.swift */; };
 		701735952777A02E004C589B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 701735932777A02E004C589B /* Main.storyboard */; };
@@ -85,6 +86,7 @@
 		701487F92778762F007AF0DC /* LocationRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRepositoryImpl.swift; sourceTree = "<group>"; };
 		701487FB277876C1007AF0DC /* references.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = references.swift; sourceTree = "<group>"; };
 		701487FD27787722007AF0DC /* LocationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRepository.swift; sourceTree = "<group>"; };
+		701487FF277893F6007AF0DC /* CustomPointAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPointAnnotation.swift; sourceTree = "<group>"; };
 		7017358A2777A02E004C589B /* uikit-uber-clone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "uikit-uber-clone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7017358D2777A02E004C589B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7017358F2777A02E004C589B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -401,6 +403,7 @@
 			isa = PBXGroup;
 			children = (
 				70DCF8E027783F6C00A9E633 /* UberUser.swift */,
+				701487FF277893F6007AF0DC /* CustomPointAnnotation.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -516,6 +519,7 @@
 				70DCF8E5277844E900A9E633 /* LoginViewModel.swift in Sources */,
 				701735AE2777A1F0004C589B /* background_colors.swift in Sources */,
 				707D4F032777C7FB00E4B31D /* UserRepositoryImpl.swift in Sources */,
+				70148800277893F6007AF0DC /* CustomPointAnnotation.swift in Sources */,
 				7017358E2777A02E004C589B /* AppDelegate.swift in Sources */,
 				701487F627786CAD007AF0DC /* DotView.swift in Sources */,
 				701487D827784B1B007AF0DC /* SplashViewModel.swift in Sources */,

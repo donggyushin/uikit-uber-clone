@@ -7,10 +7,57 @@
 
 import Firebase
 import RxSwift
+import CoreLocation
+import GeoFire
 
 class UserRepositoryImpl: UserRepository {
     
     static let shared = UserRepositoryImpl()
+    
+    func fetchUser(uid: String, completion: @escaping (Result<UberUser, Error>) -> Void) {
+        COLLECTION_USER.document(uid).getDocument { snapshot, error in
+            if let error = error {
+                return completion(.failure(error))
+            } else if let data = snapshot?.data() {
+                return completion(.success(.init(data: data)))
+            }
+        }
+    }
+    
+    private var circleQueryObserver: GFCircleQuery?
+    
+    func observeNearbyUsers(center: CLLocation, radius: Double, completion: @escaping (Result<UberUser, Error>) -> Void) {
+        guard let currentUid = Auth.auth().currentUser?.uid else { return }
+        let geoFire = GeoFire(firebaseRef: REFERENCE_LOCATION)
+        circleQueryObserver?.removeAllObservers()
+        circleQueryObserver = geoFire.query(at: center, withRadius: radius)
+    
+        circleQueryObserver?.observe(.keyMoved) { (uid: String, location: CLLocation) in
+            self.locationDetected(uid: uid, currentUid: currentUid, location: location, completion: completion)
+        }
+        
+        circleQueryObserver?.observe(.keyExited) { (uid: String, location: CLLocation) in
+            self.locationDetected(uid: uid, currentUid: currentUid, location: location, completion: completion)
+        }
+        
+        circleQueryObserver?.observe(.keyEntered) { (uid: String, location: CLLocation) in
+            self.locationDetected(uid: uid, currentUid: currentUid, location: location, completion: completion)
+        }
+    }
+    
+    private func locationDetected(uid: String, currentUid: String, location: CLLocation, completion: @escaping (Result<UberUser, Error>) -> Void) {
+        if uid != currentUid {
+            self.fetchUser(uid: uid) { result in
+                switch result {
+                case .failure(let error):
+                    completion(.failure(error))
+                case .success(var user):
+                    user.location = location
+                    completion(.success(user))
+                }
+            }
+        }
+    }
     
     func login(email: String, password: String) -> Observable<Result<User, Error>> {
         return .create { observer in

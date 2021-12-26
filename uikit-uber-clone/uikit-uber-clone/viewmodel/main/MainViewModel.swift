@@ -12,26 +12,62 @@ import RxSwift
 class MainViewModel: BaseViewModel {
     
     @Published var needLocationPermission = false
-    @Published var locations: [CLLocation] = []
+    @Published var location: CLLocation? = nil
+    @Published var nearbyUsers: [UberUser] = []
+    
     let locationManager = CLLocationManager()
     private let locationRepository: LocationRepository
+    private let userRepository: UserRepository
     
-    init(locationRepository: LocationRepository) {
+    private var updateCount = 0
+    
+    init(locationRepository: LocationRepository, userRepository: UserRepository) {
         self.locationRepository = locationRepository
+        self.userRepository = userRepository
         super.init()
         enableLocation()
         requestGPSPermission()
         bind()
     }
     
+    private func observeNearbyUsers(location: CLLocation) {
+        userRepository.observeNearbyUsers(center: location, radius: 1) { [weak self] result in
+            switch result {
+            case .failure(let error):
+                print("DEBUG: error: \(error.localizedDescription)")
+            case .success(let user):
+                if let existingUser = self?.nearbyUsers.enumerated().first(where: { $1 == user }) {
+                    var userToUpdate = existingUser.element
+                    userToUpdate.location = user.location
+                    self?.nearbyUsers.remove(at: existingUser.offset)
+                    self?.nearbyUsers.append(userToUpdate)
+                } else {
+                    self?.nearbyUsers.append(user)
+                }
+                
+            }
+        }
+    }
+    
     func locationsUpdated(locations: [CLLocation]) {
-        self.locations = locations
+        if let location = locations.first {
+            self.location = location
+        }
     }
     
     private func bind() {
-        $locations.sink { [weak self] locations in
-            guard let location = locations.first else { return }
-            self?.updateLocation(location: location)
+        
+        $location.sink { [weak self] location in
+            guard let location = location else { return }
+            if self?.updateCount == 0 {
+                self?.observeNearbyUsers(location: location)
+                self?.locationRepository.updateLocation(location: location)
+            }
+            self?.updateCount += 1
+            if self?.updateCount ?? 0 > 10 {
+                self?.updateCount = 0
+            }
+            
         }.store(in: &subscriber)
     }
     
@@ -42,21 +78,14 @@ class MainViewModel: BaseViewModel {
     private func requestGPSPermission(){
         switch locationManager.authorizationStatus {
         case .authorizedAlways, .authorizedWhenInUse:
-            self.locationManager.startUpdatingHeading()
-            self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            if let location = self.locationManager.location {
-                self.updateLocation(location: location)
-            }
+            self.locationManager.startUpdatingLocation()
+//            self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
         case .restricted, .notDetermined:
             print("GPS: 아직 선택하지 않음")
         default:
             print("DEBUG: 권한 없음")
             self.needLocationPermission = true
         }
-    }
-    
-    private func updateLocation(location: CLLocation) {
-        locationRepository.updateLocation(location: location)
     }
     
 }
