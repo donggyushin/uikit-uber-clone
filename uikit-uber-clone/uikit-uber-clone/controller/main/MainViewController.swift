@@ -6,13 +6,18 @@
 //
 
 import UIKit
+import MapKit
 
 class MainViewController: BaseViewController {
+    
+    private lazy var mapView = MKMapView(frame: view.frame)
+    
     override func viewDidLoad() {
         configureUI()
     }
     
     private func configureUI() {
         view.backgroundColor = BackgroundColors.shared.primaryColor
+        view.addSubview(mapView)
     }
 }
