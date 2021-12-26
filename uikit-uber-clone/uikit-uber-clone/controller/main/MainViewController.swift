@@ -18,6 +18,7 @@ class MainViewController: BaseViewController {
     }()
     
     private let activityView = LocationInputActivationView()
+    private lazy var locationInputHeaderView: LocationInputHeaderView = .init(locationInputActivationView: activityView)
     
     private let mainViewModel: MainViewModel
     
@@ -37,6 +38,12 @@ class MainViewController: BaseViewController {
     }
     
     private func bind() {
+        
+        activityView.tap.rx.event.asDriver().drive(onNext: { [weak self] _ in
+            self?.activityView.hide()
+            self?.locationInputHeaderView.show()
+        }).disposed(by: disposeBag)
+        
         mainViewModel.needLocationPermission.asDriver(onErrorJustReturn: false).filter({ $0 }).drive(onNext: { [weak self] _ in
             self?.openAppSetting()
         }).disposed(by: disposeBag)
@@ -50,6 +57,13 @@ class MainViewController: BaseViewController {
         activityView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide).offset(32)
             make.centerX.equalTo(view)
+        }
+        
+        view.addSubview(locationInputHeaderView)
+        locationInputHeaderView.snp.makeConstraints { make in
+            make.top.equalTo(view)
+            make.left.equalTo(view)
+            make.right.equalTo(view)
         }
     }
     

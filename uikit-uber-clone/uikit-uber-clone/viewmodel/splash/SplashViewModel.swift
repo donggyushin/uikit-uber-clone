@@ -22,7 +22,9 @@ class SplashViewModel: BaseViewModel {
     private func checkLogin() {
         userRepository.fetchUser().subscribe(onNext: { [weak self] result in
             switch result {
-            case .success: self?.navigationType.onNext(.home)
+            case .success(let user):
+                self?.navigationType.onNext(.home)
+                UserViewModel.shared.user.onNext(user)
             case .failure: self?.navigationType.onNext(.auth)
             }
         }).disposed(by: disposeBag)

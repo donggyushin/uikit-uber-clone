@@ -9,23 +9,19 @@ import UIKit
 
 class LocationInputActivationView: UIView {
     
-    private let dotView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .black
-        view.snp.makeConstraints { make in
-            make.height.equalTo(6)
-            make.width.equalTo(6)
-        }
-        view.layer.cornerRadius = 3
-        view.clipsToBounds = true
-        return view
-    }()
+    private let dotView = DotView()
     
     private let placeHolderLabel: UILabel = {
         let view = UILabel()
         view.text = "Where to go?"
         view.textColor = .darkGray
         return view
+    }()
+    
+    lazy var tap: UITapGestureRecognizer = {
+        let tap = UITapGestureRecognizer()
+        addGestureRecognizer(tap)
+        return tap
     }()
     
     init() {
@@ -60,5 +56,8 @@ class LocationInputActivationView: UIView {
             make.centerY.equalTo(self)
             make.left.equalTo(dotView.snp.right).offset(16)
         }
+        
+        alpha = 0
+        show()
     }
 }
