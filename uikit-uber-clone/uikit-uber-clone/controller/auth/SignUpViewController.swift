@@ -99,9 +99,8 @@ class SignUpViewController: BaseViewController {
             self?.view.makeToast(error?.localizedDescription)
         }).disposed(by: disposeBag)
         
-        signUpViewModel.user.asDriver(onErrorJustReturn: nil).filter({ $0 != nil }).drive(onNext: { [weak self] user in
-            guard let user = user else { return }
-            print("DEBUG: user: \(user.fullname) created!")
+        signUpViewModel.user.asDriver(onErrorJustReturn: nil).filter({ $0 != nil }).drive(onNext: { [weak self] _ in
+            self?.navigationController?.setViewControllers([DIViewController.resolve().mainViewControllerFactory()], animated: true)
         }).disposed(by: disposeBag)
     }
     

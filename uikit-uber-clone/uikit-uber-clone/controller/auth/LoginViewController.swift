@@ -91,9 +91,8 @@ class LoginViewController: BaseViewController {
             self?.view.makeToast(error?.localizedDescription)
         }).disposed(by: disposeBag)
         
-        loginViewModel.user.asDriver(onErrorJustReturn: nil).drive(onNext: { [weak self] user in
-            guard let user = user else { return }
-            print("DEBUG: login success: \(user.fullname)")
+        loginViewModel.user.asDriver(onErrorJustReturn: nil).filter({ $0 != nil }).drive(onNext: { [weak self] _ in
+            self?.navigationController?.setViewControllers([DIViewController.resolve().mainViewControllerFactory()], animated: true)
         }).disposed(by: disposeBag)
     }
     
