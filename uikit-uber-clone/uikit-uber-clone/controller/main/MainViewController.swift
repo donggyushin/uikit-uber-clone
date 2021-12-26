@@ -17,6 +17,8 @@ class MainViewController: BaseViewController {
         return view
     }()
     
+    private let activityView = LocationInputActivationView()
+    
     private let mainViewModel: MainViewModel
     
     init(mainViewModel: MainViewModel) {
@@ -43,6 +45,12 @@ class MainViewController: BaseViewController {
     private func configureUI() {
         view.backgroundColor = BackgroundColors.shared.primaryColor
         view.addSubview(mapView)
+        
+        view.addSubview(activityView)
+        activityView.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(32)
+            make.centerX.equalTo(view)
+        }
     }
     
     private func openAppSetting() {
