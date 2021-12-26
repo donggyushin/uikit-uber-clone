@@ -49,9 +49,10 @@ class MainViewController: BaseViewController {
             self?.locationTableView.present()
         }).disposed(by: disposeBag)
         
-        mainViewModel.needLocationPermission.asDriver(onErrorJustReturn: false).filter({ $0 }).drive(onNext: { [weak self] _ in
+        mainViewModel.$needLocationPermission.filter({ $0 }).sink { [weak self] _ in
             self?.openAppSetting()
-        }).disposed(by: disposeBag)
+        }.store(in: &subscriber)
+        
     }
     
     private func configureUI() {

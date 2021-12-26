@@ -6,8 +6,9 @@
 //
 
 import RxSwift
+import Combine
 
 class UserViewModel {
     static let shared = UserViewModel()
-    let user: BehaviorSubject<UberUser?> = .init(value: nil)
+    @Published var user: UberUser? = nil
 }

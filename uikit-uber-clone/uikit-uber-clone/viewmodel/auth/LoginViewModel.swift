@@ -6,9 +6,10 @@
 //
 
 import RxSwift
+import Combine
 
 class LoginViewModel: BaseViewModel {
-    let user: BehaviorSubject<UberUser?> = .init(value: nil)
+    @Published var user: UberUser? = nil
     
     private let userRepository: UserRepository
     
@@ -18,14 +19,14 @@ class LoginViewModel: BaseViewModel {
     }
     
     func login(email: String, password: String) {
-        isLoading.onNext(true)
+        isLoading = true
         userRepository.login(email: email, password: password).subscribe(onNext: { [weak self] result in
-            self?.isLoading.onNext(false)
+            self?.isLoading = false
             switch result {
             case .success:
                 self?.fetchUser()
             case .failure(let error):
-                self?.error.onNext(error)
+                self?.error = error
             }
         }).disposed(by: disposeBag)
     }
@@ -34,9 +35,9 @@ class LoginViewModel: BaseViewModel {
         userRepository.fetchUser().subscribe(onNext: { [weak self] result in
             switch result {
             case .failure(let error):
-                self?.error.onNext(error)
+                self?.error = error
             case .success(let user):
-                self?.user.onNext(user)
+                self?.user = user
             }
         }).disposed(by: disposeBag)
     }

@@ -7,6 +7,7 @@
 
 import UIKit
 import RxSwift
+import Combine
 
 class LocationInputHeaderView: UIView {
     
@@ -16,6 +17,7 @@ class LocationInputHeaderView: UIView {
     private let locationTableView: LocationTableView
     private let backButton = BackButton()
     private let disposeBag = DisposeBag()
+    private var subscriber = Set<AnyCancellable>()
     
     private let titleLabel: UILabel = {
         let view = UILabel()
@@ -79,9 +81,9 @@ class LocationInputHeaderView: UIView {
     
     private func bind() {
         
-        UserViewModel.shared.user.asDriver(onErrorJustReturn: nil).drive(onNext: { [weak self] user in
+        UserViewModel.shared.$user.sink { [weak self] user in
             self?.titleLabel.text = user?.fullname
-        }).disposed(by: disposeBag)
+        }.store(in: &subscriber)
         
         backButton.rx.tap.asDriver().drive(onNext: { [weak self] in
             self?.hide()

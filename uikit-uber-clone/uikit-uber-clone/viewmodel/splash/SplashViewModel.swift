@@ -6,10 +6,11 @@
 //
 
 import RxSwift
+import Combine
 
 class SplashViewModel: BaseViewModel {
     
-    let navigationType: BehaviorSubject<NavigationType?> = .init(value: nil)
+    @Published var navigationType: NavigationType? = nil
     
     private let userRepository: UserRepository
     
@@ -23,9 +24,10 @@ class SplashViewModel: BaseViewModel {
         userRepository.fetchUser().subscribe(onNext: { [weak self] result in
             switch result {
             case .success(let user):
-                self?.navigationType.onNext(.home)
-                UserViewModel.shared.user.onNext(user)
-            case .failure: self?.navigationType.onNext(.auth)
+                self?.navigationType = .home
+                UserViewModel.shared.user = user
+            case .failure:
+                self?.navigationType = .auth
             }
         }).disposed(by: disposeBag)
     }

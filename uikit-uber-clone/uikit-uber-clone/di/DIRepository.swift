@@ -7,13 +7,15 @@
 
 struct DIRepository {
     let userRepository: UserRepository
+    let locationRepository: LocationRepository
 }
 
 extension DIRepository {
     static func resolve() -> DIRepository {
         
         let userRepository: UserRepository = UserRepositoryImpl.shared
+        let locationRepository: LocationRepository = LocationRepositoryImpl.shared
         
-        return .init(userRepository: userRepository)
+        return .init(userRepository: userRepository, locationRepository: locationRepository)
     }
 }

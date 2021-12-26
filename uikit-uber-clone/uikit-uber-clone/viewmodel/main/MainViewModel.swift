@@ -11,18 +11,28 @@ import RxSwift
 
 class MainViewModel: BaseViewModel {
     
-    let needLocationPermission: BehaviorSubject<Bool> = .init(value: false)
+    @Published var needLocationPermission = false
+    @Published var locations: [CLLocation] = []
     let locationManager = CLLocationManager()
-    let locations: BehaviorSubject<[CLLocation]> = .init(value: [])
+    private let locationRepository: LocationRepository
     
-    override init() {
+    init(locationRepository: LocationRepository) {
+        self.locationRepository = locationRepository
         super.init()
         enableLocation()
         requestGPSPermission()
+        bind()
     }
     
     func locationsUpdated(locations: [CLLocation]) {
-        self.locations.onNext(locations)
+        self.locations = locations
+    }
+    
+    private func bind() {
+        $locations.sink { [weak self] locations in
+            guard let location = locations.first else { return }
+            self?.updateLocation(location: location)
+        }.store(in: &subscriber)
     }
     
     private func enableLocation() {
@@ -32,15 +42,21 @@ class MainViewModel: BaseViewModel {
     private func requestGPSPermission(){
         switch locationManager.authorizationStatus {
         case .authorizedAlways, .authorizedWhenInUse:
-            print("GPS: 권한 있음")
             self.locationManager.startUpdatingHeading()
             self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            if let location = self.locationManager.location {
+                self.updateLocation(location: location)
+            }
         case .restricted, .notDetermined:
             print("GPS: 아직 선택하지 않음")
         default:
             print("DEBUG: 권한 없음")
-            self.needLocationPermission.onNext(true)
+            self.needLocationPermission = true
         }
+    }
+    
+    private func updateLocation(location: CLLocation) {
+        locationRepository.updateLocation(location: location)
     }
     
 }

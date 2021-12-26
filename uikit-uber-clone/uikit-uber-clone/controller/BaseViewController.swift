@@ -7,10 +7,12 @@
 
 import UIKit
 import RxSwift
+import Combine
 
 class BaseViewController: UIViewController {
     
     let disposeBag = DisposeBag()
+    var subscriber = Set<AnyCancellable>()
     
     lazy var activityIndicator: UIActivityIndicatorView = {
         // Create an indicator.

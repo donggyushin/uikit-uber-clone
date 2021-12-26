@@ -32,7 +32,8 @@ class SplashViewController: BaseViewController {
     }
     
     private func bind() {
-        splashViewModel.navigationType.asDriver(onErrorJustReturn: .auth).drive(onNext: { [weak self] navigationType in
+        
+        splashViewModel.$navigationType.sink { [weak self] navigationType in
             guard let navigationType = navigationType else { return }
             switch navigationType {
             case .auth:
@@ -40,12 +41,11 @@ class SplashViewController: BaseViewController {
             case .home:
                 self?.navigationController?.setViewControllers([DIViewController.resolve().mainViewControllerFactory()], animated: true)
             }
-            
-        }).disposed(by: disposeBag)
+        }.store(in: &subscriber)
     }
     
     private func configureUI() {
-        navigationController?.navigationBar.isHidden = true 
+        navigationController?.navigationBar.isHidden = true
         view.backgroundColor = BackgroundColors.shared.primaryColor
         view.addSubview(logoLabel)
         logoLabel.snp.makeConstraints { make in

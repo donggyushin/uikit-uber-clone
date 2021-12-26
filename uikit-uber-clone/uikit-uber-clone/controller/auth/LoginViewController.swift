@@ -82,18 +82,18 @@ class LoginViewController: BaseViewController {
             self?.loginViewModel.login(email: self?.emailTextFieldView.tf.text ?? "", password: self?.passwordTextFieldView.tf.text ?? "")
         }).disposed(by: disposeBag)
         
-        loginViewModel.isLoading.asDriver(onErrorJustReturn: false).drive(onNext: { [weak self] loading in
+        loginViewModel.$isLoading.sink { [weak self] loading in
             loading ? self?.activityIndicator.startAnimating() : self?.activityIndicator.stopAnimating()
             self?.loginButton.isEnabled = !loading
-        }).disposed(by: disposeBag)
+        }.store(in: &subscriber)
         
-        loginViewModel.error.asDriver(onErrorJustReturn: nil).filter({ $0 != nil }).drive(onNext: { [weak self] error in
+        loginViewModel.$error.sink { [weak self] error in
             self?.view.makeToast(error?.localizedDescription)
-        }).disposed(by: disposeBag)
+        }.store(in: &subscriber)
         
-        loginViewModel.user.asDriver(onErrorJustReturn: nil).filter({ $0 != nil }).drive(onNext: { [weak self] _ in
+        loginViewModel.$user.filter({ $0 != nil }).sink { [weak self] _ in
             self?.navigationController?.setViewControllers([DIViewController.resolve().mainViewControllerFactory()], animated: true)
-        }).disposed(by: disposeBag)
+        }.store(in: &subscriber)
     }
     
     private func configureUI() {

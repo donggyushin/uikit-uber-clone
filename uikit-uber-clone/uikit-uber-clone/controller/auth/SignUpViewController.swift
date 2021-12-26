@@ -90,18 +90,18 @@ class SignUpViewController: BaseViewController {
             self?.signUpViewModel.signUp(email: self?.emailTextFieldView.tf.text ?? "", password: self?.passwordTextFieldView.tf.text ?? "", fullName: self?.fullNameTextFieldView.tf.text ?? "", userType: self?.accountTypeSelectView.segmentedControl.selectedSegmentIndex == 0 ? .RIDER : .DRIVER)
         }).disposed(by: disposeBag)
         
-        signUpViewModel.isLoading.asDriver(onErrorJustReturn: false).drive(onNext: {[weak self] loading in
+        signUpViewModel.$isLoading.sink { [weak self] loading in
             loading ? self?.activityIndicator.startAnimating() : self?.activityIndicator.stopAnimating()
             self?.signUpButton.isEnabled = !loading
-        }).disposed(by: disposeBag)
+        }.store(in: &subscriber)
         
-        signUpViewModel.error.asDriver(onErrorJustReturn: nil).filter({ $0 != nil }).drive(onNext: { [weak self] error in
+        signUpViewModel.$error.sink { [weak self] error in
             self?.view.makeToast(error?.localizedDescription)
-        }).disposed(by: disposeBag)
+        }.store(in: &subscriber)
         
-        signUpViewModel.user.asDriver(onErrorJustReturn: nil).filter({ $0 != nil }).drive(onNext: { [weak self] _ in
+        signUpViewModel.$user.filter({ $0 != nil }).sink { [weak self] _ in
             self?.navigationController?.setViewControllers([DIViewController.resolve().mainViewControllerFactory()], animated: true)
-        }).disposed(by: disposeBag)
+        }.store(in: &subscriber)
     }
     
     private func configureUI() {

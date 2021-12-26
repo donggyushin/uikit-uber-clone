@@ -6,11 +6,12 @@
 //
 
 import RxSwift
+import Combine
 
 class SignUpViewModel: BaseViewModel {
     
     private let userRepository: UserRepository
-    let user: BehaviorSubject<UberUser?> = .init(value: nil)
+    @Published var user: UberUser? = nil
     
     init(userRepository: UserRepository) {
         self.userRepository = userRepository
@@ -21,16 +22,16 @@ class SignUpViewModel: BaseViewModel {
         
         guard email.isEmpty == false && password.isEmpty == false && fullName.isEmpty == false else {
             let error: UserError = .not_enought
-            self.error.onNext(error)
+            self.error = error
             return
         }
         
-        isLoading.onNext(true)
+        isLoading = true
         userRepository.createUser(email: email, password: password, fullname: fullName, accountType: userType).subscribe(onNext: { [weak self] result in
-            self?.isLoading.onNext(false)
+            self?.isLoading = false
             switch result {
             case .failure(let error):
-                self?.error.onNext(error)
+                self?.error = error
             case .success(let user):
                 print("DEBUG: createUser success: \(user.uid)")
                 self?.fetchUser()
@@ -42,9 +43,9 @@ class SignUpViewModel: BaseViewModel {
         userRepository.fetchUser().subscribe(onNext: { [weak self] result in
             switch result {
             case .success(let user):
-                self?.user.onNext(user)
+                self?.user = user
             case .failure(let error):
-                self?.error.onNext(error)
+                self?.error = error
             }
         }).disposed(by: disposeBag)
     }

@@ -24,7 +24,7 @@ extension DIViewModel {
         
         let splashViewModelFactory: () -> SplashViewModel = { .init(userRepository: diRepository.userRepository) }
         
-        let mainViewModelFactory: () -> MainViewModel = { .init() }
+        let mainViewModelFactory: () -> MainViewModel = { .init(locationRepository: DIRepository.resolve().locationRepository) }
         
         return .init(signUpViewModelFactory: signUpViewModelFactory, loginViewModelFactory: loginViewModelFactory, splashViewModelFactory: splashViewModelFactory, mainViewModelFactory: mainViewModelFactory)
     }

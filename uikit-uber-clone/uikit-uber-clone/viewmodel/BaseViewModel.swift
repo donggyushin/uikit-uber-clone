@@ -6,9 +6,11 @@
 //
 
 import RxSwift
+import Combine
 
 class BaseViewModel {
-    let isLoading: BehaviorSubject<Bool> = .init(value: false)
-    let error: BehaviorSubject<Error?> = .init(value: nil)
+    @Published var isLoading = false
+    @Published var error: Error? = nil
     let disposeBag = DisposeBag()
+    var subscriber: Set<AnyCancellable> = .init()
 }

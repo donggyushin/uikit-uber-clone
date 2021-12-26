@@ -20,6 +20,9 @@
 		701487F427786A8F007AF0DC /* LocationInputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701487F327786A8F007AF0DC /* LocationInputTextField.swift */; };
 		701487F627786CAD007AF0DC /* DotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701487F527786CAD007AF0DC /* DotView.swift */; };
 		701487F827786F72007AF0DC /* LocationTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701487F727786F72007AF0DC /* LocationTableView.swift */; };
+		701487FA2778762F007AF0DC /* LocationRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701487F92778762F007AF0DC /* LocationRepositoryImpl.swift */; };
+		701487FC277876C1007AF0DC /* references.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701487FB277876C1007AF0DC /* references.swift */; };
+		701487FE27787722007AF0DC /* LocationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701487FD27787722007AF0DC /* LocationRepository.swift */; };
 		7017358E2777A02E004C589B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7017358D2777A02E004C589B /* AppDelegate.swift */; };
 		701735902777A02E004C589B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7017358F2777A02E004C589B /* SceneDelegate.swift */; };
 		701735952777A02E004C589B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 701735932777A02E004C589B /* Main.storyboard */; };
@@ -79,6 +82,9 @@
 		701487F327786A8F007AF0DC /* LocationInputTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInputTextField.swift; sourceTree = "<group>"; };
 		701487F527786CAD007AF0DC /* DotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotView.swift; sourceTree = "<group>"; };
 		701487F727786F72007AF0DC /* LocationTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTableView.swift; sourceTree = "<group>"; };
+		701487F92778762F007AF0DC /* LocationRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRepositoryImpl.swift; sourceTree = "<group>"; };
+		701487FB277876C1007AF0DC /* references.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = references.swift; sourceTree = "<group>"; };
+		701487FD27787722007AF0DC /* LocationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRepository.swift; sourceTree = "<group>"; };
 		7017358A2777A02E004C589B /* uikit-uber-clone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "uikit-uber-clone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7017358D2777A02E004C589B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7017358F2777A02E004C589B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -337,6 +343,7 @@
 			isa = PBXGroup;
 			children = (
 				702DF2132777C9930032441D /* collections.swift */,
+				701487FB277876C1007AF0DC /* references.swift */,
 			);
 			path = constant;
 			sourceTree = "<group>";
@@ -355,6 +362,8 @@
 			children = (
 				707D4F022777C7FB00E4B31D /* UserRepositoryImpl.swift */,
 				702DF2182777CB220032441D /* UserRepository.swift */,
+				701487F92778762F007AF0DC /* LocationRepositoryImpl.swift */,
+				701487FD27787722007AF0DC /* LocationRepository.swift */,
 			);
 			path = repository;
 			sourceTree = "<group>";
@@ -501,6 +510,7 @@
 				701487EF27786596007AF0DC /* UIView+Extension.swift in Sources */,
 				701487F827786F72007AF0DC /* LocationTableView.swift in Sources */,
 				701735C82777B1D2004C589B /* DIViewController.swift in Sources */,
+				701487FC277876C1007AF0DC /* references.swift in Sources */,
 				701735BC2777AF77004C589B /* BaseViewController.swift in Sources */,
 				701735B62777A71C004C589B /* UIImageView+Extension.swift in Sources */,
 				70DCF8E5277844E900A9E633 /* LoginViewModel.swift in Sources */,
@@ -516,8 +526,10 @@
 				701735AC2777A170004C589B /* fonts_colors.swift in Sources */,
 				70DCF8D927783A9100A9E633 /* UserType.swift in Sources */,
 				701487F427786A8F007AF0DC /* LocationInputTextField.swift in Sources */,
+				701487FA2778762F007AF0DC /* LocationRepositoryImpl.swift in Sources */,
 				701735902777A02E004C589B /* SceneDelegate.swift in Sources */,
 				701487DB27784C33007AF0DC /* SplashViewController.swift in Sources */,
+				701487FE27787722007AF0DC /* LocationRepository.swift in Sources */,
 				701487F12778670A007AF0DC /* UserViewModel.swift in Sources */,
 				701487E627785AB1007AF0DC /* LocationInputActivationView.swift in Sources */,
 				702DF2172777CAC80032441D /* MyError.swift in Sources */,
