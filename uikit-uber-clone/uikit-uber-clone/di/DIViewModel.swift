@@ -9,15 +9,20 @@
 struct DIViewModel {
     let signUpViewModelFactory: () -> SignUpViewModel
     let loginViewModelFactory: () -> LoginViewModel
+    let splashViewModelFactory: () -> SplashViewModel
 }
 
 extension DIViewModel {
     static func resolve() -> DIViewModel {
         
-        let signUpViewModelFactory: () -> SignUpViewModel = { .init(userRepository: DIRepository.resolve().userRepository) }
+        let diRepository = DIRepository.resolve()
         
-        let loginViewModelFactory: () -> LoginViewModel = { .init(userRepository: DIRepository.resolve().userRepository) }
+        let signUpViewModelFactory: () -> SignUpViewModel = { .init(userRepository: diRepository.userRepository) }
         
-        return .init(signUpViewModelFactory: signUpViewModelFactory, loginViewModelFactory: loginViewModelFactory)
+        let loginViewModelFactory: () -> LoginViewModel = { .init(userRepository: diRepository.userRepository) }
+        
+        let splashViewModelFactory: () -> SplashViewModel = { .init(userRepository: diRepository.userRepository) }
+        
+        return .init(signUpViewModelFactory: signUpViewModelFactory, loginViewModelFactory: loginViewModelFactory, splashViewModelFactory: splashViewModelFactory)
     }
 }
