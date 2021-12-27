@@ -110,7 +110,7 @@ class MainViewController: BaseViewController {
                 annotations.append(userAnnotation)
             }
             annotations.append(destination)
-            self?.mapView.showAnnotations(annotations, animated: true)
+            self?.mapView.fitAllAnnotations(annotations: annotations)
             self?.mapView.selectAnnotation(destination, animated: true)
         }.store(in: &subscriber)
         
