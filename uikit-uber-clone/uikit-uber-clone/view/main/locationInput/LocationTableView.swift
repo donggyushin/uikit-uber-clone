@@ -16,11 +16,13 @@ protocol LocationTableViewDelegate: AnyObject {
 class LocationTableView: UITableView {
     
     private let viewModel: LocationTableViewModel
+    private let locationInputHeaderView: LocationInputHeaderView
     private var subscriber: Set<AnyCancellable> = .init()
     weak var locationTableViewDelegate: LocationTableViewDelegate?
     
-    init(frame: CGRect, style: UITableView.Style, viewModel: LocationTableViewModel) {
+    init(frame: CGRect, style: UITableView.Style, viewModel: LocationTableViewModel, locationInputHeaderView: LocationInputHeaderView) {
         self.viewModel = viewModel
+        self.locationInputHeaderView = locationInputHeaderView
         super.init(frame: frame, style: style)
         configureUI()
         bind()
@@ -70,6 +72,7 @@ extension LocationTableView: LocationInputHeaderViewDelegate {
 
 extension LocationTableView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        locationInputHeaderView.destinationTextFieldView.resignFirstResponder()
         tableView.deselectRow(at: indexPath, animated: true)
         locationTableViewDelegate?.locationTableViewSelectedPlace(place: viewModel.places[indexPath.row])
     }

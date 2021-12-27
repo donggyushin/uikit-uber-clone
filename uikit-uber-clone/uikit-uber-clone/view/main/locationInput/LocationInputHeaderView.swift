@@ -42,9 +42,10 @@ class LocationInputHeaderView: UIView {
         return view
     }()
     
-    private lazy var destinationTextFieldView: UITextField = {
+    lazy var destinationTextFieldView: UITextField = {
         let view = LocationInputTextField(placeHolderText: "Enter destination")
         view.delegate = self
+        view.autocorrectionType = .no
         return view
     }()
     

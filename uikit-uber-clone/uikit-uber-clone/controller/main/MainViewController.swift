@@ -26,7 +26,7 @@ class MainViewController: BaseViewController {
     private let activityView = LocationInputActivationView()
     private lazy var locationInputHeaderView: LocationInputHeaderView = .init(mainViewController: self)
     private lazy var locationTableView: LocationTableView = {
-        let view = LocationTableView(frame: .init(x: 0, y: view.frame.height, width: view.frame.width, height: view.frame.height - LocationInputHeaderView.height), style: .grouped, viewModel: DIViewModel.resolve().locationTableViewModelFactory(self.mapView.region))
+        let view = LocationTableView(frame: .init(x: 0, y: view.frame.height, width: view.frame.width, height: view.frame.height - LocationInputHeaderView.height), style: .grouped, viewModel: DIViewModel.resolve().locationTableViewModelFactory(self.mapView.region), locationInputHeaderView: locationInputHeaderView)
         view.locationTableViewDelegate = self
         setScrollEnableOnKeyboards(target_scroll_views: [view])
         return view

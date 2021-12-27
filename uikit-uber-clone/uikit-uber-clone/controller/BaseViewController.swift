@@ -50,7 +50,7 @@ class BaseViewController: UIViewController {
     @objc private func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             target_scroll_views.forEach({
-                $0.contentInset = .init(top: 0, left: 0, bottom: keyboardSize.height + 50, right: 0)
+                $0.contentInset = .init(top: 0, left: 0, bottom: keyboardSize.height + 100, right: 0)
                 if ($0.contentOffset.y >= $0.contentSize.height - $0.frame.size.height) {$0.scrollToBottom(animated: true)}
             })
         }
