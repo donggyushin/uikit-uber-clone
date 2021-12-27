@@ -91,7 +91,7 @@ class LocationInputHeaderView: UIView {
         }.store(in: &subscriber)
         
         backButton.rx.tap.asDriver().drive(onNext: { [weak self] in
-            self?.mainViewController.dismissLocationSearchView()
+            self?.mainViewController.dismissLocationSearchView(showActivity: true)
         }).disposed(by: disposeBag)
     }
     

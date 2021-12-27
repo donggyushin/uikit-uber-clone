@@ -18,7 +18,11 @@ class MainViewController: BaseViewController {
         view.delegate = self
         return view
     }()
-    
+    private lazy var menuButton: MenuButton = {
+        let view = MenuButton()
+        view.delegate = self
+        return view
+    }()
     private let activityView = LocationInputActivationView()
     private lazy var locationInputHeaderView: LocationInputHeaderView = .init(mainViewController: self)
     private lazy var locationTableView: LocationTableView = {
@@ -54,10 +58,7 @@ class MainViewController: BaseViewController {
     private func bind() {
         
         floatingCenterButton.rx.tap.asDriver().drive(onNext: { [weak self] in
-            UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut) {
-                self?.activityView.transform = .init(translationX: 0, y: 30)
-            }
-            self?.mapView.setUserTrackingMode(.followWithHeading, animated: true)
+            self?.setCenter()
         }).disposed(by: disposeBag)
         
         tempSignOutButton.rx.tap.asDriver().drive(onNext: { [weak self] _ in
@@ -116,9 +117,15 @@ class MainViewController: BaseViewController {
         view.backgroundColor = BackgroundColors.shared.primaryColor
         view.addSubview(mapView)
         
+        view.addSubview(menuButton)
+        menuButton.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide)
+            make.left.equalTo(view).offset(16)
+        }
+        
         view.addSubview(activityView)
         activityView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide).offset(32)
+            make.top.equalTo(menuButton.snp.bottom).offset(10)
             make.centerX.equalTo(view)
         }
         
@@ -161,10 +168,19 @@ class MainViewController: BaseViewController {
         self.locationTableView.present()
     }
     
-    func dismissLocationSearchView() {
-        self.activityView.show()
+    func dismissLocationSearchView(showActivity: Bool) {
+        if showActivity {
+            self.activityView.show()
+        }
         self.locationInputHeaderView.hide()
         self.locationTableView.dismiss()
+    }
+    
+    private func setCenter() {
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut) {
+            self.activityView.transform = .init(translationX: 0, y: 30)
+        }
+        self.mapView.setUserTrackingMode(.followWithHeading, animated: true)
     }
 }
 
@@ -206,7 +222,21 @@ extension MainViewController: MKMapViewDelegate {
 
 extension MainViewController: LocationTableViewDelegate {
     func locationTableViewSelectedPlace(place: MKPlacemark) {
-        self.dismissLocationSearchView()
+        self.menuButton.mode = .back
+        self.dismissLocationSearchView(showActivity: false)
         mainViewModel.setDestination(place: place)
+    }
+}
+
+extension MainViewController: MenuButtonDelegate {
+    func menuButtonTapped(mode: MenuButton.ButtonType) {
+        switch mode {
+        case .back:
+            self.dismissLocationSearchView(showActivity: true)
+            self.setCenter()
+            self.menuButton.mode = .list
+        case .list:
+            print("[test] 메뉴 보여주기")
+        }
     }
 }

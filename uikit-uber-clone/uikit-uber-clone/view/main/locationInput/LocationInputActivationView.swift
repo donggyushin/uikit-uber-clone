@@ -9,12 +9,16 @@ import UIKit
 
 class LocationInputActivationView: UIView {
     
-    private let dotView = DotView()
+    private lazy var dotView: DotView = {
+        let view = DotView()
+        view.setColor(UIColor(white: 1, alpha: 0.8))
+        return view
+    }()
     
     private let placeHolderLabel: UILabel = {
         let view = UILabel()
         view.text = "Where to go?"
-        view.textColor = .darkGray
+        view.textColor = .lightGray
         return view
     }()
     
@@ -39,7 +43,7 @@ class LocationInputActivationView: UIView {
         layer.shadowOffset = .init(width: 1, height: 1)
         layer.masksToBounds = false
         clipsToBounds = false
-        backgroundColor = .white
+        backgroundColor = BackgroundColors.shared.primaryColor
         snp.makeConstraints { make in
             make.height.equalTo(40)
             make.width.equalTo(UIScreen.main.bounds.width - 36)

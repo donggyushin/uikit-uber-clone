@@ -73,6 +73,7 @@
 		70DCF8E127783F6C00A9E633 /* UberUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DCF8E027783F6C00A9E633 /* UberUser.swift */; };
 		70DCF8E32778409400A9E633 /* UserError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DCF8E22778409400A9E633 /* UserError.swift */; };
 		70DCF8E5277844E900A9E633 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DCF8E4277844E900A9E633 /* LoginViewModel.swift */; };
+		70F3DA092779B3F700D2A67B /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F3DA082779B3F700D2A67B /* MenuButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -131,6 +132,7 @@
 		70DCF8E027783F6C00A9E633 /* UberUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UberUser.swift; sourceTree = "<group>"; };
 		70DCF8E22778409400A9E633 /* UserError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserError.swift; sourceTree = "<group>"; };
 		70DCF8E4277844E900A9E633 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		70F3DA082779B3F700D2A67B /* MenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,6 +208,7 @@
 				701487EC27786296007AF0DC /* BackButton.swift */,
 				701487F527786CAD007AF0DC /* DotView.swift */,
 				700CCF972779A82300998F4A /* FloatingCenterButton.swift */,
+				70F3DA082779B3F700D2A67B /* MenuButton.swift */,
 			);
 			path = global;
 			sourceTree = "<group>";
@@ -550,6 +553,7 @@
 				70148800277893F6007AF0DC /* DriverPointAnnotation.swift in Sources */,
 				7017358E2777A02E004C589B /* AppDelegate.swift in Sources */,
 				700CCF962779A15700998F4A /* DestinationPointAnnotation.swift in Sources */,
+				70F3DA092779B3F700D2A67B /* MenuButton.swift in Sources */,
 				701487F627786CAD007AF0DC /* DotView.swift in Sources */,
 				701487D827784B1B007AF0DC /* SplashViewModel.swift in Sources */,
 				70D0E0362778AF68008114B6 /* PlaceCell.swift in Sources */,
