@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		700CCF962779A15700998F4A /* DestinationPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700CCF952779A15700998F4A /* DestinationPointAnnotation.swift */; };
+		700CCF982779A82300998F4A /* FloatingCenterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700CCF972779A82300998F4A /* FloatingCenterButton.swift */; };
 		701487D827784B1B007AF0DC /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701487D727784B1B007AF0DC /* SplashViewModel.swift */; };
 		701487DB27784C33007AF0DC /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701487DA27784C33007AF0DC /* SplashViewController.swift */; };
 		701487DE27784D28007AF0DC /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701487DD27784D28007AF0DC /* MainViewController.swift */; };
@@ -76,6 +77,7 @@
 
 /* Begin PBXFileReference section */
 		700CCF952779A15700998F4A /* DestinationPointAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationPointAnnotation.swift; sourceTree = "<group>"; };
+		700CCF972779A82300998F4A /* FloatingCenterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingCenterButton.swift; sourceTree = "<group>"; };
 		701487D727784B1B007AF0DC /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
 		701487DA27784C33007AF0DC /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		701487DD27784D28007AF0DC /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 				701735B72777A925004C589B /* BlueButton.swift */,
 				701487EC27786296007AF0DC /* BackButton.swift */,
 				701487F527786CAD007AF0DC /* DotView.swift */,
+				700CCF972779A82300998F4A /* FloatingCenterButton.swift */,
 			);
 			path = global;
 			sourceTree = "<group>";
@@ -541,6 +544,7 @@
 				701735BC2777AF77004C589B /* BaseViewController.swift in Sources */,
 				701735B62777A71C004C589B /* UIImageView+Extension.swift in Sources */,
 				70DCF8E5277844E900A9E633 /* LoginViewModel.swift in Sources */,
+				700CCF982779A82300998F4A /* FloatingCenterButton.swift in Sources */,
 				701735AE2777A1F0004C589B /* background_colors.swift in Sources */,
 				707D4F032777C7FB00E4B31D /* UserRepositoryImpl.swift in Sources */,
 				70148800277893F6007AF0DC /* DriverPointAnnotation.swift in Sources */,

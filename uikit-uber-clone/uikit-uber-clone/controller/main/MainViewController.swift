@@ -32,6 +32,8 @@ class MainViewController: BaseViewController {
         return view
     }()
     
+    private let floatingCenterButton = FloatingCenterButton()
+    
     private let mainViewModel: MainViewModel
     
     init(mainViewModel: MainViewModel) {
@@ -50,6 +52,13 @@ class MainViewController: BaseViewController {
     }
     
     private func bind() {
+        
+        floatingCenterButton.rx.tap.asDriver().drive(onNext: { [weak self] in
+            UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut) {
+                self?.activityView.transform = .init(translationX: 0, y: 30)
+            }
+            self?.mapView.setUserTrackingMode(.followWithHeading, animated: true)
+        }).disposed(by: disposeBag)
         
         tempSignOutButton.rx.tap.asDriver().drive(onNext: { [weak self] _ in
             try? Auth.auth().signOut()
@@ -95,6 +104,9 @@ class MainViewController: BaseViewController {
             self?.mapView.selectAnnotation(destination, animated: true)
         }.store(in: &subscriber)
         
+        mainViewModel.$isUserCenter.sink { [weak self] center in
+            self?.floatingCenterButton.isHidden = center
+        }.store(in: &subscriber)
     }
     
     private func configureUI() {
@@ -114,6 +126,12 @@ class MainViewController: BaseViewController {
         tempSignOutButton.snp.makeConstraints { make in
             make.centerX.equalTo(view)
             make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-20)
+        }
+        
+        view.addSubview(floatingCenterButton)
+        floatingCenterButton.snp.makeConstraints { make in
+            make.right.equalTo(view).offset(-30)
+            make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-50)
         }
         
         view.addSubview(locationInputHeaderView)
@@ -157,6 +175,16 @@ extension MainViewController: CLLocationManagerDelegate {
 }
 
 extension MainViewController: MKMapViewDelegate {
+    
+    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        if mapView.userTrackingMode.rawValue == 0 {
+            UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut) {
+                self.activityView.transform = .init(translationX: 0, y: 0)
+            }
+        }
+        mainViewModel.userMovedScreen(value: mapView.userTrackingMode.rawValue)
+    }
+    
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         let identifier = "Annotation"
         if let annotation = annotation as? DriverPointAnnotation {
