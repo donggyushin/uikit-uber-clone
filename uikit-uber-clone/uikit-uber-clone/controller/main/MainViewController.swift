@@ -164,6 +164,12 @@ class MainViewController: BaseViewController {
         view.addSubview(locationTableView)
     }
     
+    private func presentRequestView(place: MKPlacemark) {
+        let requestView = RideRequestView(viewModel: DIViewModel.resolve().rideRequestViewModelFactory(place))
+        requestView.delegate = self
+        view.addSubview(requestView)
+    }
+    
     private func openAppSetting() {
         let alert = UIAlertController(title: "위치 권한을 허용해주세요", message: "UBER 서비스를 이용하려면 위치 권한이 필수입니다. 위치 권한을 허용해주세요", preferredStyle: .alert)
         
@@ -253,6 +259,7 @@ extension MainViewController: LocationTableViewDelegate {
         self.menuButton.mode = .back
         self.dismissLocationSearchView(showActivity: false)
         mainViewModel.setDestination(place: place)
+        self.presentRequestView(place: place)
     }
 }
 
@@ -268,5 +275,11 @@ extension MainViewController: MenuButtonDelegate {
         case .list:
             print("[test] 메뉴 보여주기")
         }
+    }
+}
+
+extension MainViewController: RideRequestViewDelegate {
+    func rideRequestViewDismiss() {
+        self.menuButtonTapped(mode: .back)
     }
 }
