@@ -7,11 +7,17 @@
 
 import UIKit
 import Combine
+import MapKit
+
+protocol LocationTableViewDelegate: AnyObject {
+    func locationTableViewSelectedPlace(place: MKPlacemark)
+}
 
 class LocationTableView: UITableView {
     
     private let viewModel: LocationTableViewModel
     private var subscriber: Set<AnyCancellable> = .init()
+    weak var locationTableViewDelegate: LocationTableViewDelegate?
     
     init(frame: CGRect, style: UITableView.Style, viewModel: LocationTableViewModel) {
         self.viewModel = viewModel
@@ -65,6 +71,7 @@ extension LocationTableView: LocationInputHeaderViewDelegate {
 extension LocationTableView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        locationTableViewDelegate?.locationTableViewSelectedPlace(place: viewModel.places[indexPath.row])
     }
 }
 

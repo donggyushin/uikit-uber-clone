@@ -20,9 +20,10 @@ class MainViewController: BaseViewController {
     }()
     
     private let activityView = LocationInputActivationView()
-    private lazy var locationInputHeaderView: LocationInputHeaderView = .init(locationInputActivationView: activityView, locationTableView: locationTableView)
+    private lazy var locationInputHeaderView: LocationInputHeaderView = .init(mainViewController: self)
     private lazy var locationTableView: LocationTableView = {
         let view = LocationTableView(frame: .init(x: 0, y: view.frame.height, width: view.frame.width, height: view.frame.height - LocationInputHeaderView.height), style: .grouped, viewModel: DIViewModel.resolve().locationTableViewModelFactory(self.mapView.region))
+        view.locationTableViewDelegate = self
         return view
     }()
     
@@ -56,9 +57,7 @@ class MainViewController: BaseViewController {
         }).disposed(by: disposeBag)
         
         activityView.tap.rx.event.asDriver().drive(onNext: { [weak self] _ in
-            self?.activityView.hide()
-            self?.locationInputHeaderView.show()
-            self?.locationTableView.present()
+            self?.presentLocationSearchView()
         }).disposed(by: disposeBag)
         
         mainViewModel.$needLocationPermission.filter({ $0 }).sink { [weak self] _ in
@@ -129,6 +128,18 @@ class MainViewController: BaseViewController {
         alert.addAction(action)
         self.present(alert, animated: true)
     }
+    
+    private func presentLocationSearchView() {
+        self.activityView.hide()
+        self.locationInputHeaderView.show()
+        self.locationTableView.present()
+    }
+    
+    func dismissLocationSearchView() {
+        self.activityView.show()
+        self.locationInputHeaderView.hide()
+        self.locationTableView.dismiss()
+    }
 }
 
 extension MainViewController: CLLocationManagerDelegate {
@@ -154,5 +165,11 @@ extension MainViewController: MKMapViewDelegate {
         } else {
             return nil
         }
+    }
+}
+
+extension MainViewController: LocationTableViewDelegate {
+    func locationTableViewSelectedPlace(place: MKPlacemark) {
+        self.dismissLocationSearchView()
     }
 }

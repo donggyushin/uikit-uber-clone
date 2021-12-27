@@ -16,9 +16,6 @@ protocol LocationInputHeaderViewDelegate: AnyObject {
 class LocationInputHeaderView: UIView {
     
     static let height: CGFloat = 200
-    
-    private let locationInputActivationView: LocationInputActivationView
-    private let locationTableView: LocationTableView
     private let backButton = BackButton()
     private let disposeBag = DisposeBag()
     private var subscriber = Set<AnyCancellable>()
@@ -73,9 +70,10 @@ class LocationInputHeaderView: UIView {
         return view
     }()
     
-    init(locationInputActivationView: LocationInputActivationView, locationTableView: LocationTableView) {
-        self.locationInputActivationView = locationInputActivationView
-        self.locationTableView = locationTableView
+    private let mainViewController: MainViewController
+    
+    init(mainViewController: MainViewController) {
+        self.mainViewController = mainViewController
         super.init(frame: CGRect.zero)
         
         configureUI()
@@ -93,9 +91,7 @@ class LocationInputHeaderView: UIView {
         }.store(in: &subscriber)
         
         backButton.rx.tap.asDriver().drive(onNext: { [weak self] in
-            self?.hide()
-            self?.locationTableView.dismiss()
-            self?.locationInputActivationView.show()
+            self?.mainViewController.dismissLocationSearchView()
         }).disposed(by: disposeBag)
     }
     
