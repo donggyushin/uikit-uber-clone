@@ -116,7 +116,7 @@ class RideRequestView: UIView {
         }
     }
     
-    private func dismiss() {
+    func dismiss() {
         UIView.animate(withDuration: 0.4, delay: 0, options: .curveEaseInOut) {
             self.transform = .init(translationX: 0, y: 0)
         } completion: { _ in

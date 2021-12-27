@@ -272,6 +272,9 @@ extension MainViewController: MenuButtonDelegate {
             self.menuButton.mode = .list
             self.mainViewModel.destination = nil
             self.mapView.removeOverlays(self.mapView.overlays)
+            if let requestView = self.view.subviews.first(where: { $0.isKind(of: RideRequestView.self) }) as? RideRequestView {
+                requestView.dismiss()
+            }
         case .list:
             print("[test] 메뉴 보여주기")
         }
