@@ -22,9 +22,9 @@ struct UberUser: Identifiable, Equatable {
         self.userType = .init(rawValue: data["accountType"] as? String ?? "") ?? .RIDER
     }
     
-    func getMKPointAnnotation() -> CustomPointAnnotation? {
+    func getMKPointAnnotation() -> DriverPointAnnotation? {
         guard let location = location else { return nil }
-        let annotation = CustomPointAnnotation(id: self.id, coordinate: location.coordinate)
+        let annotation = DriverPointAnnotation(id: self.id, coordinate: location.coordinate)
         return annotation
     }
 }

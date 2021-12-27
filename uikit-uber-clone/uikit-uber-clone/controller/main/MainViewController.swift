@@ -67,7 +67,7 @@ class MainViewController: BaseViewController {
         mainViewModel.$nearbyUsers.sink { [weak self] users in
             let users = users.filter({ $0.userType == .DRIVER })
             let new_annotations = users.compactMap({ $0.getMKPointAnnotation() })
-            let existing_annotations = self?.mapView.annotations.compactMap({ $0 as? CustomPointAnnotation }) ?? []
+            let existing_annotations = self?.mapView.annotations.compactMap({ $0 as? DriverPointAnnotation }) ?? []
             
             new_annotations.forEach({ new in
                 if existing_annotations.contains(where: { existing in
@@ -151,7 +151,7 @@ extension MainViewController: CLLocationManagerDelegate {
 extension MainViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         let identifier = "Annotation"
-        if let annotation = annotation as? CustomPointAnnotation {
+        if let annotation = annotation as? DriverPointAnnotation {
             var view = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
             
             if view == nil {
