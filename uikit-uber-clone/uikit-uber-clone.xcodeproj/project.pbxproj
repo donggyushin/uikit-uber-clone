@@ -69,6 +69,7 @@
 		706989052778A8BF0034FE8F /* PlaceRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706989042778A8BF0034FE8F /* PlaceRepositoryImpl.swift */; };
 		706989072778A9AA0034FE8F /* PlaceRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706989062778A9AA0034FE8F /* PlaceRepository.swift */; };
 		707D4F032777C7FB00E4B31D /* UserRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707D4F022777C7FB00E4B31D /* UserRepositoryImpl.swift */; };
+		70CBFED9277A317F006C9123 /* UIScrollView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CBFED8277A317F006C9123 /* UIScrollView+Extension.swift */; };
 		70D0E0362778AF68008114B6 /* PlaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D0E0352778AF68008114B6 /* PlaceCell.swift */; };
 		70DCF8D2277839A500A9E633 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DCF8D1277839A500A9E633 /* SignUpViewModel.swift */; };
 		70DCF8D4277839B800A9E633 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DCF8D3277839B800A9E633 /* BaseViewModel.swift */; };
@@ -134,6 +135,7 @@
 		706989042778A8BF0034FE8F /* PlaceRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceRepositoryImpl.swift; sourceTree = "<group>"; };
 		706989062778A9AA0034FE8F /* PlaceRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceRepository.swift; sourceTree = "<group>"; };
 		707D4F022777C7FB00E4B31D /* UserRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepositoryImpl.swift; sourceTree = "<group>"; };
+		70CBFED8277A317F006C9123 /* UIScrollView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Extension.swift"; sourceTree = "<group>"; };
 		70D0E0352778AF68008114B6 /* PlaceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCell.swift; sourceTree = "<group>"; };
 		70DCF8D1277839A500A9E633 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		70DCF8D3277839B800A9E633 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
@@ -358,6 +360,7 @@
 				701735B52777A71C004C589B /* UIImageView+Extension.swift */,
 				701487EE27786596007AF0DC /* UIView+Extension.swift */,
 				703F7C99277A004B00F83432 /* MKMapView+Extension.swift */,
+				70CBFED8277A317F006C9123 /* UIScrollView+Extension.swift */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -561,6 +564,7 @@
 				70DCF8D2277839A500A9E633 /* SignUpViewModel.swift in Sources */,
 				702DF2192777CB220032441D /* UserRepository.swift in Sources */,
 				701487EB2778623D007AF0DC /* LocationInputHeaderView.swift in Sources */,
+				70CBFED9277A317F006C9123 /* UIScrollView+Extension.swift in Sources */,
 				701487ED27786296007AF0DC /* BackButton.swift in Sources */,
 				703F7C9A277A004B00F83432 /* MKMapView+Extension.swift in Sources */,
 				701487E1277852DC007AF0DC /* MainViewModel.swift in Sources */,
