@@ -39,9 +39,13 @@ class MainViewController: BaseViewController {
     private let floatingCenterButton = FloatingCenterButton()
     
     private let mainViewModel: MainViewModel
+    private let linkUtil: LinkUtil
+    private let mapKitUtik: MapKitUtil
     
-    init(mainViewModel: MainViewModel) {
+    init(mainViewModel: MainViewModel, linkUtil: LinkUtil, mapKitUtik: MapKitUtil) {
         self.mainViewModel = mainViewModel
+        self.linkUtil = linkUtil
+        self.mapKitUtik = mapKitUtik
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -98,15 +102,24 @@ class MainViewController: BaseViewController {
         }.store(in: &subscriber)
         
         mainViewModel.$destination.sink { [weak self] destination in
-            guard let destination = destination else { return }
             self?.mapView.annotations.compactMap({ $0 as? DestinationPointAnnotation }).forEach({ self?.mapView.removeAnnotation($0) })
+            guard let destination = destination else { return }
             self?.mapView.addAnnotation(destination)
-            self?.mapView.setCenter(destination.coordinate, animated: true)
+            var annotations: [MKAnnotation] = []
+            if let userAnnotation = self?.mapView.annotations.first(where: { $0 as? MKUserLocation != nil }) {
+                annotations.append(userAnnotation)
+            }
+            annotations.append(destination)
+            self?.mapView.showAnnotations(annotations, animated: true)
             self?.mapView.selectAnnotation(destination, animated: true)
         }.store(in: &subscriber)
         
         mainViewModel.$isUserCenter.sink { [weak self] center in
             self?.floatingCenterButton.isHidden = center
+        }.store(in: &subscriber)
+        
+        mainViewModel.$error.compactMap({ $0 }).sink { [weak self] error in
+            self?.view.makeToast(error.localizedDescription)
         }.store(in: &subscriber)
     }
     
@@ -155,7 +168,7 @@ class MainViewController: BaseViewController {
         let alert = UIAlertController(title: "위치 권한을 허용해주세요", message: "UBER 서비스를 이용하려면 위치 권한이 필수입니다. 위치 권한을 허용해주세요", preferredStyle: .alert)
         
         let action: UIAlertAction = .init(title: "설정", style: .default) { _ in
-            Util.shared.openAppSetting()
+            self.linkUtil.openAppSetting()
         }
         
         alert.addAction(action)
@@ -192,6 +205,13 @@ extension MainViewController: CLLocationManagerDelegate {
 
 extension MainViewController: MKMapViewDelegate {
     
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        let renderer = MKPolylineRenderer(overlay: overlay)
+        renderer.strokeColor = .init(cgColor: UIColor.systemPink.cgColor)
+        renderer.lineWidth = 2
+        return renderer
+    }
+    
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         if mapView.userTrackingMode.rawValue == 0 {
             UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut) {
@@ -222,6 +242,14 @@ extension MainViewController: MKMapViewDelegate {
 
 extension MainViewController: LocationTableViewDelegate {
     func locationTableViewSelectedPlace(place: MKPlacemark) {
+        mapKitUtik.generateOverlays(placemark: place) { [weak self] result in
+            switch result {
+            case .success(let polylines):
+                self?.mapView.addOverlays(polylines)
+            case .failure(let error):
+                self?.mainViewModel.error = error
+            }
+        }
         self.menuButton.mode = .back
         self.dismissLocationSearchView(showActivity: false)
         mainViewModel.setDestination(place: place)
@@ -235,6 +263,8 @@ extension MainViewController: MenuButtonDelegate {
             self.dismissLocationSearchView(showActivity: true)
             self.setCenter()
             self.menuButton.mode = .list
+            self.mainViewModel.destination = nil
+            self.mapView.removeOverlays(self.mapView.overlays)
         case .list:
             print("[test] 메뉴 보여주기")
         }

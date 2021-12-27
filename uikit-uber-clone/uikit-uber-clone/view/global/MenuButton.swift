@@ -26,7 +26,7 @@ class MenuButton: UIButton {
         didSet {
             switch mode {
             case .list: configuration?.image = .init(systemName: "list.dash")
-            case .back: configuration?.image = .init(systemName: "xmark")
+            case .back: configuration?.image = .init(systemName: "gobackward")
             }
         }
     }

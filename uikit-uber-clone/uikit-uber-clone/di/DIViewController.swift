@@ -18,6 +18,7 @@ extension DIViewController {
     static func resolve() -> DIViewController {
         
         let diViewModel = DIViewModel.resolve()
+        let diUtil = DIUtil.resolve()
         
         let loginViewControllerFactory: () -> LoginViewController = {
             return .init(loginViewModel: diViewModel.loginViewModelFactory())
@@ -27,7 +28,8 @@ extension DIViewController {
             return .init(signUpViewModel: diViewModel.signUpViewModelFactory())
         }
         
-        let mainViewControllerFactory: () -> MainViewController = { .init(mainViewModel: DIViewModel.resolve().mainViewModelFactory()) }
+        let mainViewControllerFactory: () -> MainViewController = { .init(mainViewModel: DIViewModel.resolve().mainViewModelFactory(), linkUtil: diUtil.linkUtil, mapKitUtik: diUtil.mapKitUtil) }
+        
         let splashViewControllerFactory: () -> SplashViewController = { .init(splashViewModel: diViewModel.splashViewModelFactory()) }
         
         return .init(loginViewControllerFactory: loginViewControllerFactory, signUpViewControllerFactory: signUpViewControllerFactory, mainViewControllerFactory: mainViewControllerFactory, splashViewControllerFactory: splashViewControllerFactory)
