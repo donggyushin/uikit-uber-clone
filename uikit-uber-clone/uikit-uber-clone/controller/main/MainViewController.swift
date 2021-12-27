@@ -66,7 +66,7 @@ class MainViewController: BaseViewController {
         
         mainViewModel.$nearbyUsers.sink { [weak self] users in
             let users = users.filter({ $0.userType == .DRIVER })
-            let new_annotations = users.compactMap({ $0.getMKPointAnnotation() })
+            let new_annotations = users.compactMap({ $0.getDriverPointAnnotation() })
             let existing_annotations = self?.mapView.annotations.compactMap({ $0 as? DriverPointAnnotation }) ?? []
             
             new_annotations.forEach({ new in
@@ -85,6 +85,14 @@ class MainViewController: BaseViewController {
                 }
             })
             
+        }.store(in: &subscriber)
+        
+        mainViewModel.$destination.sink { [weak self] destination in
+            guard let destination = destination else { return }
+            self?.mapView.annotations.compactMap({ $0 as? DestinationPointAnnotation }).forEach({ self?.mapView.removeAnnotation($0) })
+            self?.mapView.addAnnotation(destination)
+            self?.mapView.setCenter(destination.coordinate, animated: true)
+            self?.mapView.selectAnnotation(destination, animated: true)
         }.store(in: &subscriber)
         
     }
@@ -171,5 +179,6 @@ extension MainViewController: MKMapViewDelegate {
 extension MainViewController: LocationTableViewDelegate {
     func locationTableViewSelectedPlace(place: MKPlacemark) {
         self.dismissLocationSearchView()
+        mainViewModel.setDestination(place: place)
     }
 }

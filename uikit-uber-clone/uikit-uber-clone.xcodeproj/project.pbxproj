@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		700CCF962779A15700998F4A /* DestinationPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700CCF952779A15700998F4A /* DestinationPointAnnotation.swift */; };
 		701487D827784B1B007AF0DC /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701487D727784B1B007AF0DC /* SplashViewModel.swift */; };
 		701487DB27784C33007AF0DC /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701487DA27784C33007AF0DC /* SplashViewController.swift */; };
 		701487DE27784D28007AF0DC /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701487DD27784D28007AF0DC /* MainViewController.swift */; };
@@ -74,6 +75,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		700CCF952779A15700998F4A /* DestinationPointAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationPointAnnotation.swift; sourceTree = "<group>"; };
 		701487D727784B1B007AF0DC /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
 		701487DA27784C33007AF0DC /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		701487DD27784D28007AF0DC /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -424,6 +426,7 @@
 			children = (
 				70DCF8E027783F6C00A9E633 /* UberUser.swift */,
 				701487FF277893F6007AF0DC /* DriverPointAnnotation.swift */,
+				700CCF952779A15700998F4A /* DestinationPointAnnotation.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -542,6 +545,7 @@
 				707D4F032777C7FB00E4B31D /* UserRepositoryImpl.swift in Sources */,
 				70148800277893F6007AF0DC /* DriverPointAnnotation.swift in Sources */,
 				7017358E2777A02E004C589B /* AppDelegate.swift in Sources */,
+				700CCF962779A15700998F4A /* DestinationPointAnnotation.swift in Sources */,
 				701487F627786CAD007AF0DC /* DotView.swift in Sources */,
 				701487D827784B1B007AF0DC /* SplashViewModel.swift in Sources */,
 				70D0E0362778AF68008114B6 /* PlaceCell.swift in Sources */,

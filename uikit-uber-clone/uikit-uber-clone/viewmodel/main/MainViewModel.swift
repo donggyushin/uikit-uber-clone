@@ -8,12 +8,14 @@
 import Foundation
 import CoreLocation
 import RxSwift
+import MapKit
 
 class MainViewModel: BaseViewModel {
     
     @Published var needLocationPermission = false
     @Published var location: CLLocation? = nil
     @Published var nearbyUsers: [UberUser] = []
+    @Published var destination: DestinationPointAnnotation? = nil
     
     let locationManager = CLLocationManager()
     private let locationRepository: LocationRepository
@@ -32,6 +34,10 @@ class MainViewModel: BaseViewModel {
         if let location = locationManager.location {
             self.locationUpdated(location: location)
         }
+    }
+    
+    func setDestination(place: MKPlacemark) {
+        destination = DestinationPointAnnotation(id: place.title ?? "", coordinate: place.coordinate)
     }
     
     private func observeNearbyUsers(location: CLLocation) {
