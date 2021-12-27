@@ -145,7 +145,8 @@ class LocationInputHeaderView: UIView {
 
 extension LocationInputHeaderView: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.delegate?.LocationInputHeaderViewSearchText(text: textField.text ?? "")
+        delegate?.LocationInputHeaderViewSearchText(text: textField.text ?? "")
+        destinationTextFieldView.resignFirstResponder()
         return true
     }
 }

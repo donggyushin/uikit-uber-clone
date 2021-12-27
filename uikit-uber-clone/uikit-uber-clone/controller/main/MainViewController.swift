@@ -121,6 +121,19 @@ class MainViewController: BaseViewController {
         mainViewModel.$error.compactMap({ $0 }).sink { [weak self] error in
             self?.view.makeToast(error.localizedDescription)
         }.store(in: &subscriber)
+        
+        mainViewModel.$userTrackingMode.sink { [weak self] mode in
+            switch mode {
+            case .followWithHeading:
+                UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut) {
+                    self?.activityView.transform = .init(translationX: 0, y: 30)
+                }
+            default:
+                UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut) {
+                    self?.activityView.transform = .init(translationX: 0, y: 0)
+                }
+            }
+        }.store(in: &subscriber)
     }
     
     private func configureUI() {
@@ -196,9 +209,6 @@ class MainViewController: BaseViewController {
     }
     
     private func setCenter() {
-        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut) {
-            self.activityView.transform = .init(translationX: 0, y: 30)
-        }
         self.mapView.setUserTrackingMode(.followWithHeading, animated: true)
     }
 }
@@ -218,12 +228,12 @@ extension MainViewController: MKMapViewDelegate {
         return renderer
     }
     
+    func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
+        mainViewModel.userTrackingMode = mapView.userTrackingMode
+    }
+    
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-        if mapView.userTrackingMode.rawValue == 0 {
-            UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut) {
-                self.activityView.transform = .init(translationX: 0, y: 0)
-            }
-        }
+        mainViewModel.userTrackingMode = mapView.userTrackingMode
         mainViewModel.userMovedScreen(value: mapView.userTrackingMode.rawValue)
     }
     

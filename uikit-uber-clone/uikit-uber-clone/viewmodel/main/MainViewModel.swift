@@ -17,6 +17,7 @@ class MainViewModel: BaseViewModel {
     @Published var nearbyUsers: [UberUser] = []
     @Published var destination: DestinationPointAnnotation? = nil
     @Published var isUserCenter = true
+    @Published var userTrackingMode: MKUserTrackingMode = .follow
     
     let locationManager = CLLocationManager()
     private let locationRepository: LocationRepository
