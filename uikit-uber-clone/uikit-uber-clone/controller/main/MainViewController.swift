@@ -106,7 +106,7 @@ class MainViewController: BaseViewController {
             guard let destination = destination else { return }
             self?.mapView.addAnnotation(destination)
             var annotations: [MKAnnotation] = []
-            if let userAnnotation = self?.mapView.annotations.first(where: { $0 as? MKUserLocation != nil }) {
+            if let userAnnotation = self?.mapView.annotations.first(where: { $0.isKind(of: MKUserLocation.self) }) {
                 annotations.append(userAnnotation)
             }
             annotations.append(destination)
