@@ -101,8 +101,9 @@ class MainViewController: BaseViewController {
             
         }.store(in: &subscriber)
         
-        mainViewModel.$destination.compactMap({ $0 }).sink { [weak self] destination in
+        mainViewModel.$destination.sink { [weak self] destination in
             self?.mapView.annotations.compactMap({ $0 as? DestinationPointAnnotation }).forEach({ self?.mapView.removeAnnotation($0) })
+            guard let destination = destination else { return }
             self?.mapView.addAnnotation(destination)
             var annotations: [MKAnnotation] = []
             self?.mapView.annotations.compactMap({ $0 as? MKUserLocation }).forEach({ annotations.append($0) })
