@@ -58,6 +58,7 @@
 		703F7C9A277A004B00F83432 /* MKMapView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703F7C99277A004B00F83432 /* MKMapView+Extension.swift */; };
 		7043A300277B3D7A000D90DF /* TripRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7043A2FF277B3D7A000D90DF /* TripRepositoryImpl.swift */; };
 		7043A302277B4078000D90DF /* TripRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7043A301277B4078000D90DF /* TripRepository.swift */; };
+		7043A304277B4989000D90DF /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7043A303277B4989000D90DF /* Trip.swift */; };
 		7055CEAA2777BD5D00399AC6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7055CEA92777BD5D00399AC6 /* GoogleService-Info.plist */; };
 		7055CEAD2777BDDB00399AC6 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 7055CEAC2777BDDB00399AC6 /* FirebaseAuth */; };
 		7055CEAF2777BDDB00399AC6 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 7055CEAE2777BDDB00399AC6 /* FirebaseDatabase */; };
@@ -134,6 +135,7 @@
 		703F7C99277A004B00F83432 /* MKMapView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMapView+Extension.swift"; sourceTree = "<group>"; };
 		7043A2FF277B3D7A000D90DF /* TripRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripRepositoryImpl.swift; sourceTree = "<group>"; };
 		7043A301277B4078000D90DF /* TripRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripRepository.swift; sourceTree = "<group>"; };
+		7043A303277B4989000D90DF /* Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
 		7055CEA92777BD5D00399AC6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		706989022778A6EC0034FE8F /* LocationTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTableViewModel.swift; sourceTree = "<group>"; };
 		706989042778A8BF0034FE8F /* PlaceRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceRepositoryImpl.swift; sourceTree = "<group>"; };
@@ -465,6 +467,7 @@
 				70DCF8E027783F6C00A9E633 /* UberUser.swift */,
 				701487FF277893F6007AF0DC /* DriverPointAnnotation.swift */,
 				700CCF952779A15700998F4A /* DestinationPointAnnotation.swift */,
+				7043A303277B4989000D90DF /* Trip.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -573,6 +576,7 @@
 				70CBFED9277A317F006C9123 /* UIScrollView+Extension.swift in Sources */,
 				701487ED27786296007AF0DC /* BackButton.swift in Sources */,
 				703F7C9A277A004B00F83432 /* MKMapView+Extension.swift in Sources */,
+				7043A304277B4989000D90DF /* Trip.swift in Sources */,
 				701487E1277852DC007AF0DC /* MainViewModel.swift in Sources */,
 				701487EF27786596007AF0DC /* UIView+Extension.swift in Sources */,
 				701487F827786F72007AF0DC /* LocationTableView.swift in Sources */,
