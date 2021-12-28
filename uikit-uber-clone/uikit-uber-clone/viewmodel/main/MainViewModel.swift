@@ -75,13 +75,14 @@ class MainViewModel: BaseViewModel {
         
         $location.sink { [weak self] location in
             guard let location = location else { return }
-            if self?.updateCount == 0 {
-                self?.locationUpdated(location: location)
-            }
-            self?.updateCount += 1
-            if self?.updateCount ?? 0 > 10 {
-                self?.updateCount = 0
-            }
+            self?.locationUpdated(location: location)
+//            if self?.updateCount == 0 {
+//                self?.locationUpdated(location: location)
+//            }
+//            self?.updateCount += 1
+//            if self?.updateCount ?? 0 > 10 {
+//                self?.updateCount = 0
+//            }
             
         }.store(in: &subscriber)
     }

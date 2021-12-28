@@ -107,9 +107,7 @@ class MainViewController: BaseViewController {
             guard let destination = destination else { return }
             self?.mapView.addAnnotation(destination)
             var annotations: [MKAnnotation] = []
-            if let userAnnotation = self?.mapView.annotations.first(where: { $0.isKind(of: MKUserLocation.self) }) {
-                annotations.append(userAnnotation)
-            }
+            self?.mapView.annotations.compactMap({ $0 as? MKUserLocation }).forEach({ annotations.append($0) })
             annotations.append(destination)
             self?.mapView.fitAllAnnotations(annotations: annotations)
             self?.mapView.selectAnnotation(destination, animated: true)
@@ -239,21 +237,11 @@ extension MainViewController: MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        let identifier = "Annotation"
-        if let annotation = annotation as? DriverPointAnnotation {
-            var view = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
-            
-            if view == nil {
-                view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-            } else {
-                view?.annotation = annotation
-            }
-            view?.image = .init(systemName: "car.fill")
-            return view
-            
-        } else {
-            return nil
-        }
+        guard let annotation = annotation as? DriverPointAnnotation else { return nil }
+        let identifier = "DriverPointAnnotation"
+        let view = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) ?? MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+        view.image = .init(systemName: "car.fill")
+        return view
     }
 }
 
@@ -283,9 +271,7 @@ extension MainViewController: MenuButtonDelegate {
             self.menuButton.mode = .list
             self.mainViewModel.destination = nil
             self.mapView.removeOverlays(self.mapView.overlays)
-            if let requestView = self.view.subviews.first(where: { $0.isKind(of: RideRequestView.self) }) as? RideRequestView {
-                requestView.dismiss()
-            }
+            self.view.subviews.compactMap({ $0 as? RideRequestView }).forEach({ $0.dismiss() })
         case .list:
             print("[test] 메뉴 보여주기")
         }
