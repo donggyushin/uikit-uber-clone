@@ -33,8 +33,7 @@ class SplashViewController: BaseViewController {
     
     private func bind() {
         
-        splashViewModel.$navigationType.sink { [weak self] navigationType in
-            guard let navigationType = navigationType else { return }
+        splashViewModel.$navigationType.compactMap({ $0 }).sink { [weak self] navigationType in
             switch navigationType {
             case .auth:
                 self?.navigationController?.setViewControllers([DIViewController.resolve().loginViewControllerFactory()], animated: true)
