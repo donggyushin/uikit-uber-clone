@@ -133,6 +133,10 @@ class MainViewController: BaseViewController {
                 }
             }
         }.store(in: &subscriber)
+        
+        mainViewModel.$userType.filter({ $0 == .DRIVER }).sink { [weak self] _ in
+            self?.activityView.isHidden = true
+        }.store(in: &subscriber)
     }
     
     private func configureUI() {

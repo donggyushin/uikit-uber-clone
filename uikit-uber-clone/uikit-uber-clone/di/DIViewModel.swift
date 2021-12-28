@@ -9,6 +9,7 @@ import MapKit
 
 
 struct DIViewModel {
+    let userViewModel: UserViewModel
     let signUpViewModelFactory: () -> SignUpViewModel
     let loginViewModelFactory: () -> LoginViewModel
     let splashViewModelFactory: () -> SplashViewModel
@@ -22,13 +23,15 @@ extension DIViewModel {
         
         let diRepository = DIRepository.resolve()
         
+        let userViewModel: UserViewModel = UserViewModel.shared
+        
         let signUpViewModelFactory: () -> SignUpViewModel = { .init(userRepository: diRepository.userRepository) }
         
         let loginViewModelFactory: () -> LoginViewModel = { .init(userRepository: diRepository.userRepository) }
         
         let splashViewModelFactory: () -> SplashViewModel = { .init(userRepository: diRepository.userRepository) }
         
-        let mainViewModelFactory: () -> MainViewModel = { .init(locationRepository: diRepository.locationRepository, userRepository: diRepository.userRepository) }
+        let mainViewModelFactory: () -> MainViewModel = { .init(locationRepository: diRepository.locationRepository, userRepository: diRepository.userRepository, userViewModel: userViewModel) }
         
         let locationTableViewModelFactory: (MKCoordinateRegion) -> LocationTableViewModel = { region in
             return .init(placeRepository: diRepository.placeRepository, region: region)
@@ -38,6 +41,6 @@ extension DIViewModel {
             return .init(placemark: place)
         }
         
-        return .init(signUpViewModelFactory: signUpViewModelFactory, loginViewModelFactory: loginViewModelFactory, splashViewModelFactory: splashViewModelFactory, mainViewModelFactory: mainViewModelFactory, locationTableViewModelFactory: locationTableViewModelFactory, rideRequestViewModelFactory: rideRequestViewModelFactory)
+        return .init(userViewModel: userViewModel, signUpViewModelFactory: signUpViewModelFactory, loginViewModelFactory: loginViewModelFactory, splashViewModelFactory: splashViewModelFactory, mainViewModelFactory: mainViewModelFactory, locationTableViewModelFactory: locationTableViewModelFactory, rideRequestViewModelFactory: rideRequestViewModelFactory)
     }
 }

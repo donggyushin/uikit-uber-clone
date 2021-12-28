@@ -18,16 +18,19 @@ class MainViewModel: BaseViewModel {
     @Published var destination: DestinationPointAnnotation? = nil
     @Published var isUserCenter = true
     @Published var userTrackingMode: MKUserTrackingMode = .follow
+    @Published var userType: UserType = .DRIVER
     
     let locationManager = CLLocationManager()
     private let locationRepository: LocationRepository
     private let userRepository: UserRepository
+    private let userViewModel: UserViewModel
     
     private var updateCount = 0
     
-    init(locationRepository: LocationRepository, userRepository: UserRepository) {
+    init(locationRepository: LocationRepository, userRepository: UserRepository, userViewModel: UserViewModel) {
         self.locationRepository = locationRepository
         self.userRepository = userRepository
+        self.userViewModel = userViewModel
         super.init()
         enableLocation()
         requestGPSPermission()
@@ -72,18 +75,12 @@ class MainViewModel: BaseViewModel {
     }
     
     private func bind() {
+        userViewModel.$user.compactMap({ $0 }).sink { [weak self] user in
+            self?.userType = user.userType
+        }.store(in: &subscriber)
         
-        $location.sink { [weak self] location in
-            guard let location = location else { return }
+        $location.compactMap({ $0 }).sink { [weak self] location in
             self?.locationUpdated(location: location)
-//            if self?.updateCount == 0 {
-//                self?.locationUpdated(location: location)
-//            }
-//            self?.updateCount += 1
-//            if self?.updateCount ?? 0 > 10 {
-//                self?.updateCount = 0
-//            }
-            
         }.store(in: &subscriber)
     }
     
