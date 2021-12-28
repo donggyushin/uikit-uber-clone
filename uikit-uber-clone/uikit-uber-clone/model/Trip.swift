@@ -17,10 +17,8 @@ struct Trip {
     
     init(passengerId: String, data: [String: Any]) {
         self.passengerId = passengerId
-        let pickupCoordinates = data["pickupCoordinates"] as? [CGFloat] ?? [0, 0]
-        let destinationCoordinates = data["destinationCoordinates"] as? [CGFloat] ?? [0, 0]
-        self.pickupCoordinates = .init(latitude: .init(pickupCoordinates[0]), longitude: pickupCoordinates[1])
-        self.destinationCoordinates = .init(latitude: .init(destinationCoordinates[0]), longitude: destinationCoordinates[1])
+        self.pickupCoordinates = .init(latitude: .init(data["pickuplatitude"] as? Double ?? 0), longitude: data["pickuplongitude"] as? Double ?? 0)
+        self.destinationCoordinates = .init(latitude: data["destinationlatitude"] as? Double ?? 0, longitude: data["destinationlongitude"] as? Double ?? 0)
         self.driverId = data["driverId"] as? String
         self.state = (.init(rawValue: (data["state"] as? Int ?? 0)) ?? .requested)
     }
