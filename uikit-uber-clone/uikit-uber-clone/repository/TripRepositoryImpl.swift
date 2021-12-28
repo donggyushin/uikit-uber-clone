@@ -9,33 +9,27 @@ import UIKit
 import Firebase
 import MapKit
 import Combine
+import GeoFire
 
 class TripRepositoryImpl: TripRepository {
     static let shared = TripRepositoryImpl()
     
-    func observeTrip(mapView: MKMapView) -> Future<Trip, Error> {
-        let currentUserLocation = mapView.userLocation.coordinate
-        // latitude 최댓값
-        let max_latitude = currentUserLocation.latitude + 0.05
-        // latitude 최솟값
-        let min_latitude = currentUserLocation.latitude - 0.05
-        // longitude 최댓값
-        let max_longitude = currentUserLocation.longitude + 0.05
-        // longitude 최솟값
-        let min_longitude = currentUserLocation.longitude + 0.05
-        
+    private var circleQueryObserver: GFCircleQuery?
+    func observeTrip(center: CLLocation, radius: Double) -> Future<Trip, Error> {
         return .init { promise in
-            COLLECTION_TRIP
-                .whereField("pickuplatitude", isLessThan: max_latitude)
-                .whereField("pickuplatitude", isGreaterThan: min_latitude)
-                .whereField("pickuplongitude", isLessThan: max_longitude)
-                .whereField("pickuplongitude", isGreaterThan: min_longitude)
-                .addSnapshotListener { snapshot, _ in
-                guard let snapshot = snapshot else { return }
-                snapshot.documentChanges.filter({ $0.type == .added }).forEach({
-                    promise(.success(Trip(passengerId: $0.document.documentID, data: $0.document.data())))
-                })
-            }
+            let geoFire = GeoFire(firebaseRef: REFERENCE_TRIP)
+            self.circleQueryObserver?.removeAllObservers()
+            self.circleQueryObserver = geoFire.query(at: center, withRadius: radius)
+            self.circleQueryObserver?.observe(.keyEntered, with: { uid, _ in
+                // 여기서 uid는 trip의 id임. 이 id를 갖고 있는 trip을 가져와서 반환한다.
+                COLLECTION_TRIP.document(uid).getDocument { snapshot, error in
+                    if let error = error {
+                        promise(.failure(error))
+                    } else if let data = snapshot?.data() {
+                        promise(.success(.init(passengerId: uid, data: data)))
+                    }
+                }
+            })
         }
     }
     
@@ -47,16 +41,18 @@ class TripRepositoryImpl: TripRepository {
                 return
             }
             let data: [String: Any] = [
-                "pickuplatitude": pickup.latitude,
-                "pickuplongitude": pickup.longitude,
+                "state": Trip.TripState.requested.rawValue,
                 "destinationlatitude": destination.latitude,
                 "destinationlongitude": destination.longitude,
-                "state": Trip.TripState.requested.rawValue
+                "pickuplatitude": pickup.latitude,
+                "pickuplongitude": pickup.longitude
             ]
             COLLECTION_TRIP.document(uid).setData(data) { error in
                 if let error = error {
                     promise(.failure(error))
                 } else {
+                    let geoFire = GeoFire(firebaseRef: REFERENCE_TRIP)
+                    geoFire.setLocation(.init(latitude: pickup.latitude, longitude: pickup.longitude), forKey: uid)
                     promise(.success(true))
                 }
             }

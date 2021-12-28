@@ -135,6 +135,10 @@ class MainViewController: BaseViewController {
         mainViewModel.$userType.filter({ $0 == .DRIVER }).sink { [weak self] _ in
             self?.activityView.isHidden = true
         }.store(in: &subscriber)
+        
+        mainViewModel.$trip.compactMap({ $0 }).sink { [weak self] trip in
+            print("근처에서 trip 요청이 감지되었습니다. \(trip)")
+        }.store(in: &subscriber)
     }
     
     private func configureUI() {

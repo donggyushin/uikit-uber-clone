@@ -8,3 +8,4 @@
 import Firebase
 
 public let REFERENCE_LOCATION = Database.database().reference(withPath: "locations")
+public let REFERENCE_TRIP = Database.database().reference(withPath: "trips")

@@ -31,18 +31,14 @@ class UserRepositoryImpl: UserRepository {
         let geoFire = GeoFire(firebaseRef: REFERENCE_LOCATION)
         circleQueryObserver?.removeAllObservers()
         circleQueryObserver = geoFire.query(at: center, withRadius: radius)
-    
-        circleQueryObserver?.observe(.keyMoved) { (uid: String, location: CLLocation) in
-            self.locationDetected(uid: uid, currentUid: currentUid, location: location, completion: completion)
-        }
         
-        circleQueryObserver?.observe(.keyExited) { (uid: String, location: CLLocation) in
+        circleQueryObserver?.observe(.keyEntered, with: { uid, location in
             self.locationDetected(uid: uid, currentUid: currentUid, location: location, completion: completion)
-        }
+        })
         
-        circleQueryObserver?.observe(.keyEntered) { (uid: String, location: CLLocation) in
+        circleQueryObserver?.observe(.keyMoved, with: { uid, location in
             self.locationDetected(uid: uid, currentUid: currentUid, location: location, completion: completion)
-        }
+        })
     }
     
     private func locationDetected(uid: String, currentUid: String, location: CLLocation, completion: @escaping (Result<UberUser, Error>) -> Void) {

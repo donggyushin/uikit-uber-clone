@@ -19,18 +19,21 @@ class MainViewModel: BaseViewModel {
     @Published var isUserCenter = true
     @Published var userTrackingMode: MKUserTrackingMode = .follow
     @Published var userType: UserType = .DRIVER
+    @Published var trip: Trip? = nil
     
     let locationManager = CLLocationManager()
     private let locationRepository: LocationRepository
     private let userRepository: UserRepository
     private let userViewModel: UserViewModel
+    private let tripRepository: TripRepository
     
     private var updateCount = 0
     
-    init(locationRepository: LocationRepository, userRepository: UserRepository, userViewModel: UserViewModel) {
+    init(locationRepository: LocationRepository, userRepository: UserRepository, userViewModel: UserViewModel, tripRepository: TripRepository) {
         self.locationRepository = locationRepository
         self.userRepository = userRepository
         self.userViewModel = userViewModel
+        self.tripRepository = tripRepository
         super.init()
         enableLocation()
         requestGPSPermission()
@@ -50,7 +53,7 @@ class MainViewModel: BaseViewModel {
     }
     
     private func observeNearbyUsers(location: CLLocation) {
-        userRepository.observeNearbyUsers(center: location, radius: 1) { [weak self] result in
+        userRepository.observeNearbyUsers(center: location, radius: 10) { [weak self] result in
             switch result {
             case .failure(let error):
                 print("DEBUG: error: \(error.localizedDescription)")
@@ -77,6 +80,9 @@ class MainViewModel: BaseViewModel {
     private func bind() {
         userViewModel.$user.compactMap({ $0 }).sink { [weak self] user in
             self?.userType = user.userType
+            if user.userType == .DRIVER {
+                self?.observerTrip()
+            }
         }.store(in: &subscriber)
         
         $location.compactMap({ $0 }).sink { [weak self] location in
@@ -104,6 +110,21 @@ class MainViewModel: BaseViewModel {
     private func locationUpdated(location: CLLocation) {
         self.observeNearbyUsers(location: location)
         self.locationRepository.updateLocation(location: location)
+    }
+    
+    private func observerTrip() {
+        guard let coordinate = locationManager.location?.coordinate else { return }
+        tripRepository.observeTrip(center: .init(latitude: coordinate.latitude, longitude: coordinate.longitude), radius: 10).sink { [weak self] result in
+            switch result {
+            case .failure(let error):
+                self?.error = error
+            case .finished:
+                print("DEBUG: observeTrip finished..")
+            }
+        } receiveValue: { [weak self] trip in
+            self?.trip = trip
+        }.store(in: &subscriber)
+
     }
     
 }

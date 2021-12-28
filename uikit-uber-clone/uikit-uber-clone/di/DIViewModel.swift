@@ -31,7 +31,7 @@ extension DIViewModel {
         
         let splashViewModelFactory: () -> SplashViewModel = { .init(userRepository: diRepository.userRepository) }
         
-        let mainViewModelFactory: () -> MainViewModel = { .init(locationRepository: diRepository.locationRepository, userRepository: diRepository.userRepository, userViewModel: userViewModel) }
+        let mainViewModelFactory: () -> MainViewModel = { .init(locationRepository: diRepository.locationRepository, userRepository: diRepository.userRepository, userViewModel: userViewModel, tripRepository: diRepository.tripRepository) }
         
         let locationTableViewModelFactory: (MKCoordinateRegion) -> LocationTableViewModel = { region in
             return .init(placeRepository: diRepository.placeRepository, region: region)
