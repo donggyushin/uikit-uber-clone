@@ -9,6 +9,7 @@ struct DIRepository {
     let userRepository: UserRepository
     let locationRepository: LocationRepository
     let placeRepository: PlaceRepository
+    let tripRepository: TripRepository
 }
 
 extension DIRepository {
@@ -17,7 +18,8 @@ extension DIRepository {
         let userRepository: UserRepository = UserRepositoryImpl.shared
         let locationRepository: LocationRepository = LocationRepositoryImpl.shared
         let placeRepository: PlaceRepository = PlaceRepositoryImpl.shared
+        let tripRepository: TripRepository = TripRepositoryImpl.shared
         
-        return .init(userRepository: userRepository, locationRepository: locationRepository, placeRepository: placeRepository)
+        return .init(userRepository: userRepository, locationRepository: locationRepository, placeRepository: placeRepository, tripRepository: tripRepository)
     }
 }

@@ -10,3 +10,4 @@ import Firebase
 private let db = Firestore.firestore()
 
 public let COLLECTION_USER = db.collection("users")
+public let COLLECTION_TRIP = db.collection("trips")

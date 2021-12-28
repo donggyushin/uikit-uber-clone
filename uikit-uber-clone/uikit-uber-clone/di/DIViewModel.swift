@@ -38,7 +38,7 @@ extension DIViewModel {
         }
         
         let rideRequestViewModelFactory: (MKPlacemark) -> RideRequestViewModel = { place in
-            return .init(placemark: place)
+            return .init(placemark: place, tripRepository: DIRepository.resolve().tripRepository)
         }
         
         return .init(userViewModel: userViewModel, signUpViewModelFactory: signUpViewModelFactory, loginViewModelFactory: loginViewModelFactory, splashViewModelFactory: splashViewModelFactory, mainViewModelFactory: mainViewModelFactory, locationTableViewModelFactory: locationTableViewModelFactory, rideRequestViewModelFactory: rideRequestViewModelFactory)

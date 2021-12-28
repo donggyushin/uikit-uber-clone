@@ -11,7 +11,7 @@ import Firebase
 
 class MainViewController: BaseViewController {
     
-    private lazy var mapView: MKMapView = {
+    lazy var mapView: MKMapView = {
         let view = MKMapView(frame: view.frame)
         view.showsUserLocation = true
         view.userTrackingMode = .follow
@@ -281,6 +281,10 @@ extension MainViewController: MenuButtonDelegate {
 }
 
 extension MainViewController: RideRequestViewDelegate {
+    func rideRequestSuccess() {
+        print("[test] 요청 성공")
+    }
+    
     func rideRequestViewDismiss() {
         self.menuButtonTapped(mode: .back)
     }

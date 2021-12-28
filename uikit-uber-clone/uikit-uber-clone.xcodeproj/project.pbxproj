@@ -56,6 +56,8 @@
 		703F7C962779DF2D00F83432 /* RideRequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703F7C952779DF2D00F83432 /* RideRequestView.swift */; };
 		703F7C982779E61300F83432 /* RideRequestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703F7C972779E61300F83432 /* RideRequestViewModel.swift */; };
 		703F7C9A277A004B00F83432 /* MKMapView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703F7C99277A004B00F83432 /* MKMapView+Extension.swift */; };
+		7043A300277B3D7A000D90DF /* TripRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7043A2FF277B3D7A000D90DF /* TripRepositoryImpl.swift */; };
+		7043A302277B4078000D90DF /* TripRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7043A301277B4078000D90DF /* TripRepository.swift */; };
 		7055CEAA2777BD5D00399AC6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7055CEA92777BD5D00399AC6 /* GoogleService-Info.plist */; };
 		7055CEAD2777BDDB00399AC6 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 7055CEAC2777BDDB00399AC6 /* FirebaseAuth */; };
 		7055CEAF2777BDDB00399AC6 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 7055CEAE2777BDDB00399AC6 /* FirebaseDatabase */; };
@@ -130,6 +132,8 @@
 		703F7C952779DF2D00F83432 /* RideRequestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideRequestView.swift; sourceTree = "<group>"; };
 		703F7C972779E61300F83432 /* RideRequestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideRequestViewModel.swift; sourceTree = "<group>"; };
 		703F7C99277A004B00F83432 /* MKMapView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMapView+Extension.swift"; sourceTree = "<group>"; };
+		7043A2FF277B3D7A000D90DF /* TripRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripRepositoryImpl.swift; sourceTree = "<group>"; };
+		7043A301277B4078000D90DF /* TripRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripRepository.swift; sourceTree = "<group>"; };
 		7055CEA92777BD5D00399AC6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		706989022778A6EC0034FE8F /* LocationTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTableViewModel.swift; sourceTree = "<group>"; };
 		706989042778A8BF0034FE8F /* PlaceRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceRepositoryImpl.swift; sourceTree = "<group>"; };
@@ -420,6 +424,8 @@
 				701487FD27787722007AF0DC /* LocationRepository.swift */,
 				706989042778A8BF0034FE8F /* PlaceRepositoryImpl.swift */,
 				706989062778A9AA0034FE8F /* PlaceRepository.swift */,
+				7043A2FF277B3D7A000D90DF /* TripRepositoryImpl.swift */,
+				7043A301277B4078000D90DF /* TripRepository.swift */,
 			);
 			path = repository;
 			sourceTree = "<group>";
@@ -577,6 +583,7 @@
 				701735B62777A71C004C589B /* UIImageView+Extension.swift in Sources */,
 				70DCF8E5277844E900A9E633 /* LoginViewModel.swift in Sources */,
 				700CCF982779A82300998F4A /* FloatingCenterButton.swift in Sources */,
+				7043A300277B3D7A000D90DF /* TripRepositoryImpl.swift in Sources */,
 				703F7C912779CFBE00F83432 /* DIUtil.swift in Sources */,
 				701735AE2777A1F0004C589B /* background_colors.swift in Sources */,
 				707D4F032777C7FB00E4B31D /* UserRepositoryImpl.swift in Sources */,
@@ -584,6 +591,7 @@
 				7017358E2777A02E004C589B /* AppDelegate.swift in Sources */,
 				703F7C962779DF2D00F83432 /* RideRequestView.swift in Sources */,
 				700CCF962779A15700998F4A /* DestinationPointAnnotation.swift in Sources */,
+				7043A302277B4078000D90DF /* TripRepository.swift in Sources */,
 				70F3DA092779B3F700D2A67B /* MenuButton.swift in Sources */,
 				701487F627786CAD007AF0DC /* DotView.swift in Sources */,
 				701487D827784B1B007AF0DC /* SplashViewModel.swift in Sources */,

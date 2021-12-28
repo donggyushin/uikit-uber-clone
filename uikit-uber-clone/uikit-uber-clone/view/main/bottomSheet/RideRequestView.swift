@@ -7,9 +7,11 @@
 
 import UIKit
 import RxSwift
+import Combine
 
 protocol RideRequestViewDelegate: AnyObject {
     func rideRequestViewDismiss()
+    func rideRequestSuccess()
 }
 
 class RideRequestView: UIView {
@@ -92,6 +94,25 @@ class RideRequestView: UIView {
         xmarkButton.rx.tap.asDriver().drive(onNext: { [weak self] in
             self?.dismiss()
         }).disposed(by: disposeBag)
+        
+        confirmButton.rx.tap.asDriver().drive(onNext: { [weak self] in
+            guard let rootNvc = self?.window?.rootViewController as? UINavigationController else { return }
+            guard let mapView = rootNvc.viewControllers.compactMap({ $0 as? MainViewController }).first?.mapView else { return }
+            self?.viewModel.confirmButtonTapped(mapView: mapView)
+        }).disposed(by: disposeBag)
+        
+        viewModel.$isLoading.sink { [weak self] loading in
+            self?.confirmButton.isEnabled = !loading
+        }.store(in: &viewModel.subscriber)
+        
+        viewModel.$error.sink { [weak self] error in
+            self?.makeToast(error?.localizedDescription)
+        }.store(in: &viewModel.subscriber)
+        
+        viewModel.$requestSuccess.filter({ $0 }).sink { [weak self] _ in
+            self?.delegate?.rideRequestSuccess()
+            self?.dismiss()
+        }.store(in: &viewModel.subscriber)
         
         viewModel.$placemark.sink { [weak self] place in
             self?.titleLabel.text = place.name
