@@ -112,15 +112,17 @@ class MainViewModel: BaseViewModel {
         self.locationRepository.updateLocation(location: location)
     }
     
+    var observeTripDisposable: Disposable?
     private func observerTrip() {
         guard let coordinate = locationManager.location?.coordinate else { return }
-        tripRepository.observeTrip(center: .init(latitude: coordinate.latitude, longitude: coordinate.longitude), radius: 10).subscribe(onNext: { [weak self] result in
+        observeTripDisposable?.dispose()
+        observeTripDisposable = tripRepository.observeTrip(center: .init(latitude: coordinate.latitude, longitude: coordinate.longitude), radius: 10).subscribe(onNext: { [weak self] result in
             switch result {
             case .success(let trip): self?.trip = trip
             case .failure(let error): self?.error = error
             }
-        }).disposed(by: disposeBag)
-
+        })
+        observeTripDisposable?.disposed(by: disposeBag)
     }
     
 }
