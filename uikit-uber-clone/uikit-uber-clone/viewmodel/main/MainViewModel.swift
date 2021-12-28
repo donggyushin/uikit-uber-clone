@@ -52,11 +52,12 @@ class MainViewModel: BaseViewModel {
         destination = DestinationPointAnnotation(id: place.title ?? "", coordinate: place.coordinate)
     }
     
+    var observeNearbyUsersDisposables: Disposable?
     private func observeNearbyUsers(location: CLLocation) {
-        userRepository.observeNearbyUsers(center: location, radius: 10) { [weak self] result in
+        observeNearbyUsersDisposables?.dispose()
+        observeNearbyUsersDisposables = userRepository.observeNearbyUsers(center: location, radius: 10).subscribe(onNext: { [weak self] result in
             switch result {
-            case .failure(let error):
-                print("DEBUG: error: \(error.localizedDescription)")
+            case .failure(let error): self?.error = error
             case .success(let user):
                 if let existingUser = self?.nearbyUsers.enumerated().first(where: { $1 == user }) {
                     var userToUpdate = existingUser.element
@@ -66,9 +67,9 @@ class MainViewModel: BaseViewModel {
                 } else {
                     self?.nearbyUsers.append(user)
                 }
-                
             }
-        }
+        })
+        observeNearbyUsersDisposables?.disposed(by: disposeBag)
     }
     
     func locationsUpdated(locations: [CLLocation]) {

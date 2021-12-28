@@ -13,7 +13,7 @@ protocol UserRepository {
     
     func fetchUser(uid: String, completion: @escaping (Result<UberUser, Error>) -> Void)
     
-    func observeNearbyUsers(center: CLLocation, radius: Double, completion: @escaping (Result<UberUser, Error>) -> Void)
+    func observeNearbyUsers(center: CLLocation, radius: Double) -> Observable<Result<UberUser, Error>>
     
     func createUser(email: String, password: String, fullname: String, accountType: UserType) -> Observable<Result<User, Error>>
     

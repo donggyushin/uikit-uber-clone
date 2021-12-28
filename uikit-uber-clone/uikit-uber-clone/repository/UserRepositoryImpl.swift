@@ -26,30 +26,35 @@ class UserRepositoryImpl: UserRepository {
     
     private var circleQueryObserver: GFCircleQuery?
     
-    func observeNearbyUsers(center: CLLocation, radius: Double, completion: @escaping (Result<UberUser, Error>) -> Void) {
-        guard let currentUid = Auth.auth().currentUser?.uid else { return }
-        let geoFire = GeoFire(firebaseRef: REFERENCE_LOCATION)
-        circleQueryObserver?.removeAllObservers()
-        circleQueryObserver = geoFire.query(at: center, withRadius: radius)
+    func observeNearbyUsers(center: CLLocation, radius: Double) -> Observable<Result<UberUser, Error>> {
         
-        circleQueryObserver?.observe(.keyEntered, with: { uid, location in
-            self.locationDetected(uid: uid, currentUid: currentUid, location: location, completion: completion)
-        })
-        
-        circleQueryObserver?.observe(.keyMoved, with: { uid, location in
-            self.locationDetected(uid: uid, currentUid: currentUid, location: location, completion: completion)
-        })
+        return .create { observer in
+            guard let currentUid = Auth.auth().currentUser?.uid else { return Disposables.create() }
+            let geoFire = GeoFire(firebaseRef: REFERENCE_LOCATION)
+            self.circleQueryObserver?.removeAllObservers()
+            self.circleQueryObserver = geoFire.query(at: center, withRadius: radius)
+            
+            self.circleQueryObserver?.observe(.keyEntered, with: { uid, location in
+                self.locationDetected(uid: uid, currentUid: currentUid, location: location, observer: observer)
+            })
+            
+            self.circleQueryObserver?.observe(.keyMoved, with: { uid, location in
+                self.locationDetected(uid: uid, currentUid: currentUid, location: location, observer: observer)
+            })
+            
+            return Disposables.create()
+        }
     }
     
-    private func locationDetected(uid: String, currentUid: String, location: CLLocation, completion: @escaping (Result<UberUser, Error>) -> Void) {
+    private func locationDetected(uid: String, currentUid: String, location: CLLocation, observer: AnyObserver<Result<UberUser, Error>>) {
         if uid != currentUid {
             self.fetchUser(uid: uid) { result in
                 switch result {
                 case .failure(let error):
-                    completion(.failure(error))
+                    observer.onNext(.failure(error))
                 case .success(var user):
                     user.location = location
-                    completion(.success(user))
+                    observer.onNext(.success(user))
                 }
             }
         }
