@@ -114,16 +114,12 @@ class MainViewModel: BaseViewModel {
     
     private func observerTrip() {
         guard let coordinate = locationManager.location?.coordinate else { return }
-        tripRepository.observeTrip(center: .init(latitude: coordinate.latitude, longitude: coordinate.longitude), radius: 10).sink { [weak self] result in
+        tripRepository.observeTrip(center: .init(latitude: coordinate.latitude, longitude: coordinate.longitude), radius: 10).subscribe(onNext: { [weak self] result in
             switch result {
-            case .failure(let error):
-                self?.error = error
-            case .finished:
-                print("DEBUG: observeTrip finished..")
+            case .success(let trip): self?.trip = trip
+            case .failure(let error): self?.error = error
             }
-        } receiveValue: { [weak self] trip in
-            self?.trip = trip
-        }.store(in: &subscriber)
+        }).disposed(by: disposeBag)
 
     }
     

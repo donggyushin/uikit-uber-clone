@@ -7,8 +7,9 @@
 
 import Combine
 import MapKit
+import RxSwift
 
 protocol TripRepository {
     func postTrip(pickup: CLLocationCoordinate2D, destination: CLLocationCoordinate2D) -> Future<Bool, Error>
-    func observeTrip(center: CLLocation, radius: Double) -> Future<Trip, Error>
+    func observeTrip(center: CLLocation, radius: Double) -> Observable<Result<Trip, Error>>
 }

@@ -138,7 +138,7 @@ class MainViewController: BaseViewController {
         }.store(in: &subscriber)
         
         mainViewModel.$trip.compactMap({ $0 }).sink { [weak self] trip in
-            print("근처에서 trip 요청이 감지되었습니다. \(trip)")
+            print("[test] 근처에서 trip 요청이 감지되었습니다. \(trip)")
         }.store(in: &subscriber)
     }
     
