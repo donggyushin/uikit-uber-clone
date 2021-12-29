@@ -147,10 +147,12 @@ class MainViewController: BaseViewController {
             self?.present(vc, animated: true)
         }.store(in: &subscriber)
         
+        // Driver 기준
         mainViewModel.$trip.compactMap({ $0 }).filter({ $0.state == .accepted }).sink { [weak self] trip in
             print("[test] trip accepted!! \(trip)")
         }.store(in: &subscriber)
         
+        // Rider 기준
         mainViewModel.$myTripRequest.sink(receiveValue: { [weak self] trip in
             self?.requestLoadingView.isHidden = trip?.state != .requested
         }).store(in: &subscriber)
