@@ -16,4 +16,5 @@ protocol TripRepository {
     func observeMyTrip() -> Observable<Trip>
     func observeTrip(trip: Trip) -> Observable<Trip>
     func cancelTrip(trip: Trip) -> Observable<Error?>
+    func observeAcceptedTripOnlyForDriver() -> Observable<Trip>
 }

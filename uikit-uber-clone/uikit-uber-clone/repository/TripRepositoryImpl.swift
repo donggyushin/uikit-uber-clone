@@ -17,6 +17,18 @@ class TripRepositoryImpl: TripRepository {
     
     private var circleQueryObserver: GFCircleQuery?
     
+    // Only for driver
+    func observeAcceptedTripOnlyForDriver() -> Observable<Trip> {
+        return .create { observer in
+            guard let uid = Auth.auth().currentUser?.uid else { return Disposables.create() }
+            COLLECTION_TRIP.whereField("driverId", isEqualTo: uid).whereField("state", isEqualTo: Trip.TripState.accepted.rawValue).addSnapshotListener { snapshot, _ in
+                guard let trip = snapshot?.documentChanges.first(where: { $0.type == .added }).map({ Trip(passengerId: $0.document.documentID, data: $0.document.data())}) else { return }
+                observer.onNext(trip)
+            }
+            return Disposables.create()
+        }
+    }
+    
     func cancelTrip(trip: Trip) -> Observable<Error?> {
         return .create { observer in
             guard let uid = Auth.auth().currentUser?.uid else { return Disposables.create() }

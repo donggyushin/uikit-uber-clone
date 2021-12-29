@@ -13,6 +13,7 @@ struct DIViewController {
     let mainViewControllerFactory: () -> MainViewController
     let splashViewControllerFactory: () -> SplashViewController
     let pickupViewControllerFactory: (Trip) -> PickupViewController
+    let matchedViewControllerFactory: (Trip) -> MatchedViewController
 }
 
 extension DIViewController {
@@ -29,14 +30,18 @@ extension DIViewController {
             return .init(signUpViewModel: diViewModel.signUpViewModelFactory())
         }
         
-        let mainViewControllerFactory: () -> MainViewController = { .init(mainViewModel: DIViewModel.resolve().mainViewModelFactory(), linkUtil: diUtil.linkUtil, mapKitUtik: diUtil.mapKitUtil) }
+        let mainViewControllerFactory: () -> MainViewController = { .init(mainViewModel: diViewModel.mainViewModelFactory(), linkUtil: diUtil.linkUtil, mapKitUtik: diUtil.mapKitUtil) }
         
         let splashViewControllerFactory: () -> SplashViewController = { .init(splashViewModel: diViewModel.splashViewModelFactory()) }
         
         let pickupViewControllerFactory: (Trip) -> PickupViewController = { trip in
-            return .init(viewModel: DIViewModel.resolve().pickupViewModelFactory(trip))
+            return .init(viewModel: diViewModel.pickupViewModelFactory(trip))
         }
         
-        return .init(loginViewControllerFactory: loginViewControllerFactory, signUpViewControllerFactory: signUpViewControllerFactory, mainViewControllerFactory: mainViewControllerFactory, splashViewControllerFactory: splashViewControllerFactory, pickupViewControllerFactory: pickupViewControllerFactory)
+        let matchedViewControllerFactory: (Trip) -> MatchedViewController = { trip in
+            return .init(viewModel: diViewModel.matchedViewModelFactory(trip))
+        }
+        
+        return .init(loginViewControllerFactory: loginViewControllerFactory, signUpViewControllerFactory: signUpViewControllerFactory, mainViewControllerFactory: mainViewControllerFactory, splashViewControllerFactory: splashViewControllerFactory, pickupViewControllerFactory: pickupViewControllerFactory, matchedViewControllerFactory: matchedViewControllerFactory)
     }
 }

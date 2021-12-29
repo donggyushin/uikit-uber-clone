@@ -167,6 +167,12 @@ class MainViewController: BaseViewController {
         mainViewModel.$myTripRequest.sink(receiveValue: { [weak self] trip in
             self?.requestLoadingView.isHidden = trip?.state != .requested
         }).store(in: &subscriber)
+        
+        mainViewModel.$acceptedTrip.compactMap({ $0 }).sink { [weak self] trip in
+            let vc = DIViewController.resolve().matchedViewControllerFactory(trip)
+            vc.delegate = self 
+            self?.navigationController?.pushViewController(vc, animated: true)
+        }.store(in: &subscriber)
     }
     
     private func presentCancelAlert() {

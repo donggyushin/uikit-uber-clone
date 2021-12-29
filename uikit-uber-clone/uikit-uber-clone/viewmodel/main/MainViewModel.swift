@@ -21,6 +21,7 @@ class MainViewModel: BaseViewModel {
     @Published var userType: UserType = .DRIVER
     @Published var trip: Trip? = nil
     @Published var myTripRequest: Trip?
+    @Published var acceptedTrip: Trip?
     
     let locationManager = CLLocationManager()
     private let locationRepository: LocationRepository
@@ -97,6 +98,10 @@ class MainViewModel: BaseViewModel {
             }
         }.store(in: &subscriber)
         
+        $myTripRequest.compactMap({ $0 }).filter({ $0.state == .accepted }).sink { [weak self] trip in
+            self?.acceptedTrip = trip
+        }.store(in: &subscriber)
+        
         $location.compactMap({ $0 }).sink { [weak self] location in
             self?.locationUpdated(location: location)
         }.store(in: &subscriber)
@@ -125,9 +130,12 @@ class MainViewModel: BaseViewModel {
     }
     
     var observeTripDisposable: Disposable?
+    var observeAcceptedTripOnlyForDriverDisposable: Disposable?
     private func observerTrip() {
         guard let coordinate = locationManager.location?.coordinate else { return }
         observeTripDisposable?.dispose()
+        observeAcceptedTripOnlyForDriverDisposable?.dispose()
+        
         observeTripDisposable = tripRepository.observeTrip(center: .init(latitude: coordinate.latitude, longitude: coordinate.longitude), radius: 10).subscribe(onNext: { [weak self] result in
             switch result {
             case .success(let trip): self?.trip = trip
@@ -135,6 +143,11 @@ class MainViewModel: BaseViewModel {
             }
         })
         observeTripDisposable?.disposed(by: disposeBag)
+        
+        observeAcceptedTripOnlyForDriverDisposable = tripRepository.observeAcceptedTripOnlyForDriver().subscribe(onNext: { [weak self] trip in
+            self?.acceptedTrip = trip
+        })
+        observeAcceptedTripOnlyForDriverDisposable?.disposed(by: disposeBag)
     }
     
     private func observeMyTrip() {

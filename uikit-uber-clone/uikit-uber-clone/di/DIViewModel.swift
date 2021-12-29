@@ -17,6 +17,7 @@ struct DIViewModel {
     let locationTableViewModelFactory: (MKCoordinateRegion) -> LocationTableViewModel
     let rideRequestViewModelFactory: (MKPlacemark) -> RideRequestViewModel
     let pickupViewModelFactory: (Trip) -> PickupViewModel
+    let matchedViewModelFactory: (Trip) -> MatchedViewModel
 }
 
 extension DIViewModel {
@@ -39,13 +40,17 @@ extension DIViewModel {
         }
         
         let rideRequestViewModelFactory: (MKPlacemark) -> RideRequestViewModel = { place in
-            return .init(placemark: place, tripRepository: DIRepository.resolve().tripRepository)
+            return .init(placemark: place, tripRepository: diRepository.tripRepository)
         }
         
         let pickupViewModelFactory: (Trip) -> PickupViewModel = { trip in
-            return .init(trip: trip, tripRepository: DIRepository.resolve().tripRepository)
+            return .init(trip: trip, tripRepository: diRepository.tripRepository)
         }
         
-        return .init(userViewModel: userViewModel, signUpViewModelFactory: signUpViewModelFactory, loginViewModelFactory: loginViewModelFactory, splashViewModelFactory: splashViewModelFactory, mainViewModelFactory: mainViewModelFactory, locationTableViewModelFactory: locationTableViewModelFactory, rideRequestViewModelFactory: rideRequestViewModelFactory, pickupViewModelFactory: pickupViewModelFactory)
+        let matchedViewModelFactory: (Trip) -> MatchedViewModel = { trip in
+            return .init(trip: trip, tripRepository: diRepository.tripRepository)
+        }
+        
+        return .init(userViewModel: userViewModel, signUpViewModelFactory: signUpViewModelFactory, loginViewModelFactory: loginViewModelFactory, splashViewModelFactory: splashViewModelFactory, mainViewModelFactory: mainViewModelFactory, locationTableViewModelFactory: locationTableViewModelFactory, rideRequestViewModelFactory: rideRequestViewModelFactory, pickupViewModelFactory: pickupViewModelFactory, matchedViewModelFactory: matchedViewModelFactory)
     }
 }
