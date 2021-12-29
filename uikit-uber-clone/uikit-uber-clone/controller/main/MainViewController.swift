@@ -8,6 +8,7 @@
 import UIKit
 import MapKit
 import Firebase
+import Combine
 
 class MainViewController: BaseViewController {
     
@@ -136,8 +137,9 @@ class MainViewController: BaseViewController {
             }
         }.store(in: &subscriber)
         
-        mainViewModel.$userType.filter({ $0 == .DRIVER }).sink { [weak self] _ in
-            self?.activityView.isHidden = true
+        Publishers.CombineLatest(mainViewModel.$userType, mainViewModel.$myTripRequest).sink { [weak self] (usertype, mytripRequest) in
+            let visible = (usertype == .RIDER) && (mytripRequest?.state != .requested)
+            self?.activityView.isHidden = !visible
         }.store(in: &subscriber)
         
         mainViewModel.$trip.compactMap({ $0 }).filter({ $0.state == .requested}) .sink { [weak self] trip in
