@@ -23,6 +23,9 @@ class MainViewController: BaseViewController {
         view.delegate = self
         return view
     }()
+    
+    private let requestLoadingView = RequestLoadingView()
+    
     private let activityView = LocationInputActivationView()
     private lazy var locationInputHeaderView: LocationInputHeaderView = .init(mainViewController: self)
     private lazy var locationTableView: LocationTableView = {
@@ -147,6 +150,10 @@ class MainViewController: BaseViewController {
         mainViewModel.$trip.compactMap({ $0 }).filter({ $0.state == .accepted }).sink { [weak self] trip in
             print("[test] trip accepted!! \(trip)")
         }.store(in: &subscriber)
+        
+        mainViewModel.$myTripRequest.sink(receiveValue: { [weak self] trip in
+            self?.requestLoadingView.isHidden = trip?.state != .requested
+        }).store(in: &subscriber)
     }
     
     private func configureUI() {
@@ -160,6 +167,12 @@ class MainViewController: BaseViewController {
         menuButton.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide)
             make.left.equalTo(view).offset(16)
+        }
+        
+        view.addSubview(requestLoadingView)
+        requestLoadingView.snp.makeConstraints { make in
+            make.centerY.equalTo(menuButton)
+            make.left.equalTo(menuButton.snp.right).offset(5)
         }
         
         view.addSubview(activityView)

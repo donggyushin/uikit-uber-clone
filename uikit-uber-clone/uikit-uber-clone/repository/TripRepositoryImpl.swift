@@ -17,6 +17,17 @@ class TripRepositoryImpl: TripRepository {
     
     private var circleQueryObserver: GFCircleQuery?
     
+    func observeMyTrip() -> Observable<Trip> {
+        return .create { observer in
+            guard let uid = Auth.auth().currentUser?.uid else { return Disposables.create() }
+            COLLECTION_TRIP.document(uid).addSnapshotListener { snapshot, _ in
+                guard let data = snapshot?.data() else { return }
+                observer.onNext(Trip(passengerId: uid, data: data))
+            }
+            return Disposables.create()
+        }
+    }
+    
     func observeTrip(center: CLLocation, radius: Double) -> Observable<Result<Trip, Error>> {
         
         return .create { observer in

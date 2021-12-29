@@ -20,6 +20,7 @@ class MainViewModel: BaseViewModel {
     @Published var userTrackingMode: MKUserTrackingMode = .follow
     @Published var userType: UserType = .DRIVER
     @Published var trip: Trip? = nil
+    @Published var myTripRequest: Trip?
     
     let locationManager = CLLocationManager()
     private let locationRepository: LocationRepository
@@ -81,8 +82,9 @@ class MainViewModel: BaseViewModel {
     private func bind() {
         userViewModel.$user.compactMap({ $0 }).sink { [weak self] user in
             self?.userType = user.userType
-            if user.userType == .DRIVER {
-                self?.observerTrip()
+            switch user.userType {
+            case .DRIVER: self?.observerTrip()
+            case .RIDER: self?.observeMyTrip()
             }
         }.store(in: &subscriber)
         
@@ -124,6 +126,12 @@ class MainViewModel: BaseViewModel {
             }
         })
         observeTripDisposable?.disposed(by: disposeBag)
+    }
+    
+    private func observeMyTrip() {
+        tripRepository.observeMyTrip().subscribe(onNext: { [weak self] trip in
+            self?.myTripRequest = trip
+        }).disposed(by: disposeBag)
     }
     
 }
