@@ -31,11 +31,10 @@ class TripRepositoryImpl: TripRepository {
     
     func cancelTrip(trip: Trip) -> Observable<Error?> {
         return .create { observer in
-            guard let uid = Auth.auth().currentUser?.uid else { return Disposables.create() }
             let data: [String: Any] = [
                 "state": Trip.TripState.canceled.rawValue
             ]
-            COLLECTION_TRIP.document(uid).updateData(data) { error in
+            COLLECTION_TRIP.document(trip.passengerId).updateData(data) { error in
                 observer.onNext(error)
                 observer.onCompleted()
             }
