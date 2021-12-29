@@ -12,6 +12,7 @@ struct DIViewController {
     let signUpViewControllerFactory: () -> SignUpViewController
     let mainViewControllerFactory: () -> MainViewController
     let splashViewControllerFactory: () -> SplashViewController
+    let pickupViewControllerFactory: (Trip) -> PickupViewController
 }
 
 extension DIViewController {
@@ -32,6 +33,10 @@ extension DIViewController {
         
         let splashViewControllerFactory: () -> SplashViewController = { .init(splashViewModel: diViewModel.splashViewModelFactory()) }
         
-        return .init(loginViewControllerFactory: loginViewControllerFactory, signUpViewControllerFactory: signUpViewControllerFactory, mainViewControllerFactory: mainViewControllerFactory, splashViewControllerFactory: splashViewControllerFactory)
+        let pickupViewControllerFactory: (Trip) -> PickupViewController = { trip in
+            return .init(viewModel: DIViewModel.resolve().pickupViewModelFactory(trip))
+        }
+        
+        return .init(loginViewControllerFactory: loginViewControllerFactory, signUpViewControllerFactory: signUpViewControllerFactory, mainViewControllerFactory: mainViewControllerFactory, splashViewControllerFactory: splashViewControllerFactory, pickupViewControllerFactory: pickupViewControllerFactory)
     }
 }

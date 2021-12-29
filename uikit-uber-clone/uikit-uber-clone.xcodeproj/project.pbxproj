@@ -72,6 +72,8 @@
 		706989052778A8BF0034FE8F /* PlaceRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706989042778A8BF0034FE8F /* PlaceRepositoryImpl.swift */; };
 		706989072778A9AA0034FE8F /* PlaceRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706989062778A9AA0034FE8F /* PlaceRepository.swift */; };
 		707D4F032777C7FB00E4B31D /* UserRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707D4F022777C7FB00E4B31D /* UserRepositoryImpl.swift */; };
+		708D675B277C717900169BC2 /* PickupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708D675A277C717900169BC2 /* PickupViewController.swift */; };
+		708D675E277C74D000169BC2 /* PickupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708D675D277C74D000169BC2 /* PickupViewModel.swift */; };
 		70CBFED9277A317F006C9123 /* UIScrollView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CBFED8277A317F006C9123 /* UIScrollView+Extension.swift */; };
 		70D0E0362778AF68008114B6 /* PlaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D0E0352778AF68008114B6 /* PlaceCell.swift */; };
 		70DCF8D2277839A500A9E633 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DCF8D1277839A500A9E633 /* SignUpViewModel.swift */; };
@@ -141,6 +143,8 @@
 		706989042778A8BF0034FE8F /* PlaceRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceRepositoryImpl.swift; sourceTree = "<group>"; };
 		706989062778A9AA0034FE8F /* PlaceRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceRepository.swift; sourceTree = "<group>"; };
 		707D4F022777C7FB00E4B31D /* UserRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepositoryImpl.swift; sourceTree = "<group>"; };
+		708D675A277C717900169BC2 /* PickupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickupViewController.swift; sourceTree = "<group>"; };
+		708D675D277C74D000169BC2 /* PickupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickupViewModel.swift; sourceTree = "<group>"; };
 		70CBFED8277A317F006C9123 /* UIScrollView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Extension.swift"; sourceTree = "<group>"; };
 		70D0E0352778AF68008114B6 /* PlaceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCell.swift; sourceTree = "<group>"; };
 		70DCF8D1277839A500A9E633 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
@@ -196,6 +200,7 @@
 		701487DC27784D1F007AF0DC /* main */ = {
 			isa = PBXGroup;
 			children = (
+				708D6759277C716800169BC2 /* pickup */,
 				701487DD27784D28007AF0DC /* MainViewController.swift */,
 			);
 			path = main;
@@ -204,6 +209,7 @@
 		701487DF277852D4007AF0DC /* main */ = {
 			isa = PBXGroup;
 			children = (
+				708D675C277C74C200169BC2 /* pickup */,
 				706989012778A6E10034FE8F /* locationInput */,
 				701487E0277852DC007AF0DC /* MainViewModel.swift */,
 			);
@@ -432,6 +438,22 @@
 			path = repository;
 			sourceTree = "<group>";
 		};
+		708D6759277C716800169BC2 /* pickup */ = {
+			isa = PBXGroup;
+			children = (
+				708D675A277C717900169BC2 /* PickupViewController.swift */,
+			);
+			path = pickup;
+			sourceTree = "<group>";
+		};
+		708D675C277C74C200169BC2 /* pickup */ = {
+			isa = PBXGroup;
+			children = (
+				708D675D277C74D000169BC2 /* PickupViewModel.swift */,
+			);
+			path = pickup;
+			sourceTree = "<group>";
+		};
 		70DCF8CF2778397400A9E633 /* viewmodel */ = {
 			isa = PBXGroup;
 			children = (
@@ -566,6 +588,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				708D675B277C717900169BC2 /* PickupViewController.swift in Sources */,
 				701735B32777A3EB004C589B /* UserInputTextFieldView.swift in Sources */,
 				70DCF8D6277839FF00A9E633 /* DIViewModel.swift in Sources */,
 				703F7C8F2779CF8F00F83432 /* LinkUtil.swift in Sources */,
@@ -583,6 +606,7 @@
 				701735C82777B1D2004C589B /* DIViewController.swift in Sources */,
 				701487FC277876C1007AF0DC /* references.swift in Sources */,
 				706989032778A6EC0034FE8F /* LocationTableViewModel.swift in Sources */,
+				708D675E277C74D000169BC2 /* PickupViewModel.swift in Sources */,
 				701735BC2777AF77004C589B /* BaseViewController.swift in Sources */,
 				701735B62777A71C004C589B /* UIImageView+Extension.swift in Sources */,
 				70DCF8E5277844E900A9E633 /* LoginViewModel.swift in Sources */,

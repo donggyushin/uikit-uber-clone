@@ -16,6 +16,7 @@ struct DIViewModel {
     let mainViewModelFactory: () -> MainViewModel
     let locationTableViewModelFactory: (MKCoordinateRegion) -> LocationTableViewModel
     let rideRequestViewModelFactory: (MKPlacemark) -> RideRequestViewModel
+    let pickupViewModelFactory: (Trip) -> PickupViewModel
 }
 
 extension DIViewModel {
@@ -41,6 +42,10 @@ extension DIViewModel {
             return .init(placemark: place, tripRepository: DIRepository.resolve().tripRepository)
         }
         
-        return .init(userViewModel: userViewModel, signUpViewModelFactory: signUpViewModelFactory, loginViewModelFactory: loginViewModelFactory, splashViewModelFactory: splashViewModelFactory, mainViewModelFactory: mainViewModelFactory, locationTableViewModelFactory: locationTableViewModelFactory, rideRequestViewModelFactory: rideRequestViewModelFactory)
+        let pickupViewModelFactory: (Trip) -> PickupViewModel = { trip in
+            return .init(trip: trip, tripRepository: DIRepository.resolve().tripRepository)
+        }
+        
+        return .init(userViewModel: userViewModel, signUpViewModelFactory: signUpViewModelFactory, loginViewModelFactory: loginViewModelFactory, splashViewModelFactory: splashViewModelFactory, mainViewModelFactory: mainViewModelFactory, locationTableViewModelFactory: locationTableViewModelFactory, rideRequestViewModelFactory: rideRequestViewModelFactory, pickupViewModelFactory: pickupViewModelFactory)
     }
 }

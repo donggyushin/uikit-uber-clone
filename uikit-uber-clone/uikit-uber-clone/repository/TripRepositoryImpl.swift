@@ -16,6 +16,7 @@ class TripRepositoryImpl: TripRepository {
     static let shared = TripRepositoryImpl()
     
     private var circleQueryObserver: GFCircleQuery?
+    
     func observeTrip(center: CLLocation, radius: Double) -> Observable<Result<Trip, Error>> {
         
         return .create { observer in
@@ -45,15 +46,22 @@ class TripRepositoryImpl: TripRepository {
         }
     }
     
-    private func tripIdDetected(uid: String, promise: @escaping (Result<Trip, Error>) -> Void) {
-        // 여기서 uid는 trip의 id임. 이 id를 갖고 있는 trip을 가져와서 반환한다.
-        COLLECTION_TRIP.document(uid).getDocument { snapshot, error in
-            if let error = error {
-                promise(.failure(error))
-            } else if let data = snapshot?.data() {
-                let trip: Trip = .init(passengerId: uid, data: data)
-                if trip.state == .requested { promise(.success(.init(passengerId: uid, data: data))) }
+    func acceptTrip(trip: Trip) -> Observable<Error?> {
+        return .create { observer in
+            
+            guard let uid = Auth.auth().currentUser?.uid else { return Disposables.create() }
+            
+            let data: [String: Any] = [
+                "driverId": uid,
+                "state": Trip.TripState.accepted.rawValue
+            ]
+            
+            COLLECTION_TRIP.document(trip.passengerId).updateData(data) { error in
+                observer.onNext(error)
+                observer.onCompleted()
             }
+            
+            return Disposables.create()
         }
     }
     

@@ -137,8 +137,15 @@ class MainViewController: BaseViewController {
             self?.activityView.isHidden = true
         }.store(in: &subscriber)
         
-        mainViewModel.$trip.compactMap({ $0 }).sink { [weak self] trip in
-            print("[test] 근처에서 trip 요청이 감지되었습니다. \(trip)")
+        mainViewModel.$trip.compactMap({ $0 }).filter({ $0.state == .requested}) .sink { [weak self] trip in
+            let vc = DIViewController.resolve().pickupViewControllerFactory(trip)
+            vc.delegate = self
+            vc.modalPresentationStyle = .fullScreen
+            self?.present(vc, animated: true)
+        }.store(in: &subscriber)
+        
+        mainViewModel.$trip.compactMap({ $0 }).filter({ $0.state == .accepted }).sink { [weak self] trip in
+            print("[test] trip accepted!! \(trip)")
         }.store(in: &subscriber)
     }
     
@@ -292,5 +299,11 @@ extension MainViewController: RideRequestViewDelegate {
     
     func rideRequestViewDismiss() {
         self.menuButtonTapped(mode: .back)
+    }
+}
+
+extension MainViewController: PickupViewControllerDelegate {
+    func didAcceptTrip(trip: Trip) {
+        mainViewModel.trip = trip
     }
 }
