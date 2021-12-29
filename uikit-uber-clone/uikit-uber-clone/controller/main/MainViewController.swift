@@ -25,6 +25,8 @@ class MainViewController: BaseViewController {
         return view
     }()
     
+    private let floatingCancelButton: FloatingCancelButton = .init()
+    
     private let requestLoadingView = RequestLoadingView()
     
     private let activityView = LocationInputActivationView()
@@ -65,6 +67,10 @@ class MainViewController: BaseViewController {
     }
     
     private func bind() {
+        
+        floatingCancelButton.rx.tap.asDriver().drive(onNext: { [weak self] in
+            self?.presentCancelAlert()
+        }).disposed(by: disposeBag)
         
         floatingCenterButton.rx.tap.asDriver().drive(onNext: { [weak self] in
             self?.setCenter()
@@ -138,8 +144,11 @@ class MainViewController: BaseViewController {
         }.store(in: &subscriber)
         
         Publishers.CombineLatest(mainViewModel.$userType, mainViewModel.$myTripRequest).sink { [weak self] (usertype, mytripRequest) in
-            let visible = (usertype == .RIDER) && (mytripRequest?.state != .requested)
-            self?.activityView.isHidden = !visible
+            let activityViewVisible = (usertype == .RIDER) && (mytripRequest?.state != .requested)
+            self?.activityView.isHidden = !activityViewVisible
+            
+            let floatingCancelButtonVisible = (usertype == .RIDER) && (mytripRequest?.state == .requested)
+            self?.floatingCancelButton.isHidden = !floatingCancelButtonVisible
         }.store(in: &subscriber)
         
         mainViewModel.$trip.compactMap({ $0 }).filter({ $0.state == .requested}) .sink { [weak self] trip in
@@ -160,6 +169,17 @@ class MainViewController: BaseViewController {
         }).store(in: &subscriber)
     }
     
+    private func presentCancelAlert() {
+        let alert = UIAlertController(title: nil, message: "Are you sure want to cancel your request?", preferredStyle: .alert)
+        let yes = UIAlertAction(title: "yes", style: .default) { _ in
+            self.mainViewModel.cancelButtonTapped()
+        }
+        let no = UIAlertAction(title: "no", style: .cancel, handler: nil)
+        alert.addAction(yes)
+        alert.addAction(no)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     private func configureUI() {
         
         locationInputHeaderView.delegate = locationTableView
@@ -171,6 +191,12 @@ class MainViewController: BaseViewController {
         menuButton.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide)
             make.left.equalTo(view).offset(16)
+        }
+        
+        view.addSubview(floatingCancelButton)
+        floatingCancelButton.snp.makeConstraints { make in
+            make.centerX.equalTo(menuButton)
+            make.top.equalTo(menuButton.snp.bottom).offset(20)
         }
         
         view.addSubview(requestLoadingView)
@@ -320,6 +346,10 @@ extension MainViewController: RideRequestViewDelegate {
 }
 
 extension MainViewController: PickupViewControllerDelegate {
+    func tripCancelled(error: Error) {
+        mainViewModel.error = error
+    }
+    
     func didAcceptTrip(trip: Trip) {
         mainViewModel.trip = trip
     }

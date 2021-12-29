@@ -79,6 +79,15 @@ class MainViewModel: BaseViewModel {
         }
     }
     
+    func cancelButtonTapped() {
+        guard let trip = myTripRequest else { return }
+        isLoading = true
+        tripRepository.cancelTrip(trip: trip).subscribe(onNext: { [weak self] error in
+            self?.isLoading = false
+            self?.error = error
+        }).disposed(by: disposeBag)
+    }
+    
     private func bind() {
         userViewModel.$user.compactMap({ $0 }).sink { [weak self] user in
             self?.userType = user.userType

@@ -16,6 +16,8 @@ class PickupViewModel: BaseViewModel {
     init(trip: Trip, tripRepository: TripRepository) {
         self.trip = trip
         self.tripRepository = tripRepository
+        super.init()
+        self.observerTrip()
     }
     
     func acceptTrip() {
@@ -24,6 +26,12 @@ class PickupViewModel: BaseViewModel {
             self?.isLoading = false 
             self?.success = error == nil
             self?.error = error
+        }).disposed(by: disposeBag)
+    }
+    
+    private func observerTrip() {
+        tripRepository.observeTrip(trip: trip).subscribe(onNext: { [weak self] trip in
+            self?.trip = trip
         }).disposed(by: disposeBag)
     }
 }

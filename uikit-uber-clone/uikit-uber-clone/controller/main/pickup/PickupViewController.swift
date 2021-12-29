@@ -11,6 +11,7 @@ import Firebase
 
 protocol PickupViewControllerDelegate: AnyObject {
     func didAcceptTrip(trip: Trip)
+    func tripCancelled(error: Error)
 }
 
 class PickupViewController: BaseViewController {
@@ -81,13 +82,19 @@ class PickupViewController: BaseViewController {
             self?.viewModel.acceptTrip()
         }).disposed(by: disposeBag)
         
-        viewModel.$trip.sink { [weak self] trip in
+        viewModel.$trip.filter({ $0.state == .requested }).sink { [weak self] trip in
             let pointAnnotation = MKPointAnnotation()
             pointAnnotation.coordinate = trip.pickupCoordinates
             let region: MKCoordinateRegion = .init(center: trip.pickupCoordinates, latitudinalMeters: 1000, longitudinalMeters: 1000)
             self?.mapView.setRegion(region, animated: true)
             self?.mapView.addAnnotation(pointAnnotation)
             self?.mapView.setCenter(pointAnnotation.coordinate, animated: true)
+        }.store(in: &subscriber)
+        
+        viewModel.$trip.filter({ $0.state == .canceled }).sink { [weak self] _ in
+            let error: MyError = .tripCancelled
+            self?.delegate?.tripCancelled(error: error)
+            self?.dismiss(animated: true)
         }.store(in: &subscriber)
         
         viewModel.$isLoading.sink { [weak self] loading in

@@ -81,25 +81,19 @@ class UserRepositoryImpl: UserRepository {
     func fetchUser() -> Observable<Result<UberUser, Error>> {
         return .create { observer in
             
-            guard let uid = Auth.auth().currentUser?.uid else {
-                let error: UserError = .no_uid
-                observer.onNext(.failure(error))
-                observer.onCompleted()
-                return Disposables.create() }
+            guard let uid = Auth.auth().currentUser?.uid else { return Disposables.create() }
             
             COLLECTION_USER.document(uid).getDocument { snapsnot, error in
                 if let error = error {
                     observer.onNext(.failure(error))
-                    observer.onCompleted()
                 } else if let data = snapsnot?.data() {
                     let user: UberUser = .init(data: data)
                     observer.onNext(.success(user))
-                    observer.onCompleted()
                 } else {
                     let error: MyError = .unknown
                     observer.onNext(.failure(error))
-                    observer.onCompleted()
                 }
+                observer.onCompleted()
             }
             
             return Disposables.create()
@@ -112,7 +106,6 @@ class UserRepositoryImpl: UserRepository {
             Auth.auth().createUser(withEmail: email, password: password) { result, error in
                 if let error = error {
                     observer.onNext(.failure(error))
-                    observer.onCompleted()
                 }else if let user = result?.user {
                     let data: [String: Any] = [
                         "uid": user.uid,
@@ -127,13 +120,12 @@ class UserRepositoryImpl: UserRepository {
                         } else {
                             observer.onNext(.success(user))
                         }
-                        observer.onCompleted()
                     }
                 } else {
                     let error: MyError = .unknown
                     observer.onNext(.failure(error))
-                    observer.onCompleted()
                 }
+                observer.onCompleted()
             }
             
             return Disposables.create()

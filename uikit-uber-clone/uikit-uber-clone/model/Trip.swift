@@ -26,7 +26,7 @@ struct Trip {
     enum TripState: Int {
         case requested
         case accepted
-        case inProgress
+        case canceled
         case completed
     }
 }

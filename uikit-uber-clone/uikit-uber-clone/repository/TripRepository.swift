@@ -14,4 +14,6 @@ protocol TripRepository {
     func observeTrip(center: CLLocation, radius: Double) -> Observable<Result<Trip, Error>>
     func acceptTrip(trip: Trip) -> Observable<Error?>
     func observeMyTrip() -> Observable<Trip>
+    func observeTrip(trip: Trip) -> Observable<Trip>
+    func cancelTrip(trip: Trip) -> Observable<Error?>
 }

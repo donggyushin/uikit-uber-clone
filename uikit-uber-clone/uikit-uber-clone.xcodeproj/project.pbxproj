@@ -59,6 +59,7 @@
 		7043A300277B3D7A000D90DF /* TripRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7043A2FF277B3D7A000D90DF /* TripRepositoryImpl.swift */; };
 		7043A302277B4078000D90DF /* TripRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7043A301277B4078000D90DF /* TripRepository.swift */; };
 		7043A304277B4989000D90DF /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7043A303277B4989000D90DF /* Trip.swift */; };
+		704A4EA7277C99910059600A /* FloatingCancelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704A4EA6277C99910059600A /* FloatingCancelButton.swift */; };
 		7055CEAA2777BD5D00399AC6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7055CEA92777BD5D00399AC6 /* GoogleService-Info.plist */; };
 		7055CEAD2777BDDB00399AC6 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 7055CEAC2777BDDB00399AC6 /* FirebaseAuth */; };
 		7055CEAF2777BDDB00399AC6 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 7055CEAE2777BDDB00399AC6 /* FirebaseDatabase */; };
@@ -139,6 +140,7 @@
 		7043A2FF277B3D7A000D90DF /* TripRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripRepositoryImpl.swift; sourceTree = "<group>"; };
 		7043A301277B4078000D90DF /* TripRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripRepository.swift; sourceTree = "<group>"; };
 		7043A303277B4989000D90DF /* Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
+		704A4EA6277C99910059600A /* FloatingCancelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingCancelButton.swift; sourceTree = "<group>"; };
 		7055CEA92777BD5D00399AC6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		706989022778A6EC0034FE8F /* LocationTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTableViewModel.swift; sourceTree = "<group>"; };
 		706989042778A8BF0034FE8F /* PlaceRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceRepositoryImpl.swift; sourceTree = "<group>"; };
@@ -236,6 +238,7 @@
 				701487F527786CAD007AF0DC /* DotView.swift */,
 				700CCF972779A82300998F4A /* FloatingCenterButton.swift */,
 				70F3DA082779B3F700D2A67B /* MenuButton.swift */,
+				704A4EA6277C99910059600A /* FloatingCancelButton.swift */,
 			);
 			path = global;
 			sourceTree = "<group>";
@@ -638,6 +641,7 @@
 				701735902777A02E004C589B /* SceneDelegate.swift in Sources */,
 				703F7C982779E61300F83432 /* RideRequestViewModel.swift in Sources */,
 				701487DB27784C33007AF0DC /* SplashViewController.swift in Sources */,
+				704A4EA7277C99910059600A /* FloatingCancelButton.swift in Sources */,
 				701487FE27787722007AF0DC /* LocationRepository.swift in Sources */,
 				703F7C932779D06E00F83432 /* MapKitUtil.swift in Sources */,
 				701487F12778670A007AF0DC /* UserViewModel.swift in Sources */,
