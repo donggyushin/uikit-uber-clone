@@ -88,7 +88,6 @@ class MatchedViewController: BaseViewController {
     
     private func presentCompleteView() {
         let view = CompletedView(viewModel: DIViewModel.resolve().completedViewModelFactory(viewModel.trip))
-        view.delegate = self
         self.view.addSubview(view)
     }
     
@@ -107,11 +106,5 @@ class MatchedViewController: BaseViewController {
 extension MatchedViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
         viewModel.userlocationChanged(userLocation: userLocation.coordinate)
-    }
-}
-
-extension MatchedViewController: CompletedViewDelegate {
-    func completeTrip() {
-        self.navigationController?.popViewController(animated: true)
     }
 }

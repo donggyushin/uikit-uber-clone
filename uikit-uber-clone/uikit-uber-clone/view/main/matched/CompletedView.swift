@@ -7,12 +7,7 @@
 
 import UIKit
 
-protocol CompletedViewDelegate: AnyObject {
-    func completeTrip()
-}
-
 class CompletedView: UIView {
-    weak var delegate: CompletedViewDelegate?
     private let height: CGFloat = 150
     private let button: BlueButton = {
         let view = BlueButton(buttonTitleText: "ARRIVED!")
@@ -47,7 +42,6 @@ class CompletedView: UIView {
         }.store(in: &viewModel.subscriber)
         
         viewModel.$success.filter({ $0 }).sink { [weak self] _ in
-            self?.delegate?.completeTrip()
             self?.dismiss()
         }.store(in: &viewModel.subscriber)
     }
