@@ -49,7 +49,7 @@ extension DIViewModel {
         }
         
         let matchedViewModelFactory: (Trip) -> MatchedViewModel = { trip in
-            return .init(trip: trip, tripRepository: diRepository.tripRepository)
+            return .init(trip: trip, tripRepository: diRepository.tripRepository, userViewModel: userViewModel)
         }
         
         let completedViewModelFactory: (Trip) -> CompletedViewModel = { trip in

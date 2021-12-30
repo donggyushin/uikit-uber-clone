@@ -15,10 +15,12 @@ class MatchedViewModel: BaseViewModel {
     @Published private var userlocation: CLLocationCoordinate2D?
     @Published private var distance: CLLocationDistance?
     private let tripRepository: TripRepository
+    private let userViewModel: UserViewModel
     
-    init(trip: Trip, tripRepository: TripRepository) {
+    init(trip: Trip, tripRepository: TripRepository, userViewModel: UserViewModel) {
         self.trip = trip
         self.tripRepository = tripRepository
+        self.userViewModel = userViewModel
         super.init()
         observeTrip()
         bind()
@@ -34,6 +36,7 @@ class MatchedViewModel: BaseViewModel {
         }.store(in: &subscriber)
         
         $distance.compactMap({ $0 }).sink { [weak self] distance in
+            guard self?.userViewModel.user?.userType == .RIDER else { return }
             if self?.arrived == true { return }
             self?.arrived = distance <= 100
         }.store(in: &subscriber)
