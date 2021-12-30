@@ -29,6 +29,16 @@ class TripRepositoryImpl: TripRepository {
         }
     }
     
+    func completeTrip(trip: Trip) -> Observable<Error?> {
+        return .create { observer in
+            COLLECTION_TRIP.document(trip.passengerId).updateData(["state": Trip.TripState.completed.rawValue]) { error in
+                observer.onNext(error)
+                observer.onCompleted()
+            }
+            return Disposables.create()
+        }
+    }
+    
     func cancelTrip(trip: Trip) -> Observable<Error?> {
         return .create { observer in
             let data: [String: Any] = [

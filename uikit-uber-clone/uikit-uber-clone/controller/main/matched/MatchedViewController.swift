@@ -69,18 +69,27 @@ class MatchedViewController: BaseViewController {
             self?.delegate?.tripCancelled(error: error)
             self?.navigationController?.popViewController(animated: true)
         }.store(in: &subscriber)
+        
+        viewModel.$arrived.sink { [weak self] arrived in
+            self?.floatingCancelButton.isHidden = arrived
+            if arrived {self?.presentCompleteView()}
+        }.store(in: &subscriber)
     }
     
     private func configureUI() {
         view.backgroundColor = BackgroundColors.shared.primaryColor
-        
         view.addSubview(mapView)
-        
         view.addSubview(floatingCancelButton)
         floatingCancelButton.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide).offset(20)
             make.left.equalTo(view).offset(20)
         }
+    }
+    
+    private func presentCompleteView() {
+        let view = CompletedView(viewModel: DIViewModel.resolve().completedViewModelFactory(viewModel.trip))
+        view.delegate = self
+        self.view.addSubview(view)
     }
     
     private func presentCancelAlert() {
@@ -96,5 +105,13 @@ class MatchedViewController: BaseViewController {
 }
 
 extension MatchedViewController: MKMapViewDelegate {
-    
+    func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
+        viewModel.userlocationChanged(userLocation: userLocation.coordinate)
+    }
+}
+
+extension MatchedViewController: CompletedViewDelegate {
+    func completeTrip() {
+        self.navigationController?.popViewController(animated: true)
+    }
 }

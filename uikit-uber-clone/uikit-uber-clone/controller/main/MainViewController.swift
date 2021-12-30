@@ -302,9 +302,9 @@ extension MainViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         guard let annotation = annotation as? DriverPointAnnotation else { return nil }
         let identifier = "DriverPointAnnotation"
-        let view = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) ?? MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-        view.image = .init(systemName: "car.fill")
-        return view
+        let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) ?? MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+        annotationView.image = .init(systemName: "car.fill")
+        return annotationView
     }
 }
 

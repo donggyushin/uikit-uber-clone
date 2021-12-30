@@ -7,9 +7,13 @@
 
 import UIKit
 import Combine
+import MapKit
 
 class MatchedViewModel: BaseViewModel {
     @Published var trip: Trip
+    @Published var arrived = false
+    @Published private var userlocation: CLLocationCoordinate2D?
+    @Published private var distance: CLLocationDistance?
     private let tripRepository: TripRepository
     
     init(trip: Trip, tripRepository: TripRepository) {
@@ -17,12 +21,32 @@ class MatchedViewModel: BaseViewModel {
         self.tripRepository = tripRepository
         super.init()
         observeTrip()
+        bind()
+    }
+    
+    private func bind() {
+        $userlocation.compactMap({ $0 }).sink { [weak self] location in
+            guard let trip = self?.trip else { return }
+            let destination = CLLocation(latitude: trip.destinationCoordinates.latitude, longitude: trip.destinationCoordinates.longitude)
+            let user = CLLocation(latitude: location.latitude, longitude: location.longitude)
+            let distance = destination.distance(from: user)
+            self?.distance = distance
+        }.store(in: &subscriber)
+        
+        $distance.compactMap({ $0 }).sink { [weak self] distance in
+            if self?.arrived == true { return }
+            self?.arrived = distance <= 100
+        }.store(in: &subscriber)
     }
     
     private func observeTrip() {
         tripRepository.observeTrip(trip: trip).subscribe(onNext: { [weak self] trip in
             self?.trip = trip
         }).disposed(by: disposeBag)
+    }
+    
+    func userlocationChanged(userLocation: CLLocationCoordinate2D) {
+        self.userlocation = userLocation
     }
     
     func cancelButtonTapped() {
