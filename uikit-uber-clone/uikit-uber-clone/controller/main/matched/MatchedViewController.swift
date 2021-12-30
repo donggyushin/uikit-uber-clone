@@ -70,6 +70,11 @@ class MatchedViewController: BaseViewController {
             self?.navigationController?.popViewController(animated: true)
         }.store(in: &subscriber)
         
+        viewModel.$trip.filter({ $0.state == .completed }).sink { [weak self] _ in
+            self?.delegate?.tripCompleted(message: "Your trip is completed!")
+            self?.navigationController?.popViewController(animated: true)
+        }.store(in: &subscriber)
+        
         viewModel.$arrived.sink { [weak self] arrived in
             self?.floatingCancelButton.isHidden = arrived
             if arrived {self?.presentCompleteView()}

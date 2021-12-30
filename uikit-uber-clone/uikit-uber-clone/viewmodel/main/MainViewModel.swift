@@ -22,6 +22,7 @@ class MainViewModel: BaseViewModel {
     @Published var trip: Trip? = nil
     @Published var myTripRequest: Trip?
     @Published var acceptedTrip: Trip?
+    @Published var toastMessage: String?
     
     let locationManager = CLLocationManager()
     private let locationRepository: LocationRepository

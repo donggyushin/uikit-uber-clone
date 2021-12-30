@@ -19,9 +19,6 @@ class CompletedViewModel: BaseViewModel {
         self.trip = trip
         super.init()
         observeTrip()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            self.arrivedButtonTapped()
-        }
     }
     
     private func observeTrip() {

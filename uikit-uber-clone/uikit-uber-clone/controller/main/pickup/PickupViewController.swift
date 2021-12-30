@@ -12,6 +12,7 @@ import Firebase
 protocol PickupViewControllerDelegate: AnyObject {
     func didAcceptTrip(trip: Trip)
     func tripCancelled(error: Error)
+    func tripCompleted(message: String)
 }
 
 class PickupViewController: BaseViewController {

@@ -173,6 +173,10 @@ class MainViewController: BaseViewController {
             vc.delegate = self 
             self?.navigationController?.pushViewController(vc, animated: true)
         }.store(in: &subscriber)
+        
+        mainViewModel.$toastMessage.compactMap({ $0 }).sink { [weak self] message in
+            self?.view.makeToast(message)
+        }.store(in: &subscriber)
     }
     
     private func presentCancelAlert() {
@@ -352,6 +356,10 @@ extension MainViewController: RideRequestViewDelegate {
 }
 
 extension MainViewController: PickupViewControllerDelegate {
+    func tripCompleted(message: String) {
+        mainViewModel.toastMessage = message
+    }
+    
     func tripCancelled(error: Error) {
         mainViewModel.error = error
     }
