@@ -38,11 +38,6 @@ class MainViewController: BaseViewController {
         return view
     }()
     
-    private let tempSignOutButton: BlueButton = {
-        let view = BlueButton(buttonTitleText: "test sign out")
-        return view
-    }()
-    
     private let floatingCenterButton = FloatingCenterButton()
     
     private let mainViewModel: MainViewModel
@@ -74,11 +69,6 @@ class MainViewController: BaseViewController {
         
         floatingCenterButton.rx.tap.asDriver().drive(onNext: { [weak self] in
             self?.setCenter()
-        }).disposed(by: disposeBag)
-        
-        tempSignOutButton.rx.tap.asDriver().drive(onNext: { [weak self] _ in
-            try? Auth.auth().signOut()
-            self?.navigationController?.setViewControllers([DIViewController.resolve().loginViewControllerFactory()], animated: true)
         }).disposed(by: disposeBag)
         
         activityView.tap.rx.event.asDriver().drive(onNext: { [weak self] _ in
@@ -158,11 +148,6 @@ class MainViewController: BaseViewController {
             self?.present(vc, animated: true)
         }.store(in: &subscriber)
         
-        // Driver 기준
-        mainViewModel.$trip.compactMap({ $0 }).filter({ $0.state == .accepted }).sink { [weak self] trip in
-            print("[test] trip accepted!! \(trip)")
-        }.store(in: &subscriber)
-        
         // Rider 기준
         mainViewModel.$myTripRequest.sink(receiveValue: { [weak self] trip in
             self?.requestLoadingView.isHidden = trip?.state != .requested
@@ -219,12 +204,6 @@ class MainViewController: BaseViewController {
         activityView.snp.makeConstraints { make in
             make.top.equalTo(menuButton.snp.bottom).offset(10)
             make.centerX.equalTo(view)
-        }
-        
-        view.addSubview(tempSignOutButton)
-        tempSignOutButton.snp.makeConstraints { make in
-            make.centerX.equalTo(view)
-            make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-20)
         }
         
         view.addSubview(floatingCenterButton)
