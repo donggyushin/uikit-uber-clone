@@ -54,7 +54,14 @@ class MatchedViewController: BaseViewController {
         }.store(in: &subscriber)
         
         viewModel.$trip.sink { [weak self] trip in
-            print("[test] 여기서 trip annotation 꽂아주어야 함")
+            let pointAnnotation: MKPointAnnotation = .init()
+            pointAnnotation.coordinate = trip.destinationCoordinates
+            self?.mapView.removeAnnotations(self?.mapView.annotations ?? [])
+            self?.mapView.addAnnotation(pointAnnotation)
+            var annotations: [MKAnnotation] = [pointAnnotation]
+            self?.mapView.annotations.compactMap({ $0 as? MKUserLocation }).forEach({ annotations.append($0) })
+            self?.mapView.selectAnnotation(pointAnnotation, animated: true)
+            self?.mapView.fitAllAnnotations(annotations: annotations)
         }.store(in: &subscriber)
         
         viewModel.$trip.filter({ $0.state == .canceled }).sink { [weak self] _ in
