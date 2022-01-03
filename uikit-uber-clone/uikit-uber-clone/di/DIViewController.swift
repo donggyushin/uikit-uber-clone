@@ -13,7 +13,7 @@ struct DIViewController {
     let loginViewControllerFactory: () -> LoginViewController
     let signUpViewControllerFactory: () -> SignUpViewController
     let mainViewControllerFactory: () -> MainViewController
-    let splashViewControllerFactory: () -> SplashViewController
+    let splashViewControllerFactory: () -> UINavigationController
     let pickupViewControllerFactory: (Trip) -> PickupViewController
     let matchedViewControllerFactory: (Trip) -> MatchedViewController
     let sideMenuViewController: (MainViewModel) -> SideMenuNavigationController
@@ -35,7 +35,9 @@ extension DIViewController {
         
         let mainViewControllerFactory: () -> MainViewController = { .init(mainViewModel: diViewModel.mainViewModelFactory(), linkUtil: diUtil.linkUtil, mapKitUtik: diUtil.mapKitUtil, userViewModel: diViewModel.userViewModel) }
         
-        let splashViewControllerFactory: () -> SplashViewController = { .init(splashViewModel: diViewModel.splashViewModelFactory()) }
+        let splashViewControllerFactory: () -> UINavigationController = {
+            return .init(rootViewController: SplashViewController(splashViewModel: diViewModel.splashViewModelFactory()))
+        }
         
         let pickupViewControllerFactory: (Trip) -> PickupViewController = { trip in
             return .init(viewModel: diViewModel.pickupViewModelFactory(trip))

@@ -32,7 +32,6 @@ class SplashViewController: BaseViewController {
     }
     
     private func bind() {
-        
         splashViewModel.$navigationType.compactMap({ $0 }).sink { [weak self] navigationType in
             switch navigationType {
             case .auth:
