@@ -12,6 +12,7 @@
 		7012D38727830B11003032E7 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7012D38627830B11003032E7 /* SideMenuViewController.swift */; };
 		7012D38A27830B73003032E7 /* SideMenu in Frameworks */ = {isa = PBXBuildFile; productRef = 7012D38927830B73003032E7 /* SideMenu */; };
 		7012D38D27830E2A003032E7 /* SideMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7012D38C27830E2A003032E7 /* SideMenuViewModel.swift */; };
+		70141208278338B6006C2024 /* KDCircularProgress in Frameworks */ = {isa = PBXBuildFile; productRef = 70141207278338B6006C2024 /* KDCircularProgress */; };
 		701487D827784B1B007AF0DC /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701487D727784B1B007AF0DC /* SplashViewModel.swift */; };
 		701487DB27784C33007AF0DC /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701487DA27784C33007AF0DC /* SplashViewController.swift */; };
 		701487DE27784D28007AF0DC /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701487DD27784D28007AF0DC /* MainViewController.swift */; };
@@ -183,6 +184,7 @@
 				7055CEAF2777BDDB00399AC6 /* FirebaseDatabase in Frameworks */,
 				70DCF8DE27783E3800A9E633 /* Toast in Frameworks */,
 				701735C32777B0AC004C589B /* RxRelay in Frameworks */,
+				70141208278338B6006C2024 /* KDCircularProgress in Frameworks */,
 				7012D38A27830B73003032E7 /* SideMenu in Frameworks */,
 				7055CEB72777BDDB00399AC6 /* FirebaseStorage in Frameworks */,
 				7055CEAD2777BDDB00399AC6 /* FirebaseAuth in Frameworks */,
@@ -591,6 +593,7 @@
 				7055CEBB2777BE8100399AC6 /* GeoFireUtils */,
 				70DCF8DD27783E3800A9E633 /* Toast */,
 				7012D38927830B73003032E7 /* SideMenu */,
+				70141207278338B6006C2024 /* KDCircularProgress */,
 			);
 			productName = "uikit-uber-clone";
 			productReference = 7017358A2777A02E004C589B /* uikit-uber-clone.app */;
@@ -627,6 +630,7 @@
 				7055CEB82777BE8100399AC6 /* XCRemoteSwiftPackageReference "geofire-objc" */,
 				70DCF8DC27783E3800A9E633 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 				7012D38827830B73003032E7 /* XCRemoteSwiftPackageReference "SideMenu" */,
+				70141206278338B6006C2024 /* XCRemoteSwiftPackageReference "KDCircularProgress" */,
 			);
 			productRefGroup = 7017358B2777A02E004C589B /* Products */;
 			projectDirPath = "";
@@ -962,6 +966,14 @@
 				minimumVersion = 6.0.0;
 			};
 		};
+		70141206278338B6006C2024 /* XCRemoteSwiftPackageReference "KDCircularProgress" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kaandedeoglu/KDCircularProgress";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		701735AF2777A27C004C589B /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit";
@@ -1009,6 +1021,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7012D38827830B73003032E7 /* XCRemoteSwiftPackageReference "SideMenu" */;
 			productName = SideMenu;
+		};
+		70141207278338B6006C2024 /* KDCircularProgress */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 70141206278338B6006C2024 /* XCRemoteSwiftPackageReference "KDCircularProgress" */;
+			productName = KDCircularProgress;
 		};
 		701735B02777A27C004C589B /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;

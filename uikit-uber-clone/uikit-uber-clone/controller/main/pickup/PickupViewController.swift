@@ -8,6 +8,7 @@
 import UIKit
 import MapKit
 import Firebase
+import KDCircularProgress
 
 protocol PickupViewControllerDelegate: AnyObject {
     func didAcceptTrip(trip: Trip)
@@ -32,6 +33,21 @@ class PickupViewController: BaseViewController {
         }
         view.layer.cornerRadius = 270 / 2
         return view
+    }()
+    
+    private lazy var progressView: KDCircularProgress = {
+        let progress = KDCircularProgress()
+//        progress.backgroundColor = .blue
+        progress.startAngle = -90
+        progress.progressThickness = 0.1
+        progress.trackThickness = 0.1
+        progress.clockwise = true
+        progress.gradientRotateSpeed = 2
+        progress.roundedCorners = false
+        progress.glowMode = .forward
+        progress.glowAmount = 7
+        progress.set(colors: UIColor.magenta)
+        return progress
     }()
     
     private let descriptionLabel: UILabel = {
@@ -129,5 +145,16 @@ class PickupViewController: BaseViewController {
             make.top.equalTo(view.safeAreaLayoutGuide).offset(50)
             make.centerX.equalTo(view)
         }
+        
+        
+        view.addSubview(progressView)
+        progressView.snp.makeConstraints { make in
+            make.left.equalTo(mapView).offset(-35)
+            make.right.equalTo(mapView).offset(35)
+            make.top.equalTo(mapView).offset(-35)
+            make.bottom.equalTo(mapView).offset(35)
+        }
+        
+        progressView.animate(fromAngle: 0, toAngle: 360, duration: 5, completion: nil)
     }
 }
