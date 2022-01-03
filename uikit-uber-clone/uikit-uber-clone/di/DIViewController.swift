@@ -20,9 +20,9 @@ struct DIViewController {
 }
 
 extension DIViewController {
-    static func resolve() -> DIViewController {
+    static func resolve(test: Bool = false) -> DIViewController {
         
-        let diViewModel = DIViewModel.resolve()
+        let diViewModel = DIViewModel.resolve(test: test)
         let diUtil = DIUtil.resolve()
         
         let loginViewControllerFactory: () -> LoginViewController = {

@@ -13,12 +13,12 @@ struct DIRepository {
 }
 
 extension DIRepository {
-    static func resolve() -> DIRepository {
+    static func resolve(test: Bool = false) -> DIRepository {
         
-        let userRepository: UserRepository = UserRepositoryImpl.shared
-        let locationRepository: LocationRepository = LocationRepositoryImpl.shared
-        let placeRepository: PlaceRepository = PlaceRepositoryImpl.shared
-        let tripRepository: TripRepository = TripRepositoryImpl.shared
+        let userRepository: UserRepository = test ? UserRepositoryTest.shared : UserRepositoryImpl.shared
+        let locationRepository: LocationRepository = test ? LocationRepositoryTest.shared : LocationRepositoryImpl.shared
+        let placeRepository: PlaceRepository = test ? PlaceRepositoryTest.shared : PlaceRepositoryImpl.shared
+        let tripRepository: TripRepository = test ? TripRepositoryTest.shared : TripRepositoryImpl.shared
         
         return .init(userRepository: userRepository, locationRepository: locationRepository, placeRepository: placeRepository, tripRepository: tripRepository)
     }

@@ -96,6 +96,10 @@
 		70DCF8E5277844E900A9E633 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DCF8E4277844E900A9E633 /* LoginViewModel.swift */; };
 		70F3DA092779B3F700D2A67B /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F3DA082779B3F700D2A67B /* MenuButton.swift */; };
 		70FAD3B327833D2100B4733F /* uikit_uber_cloneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70FAD3B227833D2100B4733F /* uikit_uber_cloneTests.swift */; };
+		70FAD3BA27833D5300B4733F /* UserRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70FAD3B927833D5300B4733F /* UserRepositoryTest.swift */; };
+		70FAD3BC27833F3700B4733F /* LocationRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70FAD3BB27833F3700B4733F /* LocationRepositoryTest.swift */; };
+		70FAD3BE27833F7E00B4733F /* PlaceRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70FAD3BD27833F7E00B4733F /* PlaceRepositoryTest.swift */; };
+		70FAD3C02783405F00B4733F /* TripRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70FAD3BF2783405F00B4733F /* TripRepositoryTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -186,6 +190,10 @@
 		70F3DA082779B3F700D2A67B /* MenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
 		70FAD3B027833D2100B4733F /* uikit-uber-cloneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "uikit-uber-cloneTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		70FAD3B227833D2100B4733F /* uikit_uber_cloneTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = uikit_uber_cloneTests.swift; sourceTree = "<group>"; };
+		70FAD3B927833D5300B4733F /* UserRepositoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepositoryTest.swift; sourceTree = "<group>"; };
+		70FAD3BB27833F3700B4733F /* LocationRepositoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRepositoryTest.swift; sourceTree = "<group>"; };
+		70FAD3BD27833F7E00B4733F /* PlaceRepositoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceRepositoryTest.swift; sourceTree = "<group>"; };
+		70FAD3BF2783405F00B4733F /* TripRepositoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripRepositoryTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -523,6 +531,10 @@
 				706989062778A9AA0034FE8F /* PlaceRepository.swift */,
 				7043A2FF277B3D7A000D90DF /* TripRepositoryImpl.swift */,
 				7043A301277B4078000D90DF /* TripRepository.swift */,
+				70FAD3B927833D5300B4733F /* UserRepositoryTest.swift */,
+				70FAD3BB27833F3700B4733F /* LocationRepositoryTest.swift */,
+				70FAD3BD27833F7E00B4733F /* PlaceRepositoryTest.swift */,
+				70FAD3BF2783405F00B4733F /* TripRepositoryTest.swift */,
 			);
 			path = repository;
 			sourceTree = "<group>";
@@ -731,9 +743,11 @@
 				70CBFED9277A317F006C9123 /* UIScrollView+Extension.swift in Sources */,
 				701487ED27786296007AF0DC /* BackButton.swift in Sources */,
 				703F7C9A277A004B00F83432 /* MKMapView+Extension.swift in Sources */,
+				70FAD3C02783405F00B4733F /* TripRepositoryTest.swift in Sources */,
 				7043A304277B4989000D90DF /* Trip.swift in Sources */,
 				701487E1277852DC007AF0DC /* MainViewModel.swift in Sources */,
 				701487EF27786596007AF0DC /* UIView+Extension.swift in Sources */,
+				70FAD3BA27833D5300B4733F /* UserRepositoryTest.swift in Sources */,
 				701487F827786F72007AF0DC /* LocationTableView.swift in Sources */,
 				701735C82777B1D2004C589B /* DIViewController.swift in Sources */,
 				701487FC277876C1007AF0DC /* references.swift in Sources */,
@@ -752,6 +766,7 @@
 				70148800277893F6007AF0DC /* DriverPointAnnotation.swift in Sources */,
 				7017358E2777A02E004C589B /* AppDelegate.swift in Sources */,
 				703F7C962779DF2D00F83432 /* RideRequestView.swift in Sources */,
+				70FAD3BE27833F7E00B4733F /* PlaceRepositoryTest.swift in Sources */,
 				700CCF962779A15700998F4A /* DestinationPointAnnotation.swift in Sources */,
 				7043A302277B4078000D90DF /* TripRepository.swift in Sources */,
 				70F3DA092779B3F700D2A67B /* MenuButton.swift in Sources */,
@@ -778,6 +793,7 @@
 				701487E627785AB1007AF0DC /* LocationInputActivationView.swift in Sources */,
 				702DF2172777CAC80032441D /* MyError.swift in Sources */,
 				702DF2142777C9930032441D /* collections.swift in Sources */,
+				70FAD3BC27833F3700B4733F /* LocationRepositoryTest.swift in Sources */,
 				7012D38D27830E2A003032E7 /* SideMenuViewModel.swift in Sources */,
 				701735A92777A0E5004C589B /* LogoLabel.swift in Sources */,
 				706989052778A8BF0034FE8F /* PlaceRepositoryImpl.swift in Sources */,

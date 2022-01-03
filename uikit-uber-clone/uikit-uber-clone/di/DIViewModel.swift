@@ -23,9 +23,9 @@ struct DIViewModel {
 }
 
 extension DIViewModel {
-    static func resolve() -> DIViewModel {
+    static func resolve(test: Bool = false) -> DIViewModel {
         
-        let diRepository = DIRepository.resolve()
+        let diRepository = DIRepository.resolve(test: test)
         
         let userViewModel: UserViewModel = UserViewModel.shared
         
