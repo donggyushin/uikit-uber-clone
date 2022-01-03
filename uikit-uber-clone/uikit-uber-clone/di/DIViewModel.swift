@@ -27,7 +27,7 @@ extension DIViewModel {
         
         let diRepository = DIRepository.resolve(test: test)
         
-        let userViewModel: UserViewModel = UserViewModel.shared
+        let userViewModel: UserViewModel = test ? UserViewModel(userRepository: diRepository.userRepository) : UserViewModel.shared
         
         let signUpViewModelFactory: () -> SignUpViewModel = { .init(userRepository: diRepository.userRepository) }
         

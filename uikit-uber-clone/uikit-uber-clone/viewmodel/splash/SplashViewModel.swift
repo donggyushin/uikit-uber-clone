@@ -21,9 +21,7 @@ class SplashViewModel: BaseViewModel {
     }
     
     private func checkLogin() {
-        print("[test] 요긴 오겠지")
         userRepository.fetchUser().subscribe(onNext: { [weak self] result in
-            print("[test] 여길 안오는건가?")
             switch result {
             case .success(let user):
                 self?.navigationType = .home
