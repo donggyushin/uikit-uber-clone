@@ -13,9 +13,11 @@ class SplashViewModel: BaseViewModel {
     @Published var navigationType: NavigationType? = nil
     
     private let userRepository: UserRepository
+    private let userViewModel: UserViewModel
     
-    init(userRepository: UserRepository) {
+    init(userRepository: UserRepository, userViewModel: UserViewModel) {
         self.userRepository = userRepository
+        self.userViewModel = userViewModel
         super.init()
         checkLogin()
     }
@@ -25,7 +27,7 @@ class SplashViewModel: BaseViewModel {
             switch result {
             case .success(let user):
                 self?.navigationType = .home
-                UserViewModel.shared.user = user
+                self?.userViewModel.user = user
             case .failure:
                 self?.navigationType = .auth
             }

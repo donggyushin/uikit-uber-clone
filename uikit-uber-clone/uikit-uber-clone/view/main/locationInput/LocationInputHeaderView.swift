@@ -72,9 +72,11 @@ class LocationInputHeaderView: UIView {
     }()
     
     private let mainViewController: MainViewController
+    private let userViewModel: UserViewModel
     
-    init(mainViewController: MainViewController) {
+    init(mainViewController: MainViewController, userViewModel: UserViewModel) {
         self.mainViewController = mainViewController
+        self.userViewModel = userViewModel
         super.init(frame: CGRect.zero)
         
         configureUI()
@@ -87,7 +89,7 @@ class LocationInputHeaderView: UIView {
     
     private func bind() {
         
-        UserViewModel.shared.$user.sink { [weak self] user in
+        userViewModel.$user.sink { [weak self] user in
             self?.titleLabel.text = user?.fullname
         }.store(in: &subscriber)
         

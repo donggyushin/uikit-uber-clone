@@ -30,7 +30,8 @@ class MainViewController: BaseViewController {
     private let requestLoadingView = RequestLoadingView()
     
     private let activityView = LocationInputActivationView()
-    private lazy var locationInputHeaderView: LocationInputHeaderView = .init(mainViewController: self)
+    private let userViewModel: UserViewModel
+    private lazy var locationInputHeaderView: LocationInputHeaderView = .init(mainViewController: self, userViewModel: userViewModel)
     private lazy var locationTableView: LocationTableView = {
         let view = LocationTableView(frame: .init(x: 0, y: view.frame.height, width: view.frame.width, height: view.frame.height - LocationInputHeaderView.height), style: .grouped, viewModel: DIViewModel.resolve().locationTableViewModelFactory(self.mapView.region), locationInputHeaderView: locationInputHeaderView)
         view.locationTableViewDelegate = self
@@ -44,10 +45,11 @@ class MainViewController: BaseViewController {
     private let linkUtil: LinkUtil
     private let mapKitUtik: MapKitUtil
     
-    init(mainViewModel: MainViewModel, linkUtil: LinkUtil, mapKitUtik: MapKitUtil) {
+    init(mainViewModel: MainViewModel, linkUtil: LinkUtil, mapKitUtik: MapKitUtil, userViewModel: UserViewModel) {
         self.mainViewModel = mainViewModel
         self.linkUtil = linkUtil
         self.mapKitUtik = mapKitUtik
+        self.userViewModel = userViewModel
         super.init(nibName: nil, bundle: nil)
     }
     

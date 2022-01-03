@@ -11,10 +11,12 @@ import Combine
 class SignUpViewModel: BaseViewModel {
     
     private let userRepository: UserRepository
+    private let userViewModel: UserViewModel
     @Published var user: UberUser? = nil
     
-    init(userRepository: UserRepository) {
+    init(userRepository: UserRepository, userViewModel: UserViewModel) {
         self.userRepository = userRepository
+        self.userViewModel = userViewModel
         super.init()
     }
     
@@ -44,7 +46,7 @@ class SignUpViewModel: BaseViewModel {
             switch result {
             case .success(let user):
                 self?.user = user
-                UserViewModel.shared.user = user
+                self?.userViewModel.user = user
             case .failure(let error):
                 self?.error = error
             }

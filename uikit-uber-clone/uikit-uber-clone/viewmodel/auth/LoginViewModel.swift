@@ -12,9 +12,11 @@ class LoginViewModel: BaseViewModel {
     @Published var user: UberUser? = nil
     
     private let userRepository: UserRepository
+    private let userViewModel: UserViewModel
     
-    init(userRepository: UserRepository) {
+    init(userRepository: UserRepository, userViewModel: UserViewModel) {
         self.userRepository = userRepository
+        self.userViewModel = userViewModel
         super.init()
     }
     
@@ -37,7 +39,7 @@ class LoginViewModel: BaseViewModel {
             case .failure(let error):
                 self?.error = error
             case .success(let user):
-                UserViewModel.shared.user = user 
+                self?.userViewModel.user = user 
                 self?.user = user
             }
         }).disposed(by: disposeBag)

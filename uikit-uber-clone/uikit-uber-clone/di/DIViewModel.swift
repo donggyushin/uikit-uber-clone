@@ -29,11 +29,11 @@ extension DIViewModel {
         
         let userViewModel: UserViewModel = test ? UserViewModel(userRepository: diRepository.userRepository) : UserViewModel.shared
         
-        let signUpViewModelFactory: () -> SignUpViewModel = { .init(userRepository: diRepository.userRepository) }
+        let signUpViewModelFactory: () -> SignUpViewModel = { .init(userRepository: diRepository.userRepository, userViewModel: userViewModel) }
         
-        let loginViewModelFactory: () -> LoginViewModel = { .init(userRepository: diRepository.userRepository) }
+        let loginViewModelFactory: () -> LoginViewModel = { .init(userRepository: diRepository.userRepository, userViewModel: userViewModel) }
         
-        let splashViewModelFactory: () -> SplashViewModel = { .init(userRepository: diRepository.userRepository) }
+        let splashViewModelFactory: () -> SplashViewModel = { .init(userRepository: diRepository.userRepository, userViewModel: userViewModel) }
         
         let mainViewModelFactory: () -> MainViewModel = { .init(locationRepository: diRepository.locationRepository, userRepository: diRepository.userRepository, userViewModel: userViewModel, tripRepository: diRepository.tripRepository) }
         

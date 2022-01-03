@@ -33,7 +33,7 @@ extension DIViewController {
             return .init(signUpViewModel: diViewModel.signUpViewModelFactory())
         }
         
-        let mainViewControllerFactory: () -> MainViewController = { .init(mainViewModel: diViewModel.mainViewModelFactory(), linkUtil: diUtil.linkUtil, mapKitUtik: diUtil.mapKitUtil) }
+        let mainViewControllerFactory: () -> MainViewController = { .init(mainViewModel: diViewModel.mainViewModelFactory(), linkUtil: diUtil.linkUtil, mapKitUtik: diUtil.mapKitUtil, userViewModel: diViewModel.userViewModel) }
         
         let splashViewControllerFactory: () -> SplashViewController = { .init(splashViewModel: diViewModel.splashViewModelFactory()) }
         
