@@ -95,7 +95,18 @@
 		70DCF8E32778409400A9E633 /* UserError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DCF8E22778409400A9E633 /* UserError.swift */; };
 		70DCF8E5277844E900A9E633 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DCF8E4277844E900A9E633 /* LoginViewModel.swift */; };
 		70F3DA092779B3F700D2A67B /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F3DA082779B3F700D2A67B /* MenuButton.swift */; };
+		70FAD3B327833D2100B4733F /* uikit_uber_cloneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70FAD3B227833D2100B4733F /* uikit_uber_cloneTests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		70FAD3B427833D2100B4733F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 701735822777A02E004C589B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 701735892777A02E004C589B;
+			remoteInfo = "uikit-uber-clone";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		700CCF952779A15700998F4A /* DestinationPointAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationPointAnnotation.swift; sourceTree = "<group>"; };
@@ -173,6 +184,8 @@
 		70DCF8E22778409400A9E633 /* UserError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserError.swift; sourceTree = "<group>"; };
 		70DCF8E4277844E900A9E633 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		70F3DA082779B3F700D2A67B /* MenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
+		70FAD3B027833D2100B4733F /* uikit-uber-cloneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "uikit-uber-cloneTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		70FAD3B227833D2100B4733F /* uikit_uber_cloneTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = uikit_uber_cloneTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +208,13 @@
 				701735B12777A27C004C589B /* SnapKit in Frameworks */,
 				7055CEBC2777BE8100399AC6 /* GeoFireUtils in Frameworks */,
 				7055CEB12777BDDB00399AC6 /* FirebaseFirestore in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		70FAD3AD27833D2100B4733F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,6 +333,7 @@
 			isa = PBXGroup;
 			children = (
 				7017358C2777A02E004C589B /* uikit-uber-clone */,
+				70FAD3B127833D2100B4733F /* uikit-uber-cloneTests */,
 				7017358B2777A02E004C589B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -321,6 +342,7 @@
 			isa = PBXGroup;
 			children = (
 				7017358A2777A02E004C589B /* uikit-uber-clone.app */,
+				70FAD3B027833D2100B4733F /* uikit-uber-cloneTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -562,6 +584,14 @@
 			path = model;
 			sourceTree = "<group>";
 		};
+		70FAD3B127833D2100B4733F /* uikit-uber-cloneTests */ = {
+			isa = PBXGroup;
+			children = (
+				70FAD3B227833D2100B4733F /* uikit_uber_cloneTests.swift */,
+			);
+			path = "uikit-uber-cloneTests";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -599,6 +629,24 @@
 			productReference = 7017358A2777A02E004C589B /* uikit-uber-clone.app */;
 			productType = "com.apple.product-type.application";
 		};
+		70FAD3AF27833D2100B4733F /* uikit-uber-cloneTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 70FAD3B827833D2100B4733F /* Build configuration list for PBXNativeTarget "uikit-uber-cloneTests" */;
+			buildPhases = (
+				70FAD3AC27833D2100B4733F /* Sources */,
+				70FAD3AD27833D2100B4733F /* Frameworks */,
+				70FAD3AE27833D2100B4733F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				70FAD3B527833D2100B4733F /* PBXTargetDependency */,
+			);
+			name = "uikit-uber-cloneTests";
+			productName = "uikit-uber-cloneTests";
+			productReference = 70FAD3B027833D2100B4733F /* uikit-uber-cloneTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -611,6 +659,10 @@
 				TargetAttributes = {
 					701735892777A02E004C589B = {
 						CreatedOnToolsVersion = 13.2.1;
+					};
+					70FAD3AF27833D2100B4733F = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = 701735892777A02E004C589B;
 					};
 				};
 			};
@@ -637,6 +689,7 @@
 			projectRoot = "";
 			targets = (
 				701735892777A02E004C589B /* uikit-uber-clone */,
+				70FAD3AF27833D2100B4733F /* uikit-uber-cloneTests */,
 			);
 		};
 /* End PBXProject section */
@@ -650,6 +703,13 @@
 				7055CEAA2777BD5D00399AC6 /* GoogleService-Info.plist in Resources */,
 				701735972777A02E004C589B /* Assets.xcassets in Resources */,
 				701735952777A02E004C589B /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		70FAD3AE27833D2100B4733F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -732,7 +792,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		70FAD3AC27833D2100B4733F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				70FAD3B327833D2100B4733F /* uikit_uber_cloneTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		70FAD3B527833D2100B4733F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 701735892777A02E004C589B /* uikit-uber-clone */;
+			targetProxy = 70FAD3B427833D2100B4733F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		701735932777A02E004C589B /* Main.storyboard */ = {
@@ -934,6 +1010,42 @@
 			};
 			name = Release;
 		};
+		70FAD3B627833D2100B4733F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RTMQTS6F7G;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.donggyu.uikit-uber-cloneTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/uikit-uber-clone.app/uikit-uber-clone";
+			};
+			name = Debug;
+		};
+		70FAD3B727833D2100B4733F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RTMQTS6F7G;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.donggyu.uikit-uber-cloneTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/uikit-uber-clone.app/uikit-uber-clone";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -951,6 +1063,15 @@
 			buildConfigurations = (
 				7017359F2777A02E004C589B /* Debug */,
 				701735A02777A02E004C589B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		70FAD3B827833D2100B4733F /* Build configuration list for PBXNativeTarget "uikit-uber-cloneTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				70FAD3B627833D2100B4733F /* Debug */,
+				70FAD3B727833D2100B4733F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
