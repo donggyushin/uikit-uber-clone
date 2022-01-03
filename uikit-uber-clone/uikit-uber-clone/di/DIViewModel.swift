@@ -19,6 +19,7 @@ struct DIViewModel {
     let pickupViewModelFactory: (Trip) -> PickupViewModel
     let matchedViewModelFactory: (Trip) -> MatchedViewModel
     let completedViewModelFactory: (Trip) -> CompletedViewModel
+    let sideMenuViewModelFactory: () -> SideMenuViewModel
 }
 
 extension DIViewModel {
@@ -56,6 +57,10 @@ extension DIViewModel {
             return .init(tripRepository: diRepository.tripRepository, trip: trip)
         }
         
-        return .init(userViewModel: userViewModel, signUpViewModelFactory: signUpViewModelFactory, loginViewModelFactory: loginViewModelFactory, splashViewModelFactory: splashViewModelFactory, mainViewModelFactory: mainViewModelFactory, locationTableViewModelFactory: locationTableViewModelFactory, rideRequestViewModelFactory: rideRequestViewModelFactory, pickupViewModelFactory: pickupViewModelFactory, matchedViewModelFactory: matchedViewModelFactory, completedViewModelFactory: completedViewModelFactory)
+        let sideMenuViewModelFactory: () -> SideMenuViewModel = {
+            return .init(userViewModel: userViewModel)
+        }
+        
+        return .init(userViewModel: userViewModel, signUpViewModelFactory: signUpViewModelFactory, loginViewModelFactory: loginViewModelFactory, splashViewModelFactory: splashViewModelFactory, mainViewModelFactory: mainViewModelFactory, locationTableViewModelFactory: locationTableViewModelFactory, rideRequestViewModelFactory: rideRequestViewModelFactory, pickupViewModelFactory: pickupViewModelFactory, matchedViewModelFactory: matchedViewModelFactory, completedViewModelFactory: completedViewModelFactory, sideMenuViewModelFactory: sideMenuViewModelFactory)
     }
 }

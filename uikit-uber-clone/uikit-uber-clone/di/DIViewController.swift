@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import SideMenu
+import UIKit
 
 struct DIViewController {
     let loginViewControllerFactory: () -> LoginViewController
@@ -14,6 +16,7 @@ struct DIViewController {
     let splashViewControllerFactory: () -> SplashViewController
     let pickupViewControllerFactory: (Trip) -> PickupViewController
     let matchedViewControllerFactory: (Trip) -> MatchedViewController
+    let sideMenuViewController: (MainViewModel) -> SideMenuNavigationController
 }
 
 extension DIViewController {
@@ -42,6 +45,13 @@ extension DIViewController {
             return .init(viewModel: diViewModel.matchedViewModelFactory(trip))
         }
         
-        return .init(loginViewControllerFactory: loginViewControllerFactory, signUpViewControllerFactory: signUpViewControllerFactory, mainViewControllerFactory: mainViewControllerFactory, splashViewControllerFactory: splashViewControllerFactory, pickupViewControllerFactory: pickupViewControllerFactory, matchedViewControllerFactory: matchedViewControllerFactory)
+        let sideMenuViewController: (MainViewModel) -> SideMenuNavigationController = { mainViewModel in
+            let controller: SideMenuNavigationController = .init(rootViewController: SideMenuViewController(viewModel: diViewModel.sideMenuViewModelFactory(), mainViewModel: mainViewModel))
+            controller.leftSide = true
+            controller.menuWidth = UIScreen.main.bounds.width - 80
+            return controller
+        }
+        
+        return .init(loginViewControllerFactory: loginViewControllerFactory, signUpViewControllerFactory: signUpViewControllerFactory, mainViewControllerFactory: mainViewControllerFactory, splashViewControllerFactory: splashViewControllerFactory, pickupViewControllerFactory: pickupViewControllerFactory, matchedViewControllerFactory: matchedViewControllerFactory, sideMenuViewController: sideMenuViewController)
     }
 }

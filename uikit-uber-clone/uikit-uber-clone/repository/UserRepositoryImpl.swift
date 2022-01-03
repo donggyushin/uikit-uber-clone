@@ -14,6 +14,24 @@ class UserRepositoryImpl: UserRepository {
     
     static let shared = UserRepositoryImpl()
     
+    func changeUserType(user: UberUser) -> Observable<Error?> {
+        return .create { observer in
+            let currentUserType = user.userType
+            let uid = user.id
+            
+            let data: [String: Any] = [
+                "accountType": currentUserType == .RIDER ? UserType.DRIVER.rawValue : UserType.RIDER.rawValue
+            ]
+            
+            COLLECTION_USER.document(uid).updateData(data) { error in
+                observer.onNext(error)
+                observer.onCompleted()
+            }
+            
+            return Disposables.create()
+        }
+    }
+    
     func fetchUser(uid: String, completion: @escaping (Result<UberUser, Error>) -> Void) {
         COLLECTION_USER.document(uid).getDocument { snapshot, error in
             if let error = error {
@@ -81,7 +99,12 @@ class UserRepositoryImpl: UserRepository {
     func fetchUser() -> Observable<Result<UberUser, Error>> {
         return .create { observer in
             
-            guard let uid = Auth.auth().currentUser?.uid else { return Disposables.create() }
+            guard let uid = Auth.auth().currentUser?.uid else {
+                let error: MyError = .unauthorized
+                observer.onNext(.failure(error))
+                observer.onCompleted()
+                return Disposables.create()
+            }
             
             COLLECTION_USER.document(uid).getDocument { snapsnot, error in
                 if let error = error {

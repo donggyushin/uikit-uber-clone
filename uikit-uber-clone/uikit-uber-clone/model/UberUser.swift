@@ -12,7 +12,7 @@ struct UberUser: Identifiable, Equatable {
     let id: String
     let fullname: String
     let email: String
-    let userType: UserType
+    var userType: UserType
     var location: CLLocation?
     
     init(data: [String: Any]) {

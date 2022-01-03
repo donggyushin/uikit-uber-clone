@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		700CCF962779A15700998F4A /* DestinationPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700CCF952779A15700998F4A /* DestinationPointAnnotation.swift */; };
 		700CCF982779A82300998F4A /* FloatingCenterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700CCF972779A82300998F4A /* FloatingCenterButton.swift */; };
+		7012D38727830B11003032E7 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7012D38627830B11003032E7 /* SideMenuViewController.swift */; };
+		7012D38A27830B73003032E7 /* SideMenu in Frameworks */ = {isa = PBXBuildFile; productRef = 7012D38927830B73003032E7 /* SideMenu */; };
+		7012D38D27830E2A003032E7 /* SideMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7012D38C27830E2A003032E7 /* SideMenuViewModel.swift */; };
 		701487D827784B1B007AF0DC /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701487D727784B1B007AF0DC /* SplashViewModel.swift */; };
 		701487DB27784C33007AF0DC /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701487DA27784C33007AF0DC /* SplashViewController.swift */; };
 		701487DE27784D28007AF0DC /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701487DD27784D28007AF0DC /* MainViewController.swift */; };
@@ -96,6 +99,8 @@
 /* Begin PBXFileReference section */
 		700CCF952779A15700998F4A /* DestinationPointAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationPointAnnotation.swift; sourceTree = "<group>"; };
 		700CCF972779A82300998F4A /* FloatingCenterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingCenterButton.swift; sourceTree = "<group>"; };
+		7012D38627830B11003032E7 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
+		7012D38C27830E2A003032E7 /* SideMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewModel.swift; sourceTree = "<group>"; };
 		701487D727784B1B007AF0DC /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
 		701487DA27784C33007AF0DC /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		701487DD27784D28007AF0DC /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -178,6 +183,7 @@
 				7055CEAF2777BDDB00399AC6 /* FirebaseDatabase in Frameworks */,
 				70DCF8DE27783E3800A9E633 /* Toast in Frameworks */,
 				701735C32777B0AC004C589B /* RxRelay in Frameworks */,
+				7012D38A27830B73003032E7 /* SideMenu in Frameworks */,
 				7055CEB72777BDDB00399AC6 /* FirebaseStorage in Frameworks */,
 				7055CEAD2777BDDB00399AC6 /* FirebaseAuth in Frameworks */,
 				7055CEBA2777BE8100399AC6 /* GeoFire in Frameworks */,
@@ -193,6 +199,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7012D38527830B04003032E7 /* menu */ = {
+			isa = PBXGroup;
+			children = (
+				7012D38627830B11003032E7 /* SideMenuViewController.swift */,
+			);
+			path = menu;
+			sourceTree = "<group>";
+		};
+		7012D38B27830E10003032E7 /* menu */ = {
+			isa = PBXGroup;
+			children = (
+				7012D38C27830E2A003032E7 /* SideMenuViewModel.swift */,
+			);
+			path = menu;
+			sourceTree = "<group>";
+		};
 		701487D627784B12007AF0DC /* splash */ = {
 			isa = PBXGroup;
 			children = (
@@ -337,6 +359,7 @@
 		701735A22777A04A004C589B /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				7012D38527830B04003032E7 /* menu */,
 				701487DC27784D1F007AF0DC /* main */,
 				701487D927784C2C007AF0DC /* splash */,
 				701735A42777A06B004C589B /* auth */,
@@ -499,6 +522,7 @@
 		70DCF8CF2778397400A9E633 /* viewmodel */ = {
 			isa = PBXGroup;
 			children = (
+				7012D38B27830E10003032E7 /* menu */,
 				701487DF277852D4007AF0DC /* main */,
 				701487D627784B12007AF0DC /* splash */,
 				70DCF8D02778399A00A9E633 /* auth */,
@@ -566,6 +590,7 @@
 				7055CEB92777BE8100399AC6 /* GeoFire */,
 				7055CEBB2777BE8100399AC6 /* GeoFireUtils */,
 				70DCF8DD27783E3800A9E633 /* Toast */,
+				7012D38927830B73003032E7 /* SideMenu */,
 			);
 			productName = "uikit-uber-clone";
 			productReference = 7017358A2777A02E004C589B /* uikit-uber-clone.app */;
@@ -601,6 +626,7 @@
 				7055CEAB2777BDDB00399AC6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				7055CEB82777BE8100399AC6 /* XCRemoteSwiftPackageReference "geofire-objc" */,
 				70DCF8DC27783E3800A9E633 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
+				7012D38827830B73003032E7 /* XCRemoteSwiftPackageReference "SideMenu" */,
 			);
 			productRefGroup = 7017358B2777A02E004C589B /* Products */;
 			projectDirPath = "";
@@ -674,6 +700,7 @@
 				702DF21B2777CB450032441D /* DIRepository.swift in Sources */,
 				701735AC2777A170004C589B /* fonts_colors.swift in Sources */,
 				70DCF8D927783A9100A9E633 /* UserType.swift in Sources */,
+				7012D38727830B11003032E7 /* SideMenuViewController.swift in Sources */,
 				701487F427786A8F007AF0DC /* LocationInputTextField.swift in Sources */,
 				704A4EAA277CA4380059600A /* MatchedViewController.swift in Sources */,
 				701487FA2778762F007AF0DC /* LocationRepositoryImpl.swift in Sources */,
@@ -687,6 +714,7 @@
 				701487E627785AB1007AF0DC /* LocationInputActivationView.swift in Sources */,
 				702DF2172777CAC80032441D /* MyError.swift in Sources */,
 				702DF2142777C9930032441D /* collections.swift in Sources */,
+				7012D38D27830E2A003032E7 /* SideMenuViewModel.swift in Sources */,
 				701735A92777A0E5004C589B /* LogoLabel.swift in Sources */,
 				706989052778A8BF0034FE8F /* PlaceRepositoryImpl.swift in Sources */,
 				708D6760277C839100169BC2 /* RequestLoadingView.swift in Sources */,
@@ -926,6 +954,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		7012D38827830B73003032E7 /* XCRemoteSwiftPackageReference "SideMenu" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jonkykong/SideMenu";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
 		701735AF2777A27C004C589B /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit";
@@ -969,6 +1005,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		7012D38927830B73003032E7 /* SideMenu */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7012D38827830B73003032E7 /* XCRemoteSwiftPackageReference "SideMenu" */;
+			productName = SideMenu;
+		};
 		701735B02777A27C004C589B /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 701735AF2777A27C004C589B /* XCRemoteSwiftPackageReference "SnapKit" */;

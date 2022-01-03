@@ -23,6 +23,8 @@ class MainViewModel: BaseViewModel {
     @Published var myTripRequest: Trip?
     @Published var acceptedTrip: Trip?
     @Published var toastMessage: String?
+    @Published var isSideMenuPresent = false
+    @Published var isLogout = false 
     
     let locationManager = CLLocationManager()
     private let locationRepository: LocationRepository
@@ -47,32 +49,16 @@ class MainViewModel: BaseViewModel {
         }
     }
     
+    func logoutSuccess() {
+        self.isLogout = true 
+    }
+    
     func userMovedScreen(value: Int) {
         self.isUserCenter = value != 0
     }
     
     func setDestination(place: MKPlacemark) {
         destination = DestinationPointAnnotation(id: place.title ?? "", coordinate: place.coordinate)
-    }
-    
-    var observeNearbyUsersDisposables: Disposable?
-    private func observeNearbyUsers(location: CLLocation) {
-        observeNearbyUsersDisposables?.dispose()
-        observeNearbyUsersDisposables = userRepository.observeNearbyUsers(center: location, radius: 10).subscribe(onNext: { [weak self] result in
-            switch result {
-            case .failure(let error): self?.error = error
-            case .success(let user):
-                if let existingUser = self?.nearbyUsers.enumerated().first(where: { $1 == user }) {
-                    var userToUpdate = existingUser.element
-                    userToUpdate.location = user.location
-                    self?.nearbyUsers.remove(at: existingUser.offset)
-                    self?.nearbyUsers.append(userToUpdate)
-                } else {
-                    self?.nearbyUsers.append(user)
-                }
-            }
-        })
-        observeNearbyUsersDisposables?.disposed(by: disposeBag)
     }
     
     func locationsUpdated(locations: [CLLocation]) {
@@ -88,6 +74,10 @@ class MainViewModel: BaseViewModel {
             self?.isLoading = false
             self?.error = error
         }).disposed(by: disposeBag)
+    }
+    
+    func menuButtonTapped() {
+        isSideMenuPresent = true
     }
     
     private func bind() {
@@ -130,8 +120,28 @@ class MainViewModel: BaseViewModel {
         self.locationRepository.updateLocation(location: location)
     }
     
-    var observeTripDisposable: Disposable?
-    var observeAcceptedTripOnlyForDriverDisposable: Disposable?
+    private var observeNearbyUsersDisposables: Disposable?
+    private func observeNearbyUsers(location: CLLocation) {
+        observeNearbyUsersDisposables?.dispose()
+        observeNearbyUsersDisposables = userRepository.observeNearbyUsers(center: location, radius: 10).subscribe(onNext: { [weak self] result in
+            switch result {
+            case .failure(let error): self?.error = error
+            case .success(let user):
+                if let existingUser = self?.nearbyUsers.enumerated().first(where: { $1 == user }) {
+                    var userToUpdate = existingUser.element
+                    userToUpdate.location = user.location
+                    self?.nearbyUsers.remove(at: existingUser.offset)
+                    self?.nearbyUsers.append(userToUpdate)
+                } else {
+                    self?.nearbyUsers.append(user)
+                }
+            }
+        })
+        observeNearbyUsersDisposables?.disposed(by: disposeBag)
+    }
+    
+    private var observeTripDisposable: Disposable?
+    private var observeAcceptedTripOnlyForDriverDisposable: Disposable?
     private func observerTrip() {
         guard let coordinate = locationManager.location?.coordinate else { return }
         observeTripDisposable?.dispose()

@@ -162,6 +162,15 @@ class MainViewController: BaseViewController {
         mainViewModel.$toastMessage.compactMap({ $0 }).sink { [weak self] message in
             self?.view.makeToast(message)
         }.store(in: &subscriber)
+        
+        mainViewModel.$isSideMenuPresent.filter({ $0 }).sink { [weak self] _ in
+            guard let mainViewModel = self?.mainViewModel else { return }
+            self?.present(DIViewController.resolve().sideMenuViewController(mainViewModel), animated: true)
+        }.store(in: &mainViewModel.subscriber)
+        
+        mainViewModel.$isLogout.filter({ $0 }).sink { [weak self] _ in
+            self?.navigationController?.setViewControllers([DIViewController.resolve().loginViewControllerFactory()], animated: true)
+        }.store(in: &mainViewModel.subscriber)
     }
     
     private func presentCancelAlert() {
@@ -319,7 +328,7 @@ extension MainViewController: MenuButtonDelegate {
             self.mapView.removeOverlays(self.mapView.overlays)
             self.view.subviews.compactMap({ $0 as? RideRequestView }).forEach({ $0.dismiss() })
         case .list:
-            print("[test] 메뉴 보여주기")
+            mainViewModel.menuButtonTapped()
         }
     }
 }
