@@ -90,6 +90,8 @@
 		70A3C27127845E5700835707 /* SideMenuViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A3C27027845E5700835707 /* SideMenuViewControllerTest.swift */; };
 		70A3C27327845FCE00835707 /* DIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A3C27227845FCE00835707 /* DIView.swift */; };
 		70A3C275278460B000835707 /* RideRequestViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A3C274278460B000835707 /* RideRequestViewTest.swift */; };
+		70A3C2772784627000835707 /* MatchedViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A3C2762784627000835707 /* MatchedViewControllerTest.swift */; };
+		70A3C2792784637C00835707 /* PickUpViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A3C2782784637C00835707 /* PickUpViewControllerTest.swift */; };
 		70CBFED9277A317F006C9123 /* UIScrollView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CBFED8277A317F006C9123 /* UIScrollView+Extension.swift */; };
 		70D0E0362778AF68008114B6 /* PlaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D0E0352778AF68008114B6 /* PlaceCell.swift */; };
 		70DCF8D2277839A500A9E633 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DCF8D1277839A500A9E633 /* SignUpViewModel.swift */; };
@@ -190,6 +192,8 @@
 		70A3C27027845E5700835707 /* SideMenuViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewControllerTest.swift; sourceTree = "<group>"; };
 		70A3C27227845FCE00835707 /* DIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIView.swift; sourceTree = "<group>"; };
 		70A3C274278460B000835707 /* RideRequestViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideRequestViewTest.swift; sourceTree = "<group>"; };
+		70A3C2762784627000835707 /* MatchedViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchedViewControllerTest.swift; sourceTree = "<group>"; };
+		70A3C2782784637C00835707 /* PickUpViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickUpViewControllerTest.swift; sourceTree = "<group>"; };
 		70CBFED8277A317F006C9123 /* UIScrollView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Extension.swift"; sourceTree = "<group>"; };
 		70D0E0352778AF68008114B6 /* PlaceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCell.swift; sourceTree = "<group>"; };
 		70DCF8D1277839A500A9E633 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
@@ -618,6 +622,8 @@
 				70A3C26E27845CB000835707 /* MainViewControllerTest.swift */,
 				70A3C27027845E5700835707 /* SideMenuViewControllerTest.swift */,
 				70A3C274278460B000835707 /* RideRequestViewTest.swift */,
+				70A3C2762784627000835707 /* MatchedViewControllerTest.swift */,
+				70A3C2782784637C00835707 /* PickUpViewControllerTest.swift */,
 			);
 			path = "uikit-uber-cloneTests";
 			sourceTree = "<group>";
@@ -835,6 +841,8 @@
 				70A3C26B27845A0500835707 /* LoginViewControllerTest.swift in Sources */,
 				70A3C26D27845B6D00835707 /* SignUpViewControllerTest.swift in Sources */,
 				70A3C27127845E5700835707 /* SideMenuViewControllerTest.swift in Sources */,
+				70A3C2792784637C00835707 /* PickUpViewControllerTest.swift in Sources */,
+				70A3C2772784627000835707 /* MatchedViewControllerTest.swift in Sources */,
 				70FAD3C2278344F800B4733F /* SplashViewControllerTest.swift in Sources */,
 				70A3C26F27845CB000835707 /* MainViewControllerTest.swift in Sources */,
 			);

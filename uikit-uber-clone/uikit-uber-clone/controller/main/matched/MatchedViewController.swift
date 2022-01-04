@@ -22,7 +22,7 @@ class MatchedViewController: BaseViewController {
     
     private let floatingCancelButton = FloatingCancelButton()
     
-    private let viewModel: MatchedViewModel
+    let viewModel: MatchedViewModel
     
     init(viewModel: MatchedViewModel) {
         self.viewModel = viewModel
