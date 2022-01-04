@@ -92,7 +92,7 @@ class MatchedViewController: BaseViewController {
     }
     
     private func presentCompleteView() {
-        let view = CompletedView(viewModel: DIViewModel.resolve().completedViewModelFactory(viewModel.trip))
+        let view = DIView.resolve().completedViewFactory(viewModel.trip)
         self.view.addSubview(view)
     }
     

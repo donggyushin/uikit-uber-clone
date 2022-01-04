@@ -14,7 +14,7 @@ class CompletedView: UIView {
         return view
     }()
     
-    private let viewModel: CompletedViewModel
+    let viewModel: CompletedViewModel
     
     init(viewModel: CompletedViewModel) {
         self.viewModel = viewModel

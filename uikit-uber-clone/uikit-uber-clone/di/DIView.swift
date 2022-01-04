@@ -9,6 +9,7 @@ import MapKit
 
 struct DIView {
     let rideRequestViewFactory: (MKPlacemark) -> RideRequestView
+    let completedViewFactory: (Trip) -> CompletedView
 }
 
 extension DIView {
@@ -20,6 +21,10 @@ extension DIView {
             return .init(viewModel: diViewModel.rideRequestViewModelFactory(placemark))
         }
         
-        return .init(rideRequestViewFactory: rideRequestViewFactory)
+        let completedViewFactory: (Trip) -> CompletedView = { trip in
+            return .init(viewModel: diViewModel.completedViewModelFactory(trip))
+        }
+        
+        return .init(rideRequestViewFactory: rideRequestViewFactory, completedViewFactory: completedViewFactory)
     }
 }
