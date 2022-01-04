@@ -15,7 +15,15 @@ class PickUpViewControllerTest: XCTestCase {
     lazy var viewController = DIViewController.resolve(test: true).pickupViewControllerFactory(trip)
     
     func testAcceptTrip() {
+        viewController.viewDidLoad()
+        viewController.viewModel.acceptTrip()
         
+        let waitingForAcceptingTrip: XCTestExpectation = .init(description: "waitingForAcceptingTrip")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            waitingForAcceptingTrip.fulfill()
+        }
+        wait(for: [waitingForAcceptingTrip], timeout: 10)
+        XCTAssertTrue(viewController.viewModel.success)
     }
     
 }

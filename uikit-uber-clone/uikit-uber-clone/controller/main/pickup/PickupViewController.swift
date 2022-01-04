@@ -37,7 +37,6 @@ class PickupViewController: BaseViewController {
     
     private lazy var progressView: KDCircularProgress = {
         let progress = KDCircularProgress()
-//        progress.backgroundColor = .blue
         progress.startAngle = -90
         progress.progressThickness = 0.1
         progress.trackThickness = 0.1
@@ -74,7 +73,7 @@ class PickupViewController: BaseViewController {
         return view
     }()
     
-    private let viewModel: PickupViewModel
+    let viewModel: PickupViewModel
     
     init(viewModel: PickupViewModel) {
         self.viewModel = viewModel
