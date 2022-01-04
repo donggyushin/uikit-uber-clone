@@ -85,6 +85,8 @@
 		708D675E277C74D000169BC2 /* PickupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708D675D277C74D000169BC2 /* PickupViewModel.swift */; };
 		708D6760277C839100169BC2 /* RequestLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708D675F277C839100169BC2 /* RequestLoadingView.swift */; };
 		70A3C26B27845A0500835707 /* LoginViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A3C26A27845A0500835707 /* LoginViewControllerTest.swift */; };
+		70A3C26D27845B6D00835707 /* SignUpViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A3C26C27845B6D00835707 /* SignUpViewControllerTest.swift */; };
+		70A3C26F27845CB000835707 /* MainViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A3C26E27845CB000835707 /* MainViewControllerTest.swift */; };
 		70CBFED9277A317F006C9123 /* UIScrollView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CBFED8277A317F006C9123 /* UIScrollView+Extension.swift */; };
 		70D0E0362778AF68008114B6 /* PlaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D0E0352778AF68008114B6 /* PlaceCell.swift */; };
 		70DCF8D2277839A500A9E633 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DCF8D1277839A500A9E633 /* SignUpViewModel.swift */; };
@@ -180,6 +182,8 @@
 		708D675D277C74D000169BC2 /* PickupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickupViewModel.swift; sourceTree = "<group>"; };
 		708D675F277C839100169BC2 /* RequestLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLoadingView.swift; sourceTree = "<group>"; };
 		70A3C26A27845A0500835707 /* LoginViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerTest.swift; sourceTree = "<group>"; };
+		70A3C26C27845B6D00835707 /* SignUpViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewControllerTest.swift; sourceTree = "<group>"; };
+		70A3C26E27845CB000835707 /* MainViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerTest.swift; sourceTree = "<group>"; };
 		70CBFED8277A317F006C9123 /* UIScrollView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Extension.swift"; sourceTree = "<group>"; };
 		70D0E0352778AF68008114B6 /* PlaceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCell.swift; sourceTree = "<group>"; };
 		70DCF8D1277839A500A9E633 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
@@ -603,6 +607,8 @@
 			children = (
 				70FAD3C1278344F800B4733F /* SplashViewControllerTest.swift */,
 				70A3C26A27845A0500835707 /* LoginViewControllerTest.swift */,
+				70A3C26C27845B6D00835707 /* SignUpViewControllerTest.swift */,
+				70A3C26E27845CB000835707 /* MainViewControllerTest.swift */,
 			);
 			path = "uikit-uber-cloneTests";
 			sourceTree = "<group>";
@@ -816,7 +822,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				70A3C26B27845A0500835707 /* LoginViewControllerTest.swift in Sources */,
+				70A3C26D27845B6D00835707 /* SignUpViewControllerTest.swift in Sources */,
 				70FAD3C2278344F800B4733F /* SplashViewControllerTest.swift in Sources */,
+				70A3C26F27845CB000835707 /* MainViewControllerTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -64,7 +64,7 @@ class SignUpViewController: BaseViewController {
         return view
     }()
     
-    private let signUpViewModel: SignUpViewModel
+    let signUpViewModel: SignUpViewModel
     
     init(signUpViewModel: SignUpViewModel) {
         self.signUpViewModel = signUpViewModel

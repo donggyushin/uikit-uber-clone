@@ -41,7 +41,7 @@ class MainViewController: BaseViewController {
     
     private let floatingCenterButton = FloatingCenterButton()
     
-    private let mainViewModel: MainViewModel
+    let mainViewModel: MainViewModel
     private let linkUtil: LinkUtil
     private let mapKitUtik: MapKitUtil
     
