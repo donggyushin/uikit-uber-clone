@@ -12,6 +12,7 @@ class LoginViewControllerTest: XCTestCase {
     let loginViewController = DIViewController.resolve(test: true).loginViewControllerFactory()
     
     func testLoginFail() {
+        loginViewController.viewDidLoad()
         loginViewController.loginViewModel.login(email: "1", password: "1")
         
         let waitingForLoginSuccess: XCTestExpectation = .init(description: "waitingForLoginSuccess")

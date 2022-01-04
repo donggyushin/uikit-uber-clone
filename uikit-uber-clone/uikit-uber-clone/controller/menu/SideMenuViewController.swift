@@ -55,8 +55,8 @@ class SideMenuViewController: UIViewController {
     
     
     
-    private let viewModel: SideMenuViewModel
-    private let mainViewModel: MainViewModel
+    let viewModel: SideMenuViewModel
+    let mainViewModel: MainViewModel
     
     init(viewModel: SideMenuViewModel, mainViewModel: MainViewModel) {
         self.viewModel = viewModel

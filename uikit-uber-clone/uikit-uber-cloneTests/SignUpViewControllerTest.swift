@@ -12,6 +12,7 @@ class SignUpViewControllerTest: XCTestCase {
     let signUpViewController = DIViewController.resolve(test: true).signUpViewControllerFactory()
     
     func testSignUpFail() {
+        signUpViewController.viewDidLoad()
         signUpViewController.signUpViewModel.signUp(email: "", password: "", fullName: "", userType: .RIDER)
         
         let waitingForSignUp: XCTestExpectation = .init(description: "waitingForSignUp")

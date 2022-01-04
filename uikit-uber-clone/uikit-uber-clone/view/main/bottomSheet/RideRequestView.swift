@@ -77,7 +77,7 @@ class RideRequestView: UIView {
         return view
     }()
     
-    private let viewModel: RideRequestViewModel
+    let viewModel: RideRequestViewModel
     
     init(viewModel: RideRequestViewModel) {
         self.viewModel = viewModel

@@ -234,7 +234,7 @@ class MainViewController: BaseViewController {
     }
     
     private func presentRequestView(place: MKPlacemark) {
-        let requestView = RideRequestView(viewModel: DIViewModel.resolve().rideRequestViewModelFactory(place))
+        let requestView = DIView.resolve().rideRequestViewFactory(place)
         requestView.delegate = self
         view.addSubview(requestView)
     }
