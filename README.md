@@ -1,3 +1,12 @@
+## 목차
+1. [uikit-uber-clone](#uikit-uber-clone)
+2. [구현 내용](#구현-내용)
+3. [사용한 라이브러리 및 프레임 워크](#사용한-라이브러리-및-프레임-워크)
+4. [Results](#Results)
+5. [Structure](#Structure)
+6. [Coverage](#Coverage)
+
+
 # uikit-uber-clone
 
 iOS15 UIKit 을 활용해서 Uber 앱을 클론한다. 
@@ -71,4 +80,7 @@ iOS15 UIKit 을 활용해서 Uber 앱을 클론한다.
 │       └── splash
 └── uikit-uber-cloneTests - Unit 테스트 프로젝트
 ```
+
+## Coverage
+<img width="600" alt="스크린샷 2022-01-04 오후 8 23 59" src="https://user-images.githubusercontent.com/34573243/148052166-bf5103ae-1b1f-41cf-b245-fe28b0cdbea6.png">
 
