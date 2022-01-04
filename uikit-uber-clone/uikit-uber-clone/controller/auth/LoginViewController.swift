@@ -55,7 +55,7 @@ class LoginViewController: BaseViewController {
         return view
     }()
     
-    private let loginViewModel: LoginViewModel
+    let loginViewModel: LoginViewModel
     
     init(loginViewModel: LoginViewModel) {
         self.loginViewModel = loginViewModel

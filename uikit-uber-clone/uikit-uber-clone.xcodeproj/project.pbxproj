@@ -84,6 +84,7 @@
 		708D675B277C717900169BC2 /* PickupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708D675A277C717900169BC2 /* PickupViewController.swift */; };
 		708D675E277C74D000169BC2 /* PickupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708D675D277C74D000169BC2 /* PickupViewModel.swift */; };
 		708D6760277C839100169BC2 /* RequestLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708D675F277C839100169BC2 /* RequestLoadingView.swift */; };
+		70A3C26B27845A0500835707 /* LoginViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A3C26A27845A0500835707 /* LoginViewControllerTest.swift */; };
 		70CBFED9277A317F006C9123 /* UIScrollView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CBFED8277A317F006C9123 /* UIScrollView+Extension.swift */; };
 		70D0E0362778AF68008114B6 /* PlaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D0E0352778AF68008114B6 /* PlaceCell.swift */; };
 		70DCF8D2277839A500A9E633 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DCF8D1277839A500A9E633 /* SignUpViewModel.swift */; };
@@ -95,7 +96,6 @@
 		70DCF8E32778409400A9E633 /* UserError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DCF8E22778409400A9E633 /* UserError.swift */; };
 		70DCF8E5277844E900A9E633 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DCF8E4277844E900A9E633 /* LoginViewModel.swift */; };
 		70F3DA092779B3F700D2A67B /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F3DA082779B3F700D2A67B /* MenuButton.swift */; };
-		70FAD3B327833D2100B4733F /* uikit_uber_cloneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70FAD3B227833D2100B4733F /* uikit_uber_cloneTests.swift */; };
 		70FAD3BA27833D5300B4733F /* UserRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70FAD3B927833D5300B4733F /* UserRepositoryTest.swift */; };
 		70FAD3BC27833F3700B4733F /* LocationRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70FAD3BB27833F3700B4733F /* LocationRepositoryTest.swift */; };
 		70FAD3BE27833F7E00B4733F /* PlaceRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70FAD3BD27833F7E00B4733F /* PlaceRepositoryTest.swift */; };
@@ -179,6 +179,7 @@
 		708D675A277C717900169BC2 /* PickupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickupViewController.swift; sourceTree = "<group>"; };
 		708D675D277C74D000169BC2 /* PickupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickupViewModel.swift; sourceTree = "<group>"; };
 		708D675F277C839100169BC2 /* RequestLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLoadingView.swift; sourceTree = "<group>"; };
+		70A3C26A27845A0500835707 /* LoginViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerTest.swift; sourceTree = "<group>"; };
 		70CBFED8277A317F006C9123 /* UIScrollView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Extension.swift"; sourceTree = "<group>"; };
 		70D0E0352778AF68008114B6 /* PlaceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCell.swift; sourceTree = "<group>"; };
 		70DCF8D1277839A500A9E633 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
@@ -190,7 +191,6 @@
 		70DCF8E4277844E900A9E633 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		70F3DA082779B3F700D2A67B /* MenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
 		70FAD3B027833D2100B4733F /* uikit-uber-cloneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "uikit-uber-cloneTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		70FAD3B227833D2100B4733F /* uikit_uber_cloneTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = uikit_uber_cloneTests.swift; sourceTree = "<group>"; };
 		70FAD3B927833D5300B4733F /* UserRepositoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepositoryTest.swift; sourceTree = "<group>"; };
 		70FAD3BB27833F3700B4733F /* LocationRepositoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationRepositoryTest.swift; sourceTree = "<group>"; };
 		70FAD3BD27833F7E00B4733F /* PlaceRepositoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceRepositoryTest.swift; sourceTree = "<group>"; };
@@ -601,8 +601,8 @@
 		70FAD3B127833D2100B4733F /* uikit-uber-cloneTests */ = {
 			isa = PBXGroup;
 			children = (
-				70FAD3B227833D2100B4733F /* uikit_uber_cloneTests.swift */,
 				70FAD3C1278344F800B4733F /* SplashViewControllerTest.swift */,
+				70A3C26A27845A0500835707 /* LoginViewControllerTest.swift */,
 			);
 			path = "uikit-uber-cloneTests";
 			sourceTree = "<group>";
@@ -815,7 +815,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				70FAD3B327833D2100B4733F /* uikit_uber_cloneTests.swift in Sources */,
+				70A3C26B27845A0500835707 /* LoginViewControllerTest.swift in Sources */,
 				70FAD3C2278344F800B4733F /* SplashViewControllerTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
