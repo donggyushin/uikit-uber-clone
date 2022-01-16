@@ -1,0 +1,17 @@
+name: Swift
+
+on:
+  push:
+    branches: [ main, develop, feature/* ]
+  pull_request:
+    branches: [ main, develop, feature/* ]
+
+jobs:
+  build:
+
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build and test ( iOS 15.0)
+      run: xcodebuild test -project uikit-uber-clone/uikit-uber-clone.xcodeproj -scheme uikit-uber-clone -destination 'platform=iOS Simulator,name=iPhone 12 Pro,OS=15.0' CODE_SIGNING_ALLOWED=NO IPHONEOS_DEPLOYMENT_TARGET=15.0
