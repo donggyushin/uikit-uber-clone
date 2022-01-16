@@ -13,7 +13,5 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Show eligible build destinations
-      run: xcodebuild -showdestinations -scheme uikit-uber-clone
     - name: Build and test ( iOS 15.0)
       run: xcodebuild test -project uikit-uber-clone/uikit-uber-clone.xcodeproj -scheme uikit-uber-clone -destination 'platform=iOS Simulator,name=iPhone 12 Pro,OS=15.0' CODE_SIGNING_ALLOWED=NO IPHONEOS_DEPLOYMENT_TARGET=13.0
